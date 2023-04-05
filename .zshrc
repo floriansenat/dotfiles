@@ -26,6 +26,7 @@ alias gtr="cd ~/Sites/work/v3"
 alias lzg="lazygit"
 alias cat="bat"
 alias vim="nvim"
+alias vi="nvim"
 alias notes="cd ~/notes && vim"
 alias daily="cd ~/notes && vim ./daily.md"
 
