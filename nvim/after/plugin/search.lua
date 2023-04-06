@@ -14,7 +14,6 @@ telescope.setup {
 	},
 }
 
--- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, 'fzf')
 
 -- [[Keymaps]]
@@ -26,6 +25,7 @@ vim.keymap.set('n', '<leader>/', function()
 		previewer = false,
 	})
 end, { desc = 'Fuzzily search in current buffer' })
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
 wk.register({ ['<leader>s'] = { name = '[S]earch' } })
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[F]iles' })
@@ -33,6 +33,6 @@ vim.keymap.set('n', '<leader>s?', builtin.help_tags, { desc = 'Help' })
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Current [W]ord' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'With [G]rep' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[D]iagnostics' })
-vim.keymap.set('n', '<leader>se',
-	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files','-g', '.env*' }})<cr>",
-	{ desc = 'Search [E]nvs' })
+vim.keymap.set('n', '<leader>se', function()
+	require 'telescope.builtin'.find_files({ find_command = { 'rg', '--files', '-g', '.env*' } })
+end, { desc = 'Search [E]nvs' })
