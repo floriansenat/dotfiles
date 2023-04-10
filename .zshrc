@@ -6,44 +6,38 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-# Variables
-# ---------
-
-# pnpm
-export PNPM_HOME="/Users/florian/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# Docker
+# Work
+# ----
 export FIXUID=$(id -u)
 export FIXGID=$(id -g)
-
-# Homebrew
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/bin/docker-credential-ecr-login:$PATH"
 
-# Fzf
+alias python=python3
+alias pip=pip3
+alias awslog='aws sso login'
+alias gtw="cd ~/work/v3/app/packages/apps/main"
+alias gtw="cd ~/work/v3"
+
+
+# Perso
+# -------
+export PNPM_HOME="/Users/florian/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 export FZF_DEFAULT_OPTS='--layout=reverse --preview "bat --style=numbers --color=always  --line-range=:500 {}"'
 export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 
-# Aliases
-# -------
-
-# Utils
 alias lzg="lazygit"
 alias cat="bat"
 alias vim="nvim"
 alias vi="nvim"
 
-# Work
-alias awslog='aws sso login'
-alias gtm="cd ~/Sites/work/v3/app/packages/apps/main"
-alias gtr="cd ~/Sites/work/v3"
-
-# Perso
-alias notes="cd ~/notes && vim"
 alias daily="cd ~/notes && vim ./daily.md"
+alias dot="cd ~/dotfiles"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
