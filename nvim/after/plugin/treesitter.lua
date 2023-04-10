@@ -1,7 +1,17 @@
--- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
-	ensure_installed = { 'lua', 'rust', 'tsx', 'typescript', 'help', 'vim' },
-	auto_install = false,
+	ensure_installed = {
+		'lua',
+		'rust',
+		'tsx',
+		'typescript',
+		'help',
+		'vim',
+		'markdown',
+		'markdown_inline',
+		'html',
+		'javascript',
+		'json',
+	},
 	highlight = { enable = true },
 	indent = { enable = true },
 	incremental_selection = {
@@ -18,12 +28,11 @@ require('nvim-treesitter.configs').setup {
 			enable = true,
 			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
 			keymaps = {
-				-- You can use the capture groups defined in textobjects.scm
 				['aa'] = '@parameter.outer',
 				['ia'] = '@parameter.inner',
 				['af'] = '@function.outer',
 				['if'] = '@function.inner',
-				['ac'] = '@cla(ss.outer',
+				['ac'] = '@class.outer',
 				['ic'] = '@class.inner',
 			},
 		},
