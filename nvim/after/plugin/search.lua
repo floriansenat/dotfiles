@@ -3,17 +3,6 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local themes = require('telescope.themes')
 
-telescope.setup {
-	defaults = {
-		mappings = {
-			i = {
-				['<C-u>'] = false,
-				['<C-d>'] = false,
-			},
-		},
-	},
-}
-
 pcall(telescope.load_extension, 'fzf')
 
 -- [[Keymaps]]

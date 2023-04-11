@@ -7,7 +7,6 @@ function _lazygit_toggle()
 end
 
 wk.register({ ['<leader>g'] = { name = '+[G]it' } })
-
 vim.api.nvim_set_keymap("n", "<leader>go", "<cmd>lua _lazygit_toggle()<CR>",
 	{ desc = "[O]verview", noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', { desc = "[D]iffs", silent = true })

@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		'lua',
 		'rust',
@@ -66,4 +66,4 @@ require('nvim-treesitter.configs').setup {
 			},
 		},
 	},
-}
+})
