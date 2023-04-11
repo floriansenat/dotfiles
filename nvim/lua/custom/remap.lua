@@ -13,3 +13,10 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+
+vim.keymap.set('n', '<leader>pe', vim.cmd.Ex, { silent = true, desc = "Show [E]xplorer" })
+
+vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { desc = "[P]rev" })
+vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = "[N]ext" })
+vim.keymap.set('n', '<leader>dm', vim.diagnostic.open_float, { desc = "[M]essage" })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = "[L]ist" })
