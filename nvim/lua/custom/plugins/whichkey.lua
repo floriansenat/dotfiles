@@ -17,6 +17,7 @@ return {
 			})
 
 			wk.register({ ['<leader>s'] = { name = '[S]earch' } })
+			wk.register({ ['<leader>g'] = { name = '[G]it' } })
 		end
 	}
 }
