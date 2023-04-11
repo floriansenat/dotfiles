@@ -1,4 +1,3 @@
-local wk = require('which-key')
 local builtin = require('telescope.builtin')
 
 local function createFormatCommand(vim, bufnr)
@@ -12,7 +11,6 @@ local on_attach = function(_, bufnr)
 		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	wk.register({ ['<leader>c'] = { name = '[C]ode' } })
 	nmap('<leader>cr', vim.lsp.buf.rename, '[R]ename')
 	nmap('<leader>ca', vim.lsp.buf.code_action, '[A]ction')
 
@@ -21,10 +19,6 @@ local on_attach = function(_, bufnr)
 	nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
 	nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 	nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-
-	wk.register({ ['<leader>S'] = { name = '[S]ymbols' } })
-	nmap('<leader>Sd', builtin.lsp_document_symbols, '[D]ocument')
-	nmap('<leader>Sw', builtin.lsp_dynamic_workspace_symbols, '[W]orkspace')
 
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 	nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
