@@ -2,9 +2,12 @@ return {
 	{
 		'folke/which-key.nvim',
 		config = function()
+			local wk = require('which-key')
+
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
-			require('which-key').setup({
+
+			wk.setup({
 				plugins = {
 					presets = {
 						operators = false,
@@ -12,6 +15,8 @@ return {
 					}
 				}
 			})
+
+			wk.register({ ['<leader>s'] = { name = '[S]earch' } })
 		end
 	}
 }
