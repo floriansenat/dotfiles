@@ -27,6 +27,8 @@ return {
 			vim.keymap.set('n', '<leader>se', function()
 				builtin.find_files({ find_command = { 'rg', '--files', '-g', '.env*' } })
 			end, { desc = 'Search [E]nvs' })
+			vim.keymap.set('n', '<leader>Sd', builtin.lsp_document_symbols, { desc = '[D]ocument' })
+			vim.keymap.set('n', '<leader>Sw', builtin.lsp_dynamic_workspace_symbols, { desc = '[W]orkspace' })
 		end
 	},
 	{
