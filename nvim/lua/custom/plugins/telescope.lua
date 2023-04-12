@@ -10,6 +10,7 @@ return {
 
 			pcall(telescope.load_extension, 'fzf')
 
+			-- [[Search]]
 			vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = 'Find recently opened files' })
 			vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = 'Find existing buffers' })
 			vim.keymap.set('n', '<leader>/', function()
@@ -27,8 +28,14 @@ return {
 			vim.keymap.set('n', '<leader>se', function()
 				builtin.find_files({ find_command = { 'rg', '--files', '-g', '.env*' } })
 			end, { desc = 'Search [E]nvs' })
-			vim.keymap.set('n', '<leader>Sd', builtin.lsp_document_symbols, { desc = '[D]ocument' })
-			vim.keymap.set('n', '<leader>Sw', builtin.lsp_dynamic_workspace_symbols, { desc = '[W]orkspace' })
+
+			-- [[LSP]]
+			vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = '[G]oto [R]eferences' })
+
+			-- [[Symbols]]
+			vim.keymap.set('n', '<leader>ssb', builtin.lsp_document_symbols, { desc = '[D]ocument' })
+			vim.keymap.set('n', '<leader>ssw', builtin.lsp_dynamic_workspace_symbols,
+				{ desc = '[W]orkspace' })
 		end
 	},
 	{
