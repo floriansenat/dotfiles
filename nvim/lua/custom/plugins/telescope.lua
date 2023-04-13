@@ -33,7 +33,7 @@ return {
 			vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = '[G]oto [R]eferences' })
 
 			-- [[Symbols]]
-			vim.keymap.set('n', '<leader>ssb', builtin.lsp_document_symbols, { desc = '[D]ocument' })
+			vim.keymap.set('n', '<leader>ssb', builtin.lsp_document_symbols, { desc = '[B]uffer' })
 			vim.keymap.set('n', '<leader>ssw', builtin.lsp_dynamic_workspace_symbols,
 				{ desc = '[W]orkspace' })
 		end
