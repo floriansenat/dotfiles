@@ -8,6 +8,11 @@ vim.o.relativenumber = true
 vim.o.scrolloff = 8
 vim.o.colorcolumn = '120'
 
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
 vim.o.breakindent = true
 vim.o.smartindent = true
 vim.o.swapfile = false
