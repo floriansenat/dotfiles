@@ -21,7 +21,8 @@ return {
 			wk.register({ ['<leader>p'] = { name = '[P]roject' } })
 			wk.register({ ["<leader>d"] = { name = "[D]iagnostic" } })
 			wk.register({ ['<leader>c'] = { name = '[C]ode' } })
-			wk.register({ ['<leader>f'] = { name = '[F]ormat Buffer' } })
+			wk.register({ ['<leader>F'] = { name = '[F]ormat Buffer' } })
+			wk.register({ ['<leader>f'] = { name = '[F]iles' } })
 		end
 	}
 }

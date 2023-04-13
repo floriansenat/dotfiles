@@ -40,7 +40,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 		nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
-		nmap('<leader>ff', function() vim.lsp.buf.format { async = true } end, '[F]ormat')
-		nmap('<leader>ft', '<cmd>ToggleFormat<CR>', '[T]oggle')
+		nmap('<leader>Ff', function() vim.lsp.buf.format { async = true } end, '[F]ormat')
+		nmap('<leader>Ft', '<cmd>ToggleFormat<CR>', '[T]oggle')
 	end
 })
+
+-- [[Files]]
+vim.keymap.set('n', '<leader>fc', '<cmd>let @*=expand("%")<CR>', { desc = '[C]opy file path' })
