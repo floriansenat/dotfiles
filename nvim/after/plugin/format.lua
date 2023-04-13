@@ -1,4 +1,4 @@
-	local format_is_enabled = true
+local format_is_enabled = true
 
 vim.api.nvim_create_user_command('ToggleFormat', function()
 	format_is_enabled = not format_is_enabled
