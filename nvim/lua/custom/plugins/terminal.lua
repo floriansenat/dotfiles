@@ -1,5 +1,4 @@
 return {
-	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
 		config = function()
@@ -12,5 +11,4 @@ return {
 			vim.keymap.set("n", "<leader>go", "<cmd>ToggleLazygit<CR>",
 				{ desc = "[O]verview", noremap = true, silent = true })
 		end
-	}
 }

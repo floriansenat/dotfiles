@@ -1,5 +1,4 @@
 return {
-	{
 		'folke/which-key.nvim',
 		config = function()
 			local wk = require('which-key')
@@ -24,5 +23,4 @@ return {
 			wk.register({ ['<leader>F'] = { name = '[F]ormat Buffer' } })
 			wk.register({ ['<leader>f'] = { name = '[F]iles' } })
 		end
-	}
 }

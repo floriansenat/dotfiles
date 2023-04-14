@@ -1,5 +1,4 @@
 return {
-	{
 		'nvim-lualine/lualine.nvim',
 		opts = {
 			options = {
@@ -9,5 +8,4 @@ return {
 				section_separators = '',
 			},
 		},
-	}
 }

@@ -11,14 +11,11 @@ local function toggle_theme()
 end
 
 return {
-
-	{
-		'sainnhe/everforest',
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme('everforest')
-			vim.api.nvim_create_user_command('ToggleTheme', toggle_theme, {})
-			vim.keymap.set('n', '<leader>t', '<cmd>ToggleTheme<CR>', { desc = 'Toggle [T]heme' })
-		end,
-	}
+	'sainnhe/everforest',
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme('everforest')
+		vim.api.nvim_create_user_command('ToggleTheme', toggle_theme, {})
+		vim.keymap.set('n', '<leader>t', '<cmd>ToggleTheme<CR>', { desc = 'Toggle [T]heme' })
+	end,
 }
