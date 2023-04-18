@@ -18,6 +18,16 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = { '*.json' },
+	group = 'AutoFormatting',
+	callback = function()
+		if format_is_enabled then
+			vim.cmd('silent! %!jq .')
+		end
+	end
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
 	pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
 	group = 'AutoFormatting',
 	callback = function()
