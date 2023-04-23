@@ -35,9 +35,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		nmap('<leader>ca', vim.lsp.buf.code_action, '[A]ction')
 		nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 		nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-		nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-		nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-		nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 		nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
 		nmap('<leader>Ff', function() vim.lsp.buf.format { async = true } end, '[F]ormat')

@@ -8,16 +8,24 @@ return {
 			local builtin = require('telescope.builtin')
 			local themes = require('telescope.themes')
 
+			telescope.setup {
+				defaults = {
+					sorting_strategy = "ascending",
+					layout_config = {
+						height = 0.8,
+						prompt_position = 'top',
+						preview_width = 0.4,
+					},
+				},
+			}
+
 			pcall(telescope.load_extension, 'fzf')
 
 			-- [[Search]]
 			vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = 'Find recently opened files' })
 			vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = 'Find existing buffers' })
 			vim.keymap.set('n', '<leader>/', function()
-				builtin.current_buffer_fuzzy_find(themes.get_dropdown {
-					winblend = 10,
-					previewer = false,
-				})
+				builtin.current_buffer_fuzzy_find(themes.get_dropdown { previewer = false })
 			end, { desc = 'Fuzzily search in current buffer' })
 			vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 			vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[F]iles' })
@@ -31,6 +39,9 @@ return {
 
 			-- [[LSP]]
 			vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = '[G]oto [R]eferences' })
+			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
+			vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
+			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 
 			-- [[Symbols]]
 			vim.keymap.set('n', '<leader>ssb', builtin.lsp_document_symbols, { desc = '[B]uffer' })
