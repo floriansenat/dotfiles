@@ -1,10 +1,18 @@
 return {
-		'sindrets/diffview.nvim',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		config = function()
-			local diffview = require('diffview')
+	'sindrets/diffview.nvim',
+	dependencies = { 'nvim-lua/plenary.nvim' },
+	config = function()
+		local diffview = require('diffview')
 
-			vim.keymap.set('n', '<leader>gd', diffview.open, { desc = "[D]iffs", silent = true })
-			vim.keymap.set('n', '<leader>gh', diffview.file_history, { desc = "[H]istory", silent = true })
-		end
+		diffview.setup({
+			view = {
+				default = {
+					layout = 'diff3_horizontal'
+				}
+			}
+		})
+
+		vim.keymap.set('n', '<leader>pd', diffview.open, { desc = "[D]iffs", silent = true })
+		vim.keymap.set('n', '<leader>fh', '<cmd>DiffviewFileHistory %<CR>', { desc = "[H]istory", silent = true })
+	end
 }
