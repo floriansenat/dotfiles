@@ -31,16 +31,13 @@ export FZF_DEFAULT_OPTS='--layout=reverse --preview "bat --style=numbers --color
 export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 
-alias lzg="lazygit"
+alias go="lazygit"
 alias cat="bat"
 alias vim="nvim"
 alias vi="nvim"
+alias v="nvim"
 alias ll="ls -al"
-alias ta="tmux a"
-alias t="tmux"
 
-alias daily="cd ~/notes && vim ./daily.md"
-alias dot="cd ~/dotfiles"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
