@@ -2,19 +2,26 @@ return {
 	'nvim-lualine/lualine.nvim',
 	opts = {
 		options = {
-			always_divide_middle = false,
 			icons_enabled = false,
 			theme = 'everforest',
-			component_separators = '|',
+			component_separators = '',
 			section_separators = '',
-			sections = {
-				lualine_a = { 'mode' },
-				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { 'filename' },
-				lualine_x = {},
-				lualine_y = { 'location' },
-				lualine_z = { 'encoding', 'fileformat', 'filetype' },
-			},
+		},
+		sections = {
+			lualine_a = { 'mode' },
+			lualine_b = { 'branch', 'diff', 'diagnostics' },
+			lualine_c = { '%=', { 'filename', path = 1 } },
+			lualine_x = {},
+			lualine_y = { 'encoding', 'fileformat', 'filetype' },
+			lualine_z = {},
+		},
+		tabline = {
+			lualine_a = { 'buffers' },
+			lualine_b = {},
+			lualine_c = {},
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = { 'tabs' }
 		},
 	},
 }
