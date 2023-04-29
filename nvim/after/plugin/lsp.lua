@@ -1,5 +1,6 @@
 local servers = {
-	tssever = {},
+	gopls = {},
+	tsserver = {},
 	lua_ls = {
 		Lua = {
 			yorkspace = { checkThirdParty = false },
