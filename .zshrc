@@ -18,8 +18,6 @@ export PATH="/opt/homebrew/bin/docker-credential-ecr-login:$PATH"
 alias python=python3
 alias pip=pip3
 alias awslog='aws sso login'
-alias gtw="cd ~/work/v3/app/packages/apps/main"
-alias gtw="cd ~/work/v3"
 
 
 # Perso
@@ -31,8 +29,7 @@ export FZF_DEFAULT_OPTS='--layout=reverse --preview "bat --style=numbers --color
 export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 
-alias go="lazygit"
-alias cat="bat"
+alias lzg="lazygit"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"

@@ -8,7 +8,7 @@ return {
 			local builtin = require('telescope.builtin')
 			local themes = require('telescope.themes')
 
-			telescope.setup {
+			telescope.setup({
 				defaults = {
 					sorting_strategy = "ascending",
 					layout_config = {
@@ -17,7 +17,7 @@ return {
 						preview_width = 0.4,
 					},
 				},
-			}
+			})
 
 			pcall(telescope.load_extension, 'fzf')
 
