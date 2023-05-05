@@ -5,6 +5,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+bindkey -v
 
 # Work
 # ----
@@ -24,6 +25,8 @@ alias awslog='aws sso login'
 # -------
 export PNPM_HOME="/Users/florian/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+export PATH="$PATH:/Users/florian/go/bin"
 
 export FZF_DEFAULT_OPTS='--layout=reverse --preview "bat --style=numbers --color=always  --line-range=:500 {}"'
 export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
