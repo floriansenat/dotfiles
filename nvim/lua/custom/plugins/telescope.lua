@@ -11,6 +11,7 @@ return {
 			telescope.setup({
 				defaults = {
 					sorting_strategy = "ascending",
+					path_display = { "smart" },
 					layout_config = {
 						height = 0.8,
 						prompt_position = 'top',
