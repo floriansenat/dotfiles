@@ -8,7 +8,7 @@ end, {})
 vim.api.nvim_create_augroup('AutoFormatting', {})
 
 vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = '*.lua',
+	pattern = { '*.lua', '*.go' },
 	group = 'AutoFormatting',
 	callback = function()
 		if format_is_enabled then
