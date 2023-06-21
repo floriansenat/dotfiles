@@ -5,10 +5,12 @@ return {
 		local diffview = require('diffview')
 
 		diffview.setup({
+			use_icons = false,
 			view = {
-				default = {
-					layout = 'diff3_horizontal'
+				merge_tool = {
+					layout = 'diff3_mixed'
 				}
+
 			}
 		})
 
