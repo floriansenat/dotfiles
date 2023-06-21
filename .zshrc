@@ -37,6 +37,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 alias ll="ls -al"
+alias cl="clear"
 
 
 # nvm
