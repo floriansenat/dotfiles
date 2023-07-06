@@ -16,7 +16,7 @@ return {
 		})
 
 		wk.register({ ['<leader>s'] = { name = '[S]earch' } })
-		-- wk.register({ ['<leader>g'] = { name = '[G]it' } })
+		wk.register({ ['<leader>ss'] = { name = '[S]ymbols' } })
 		wk.register({ ['<leader>p'] = { name = '[P]roject' } })
 		wk.register({ ["<leader>d"] = { name = "[D]iagnostic" } })
 		wk.register({ ['<leader>c'] = { name = '[C]ode' } })
