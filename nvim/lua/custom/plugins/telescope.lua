@@ -4,9 +4,9 @@ return {
 		version = '*',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		config = function()
-			local telescope = require('telescope')
-			local builtin = require('telescope.builtin')
-			local themes = require('telescope.themes')
+			local telescope = require 'telescope'
+			local builtin = require 'telescope.builtin'
+			local themes = require 'telescope.themes'
 
 			telescope.setup({
 				defaults = {

@@ -1,5 +1,4 @@
 local servers = {
-	gopls = {},
 	tsserver = {},
 	lua_ls = {
 		Lua = {
