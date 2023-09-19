@@ -6,8 +6,8 @@ return {
 		'saadparwaiz1/cmp_luasnip'
 	},
 	config = function()
-		local cmp = require('cmp')
-		local luasnip = require('luasnip')
+		local cmp = require 'cmp'
+		local luasnip = require 'luasnip'
 
 		cmp.setup({
 			snippet = {
