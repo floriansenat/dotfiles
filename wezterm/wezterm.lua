@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local color_scheme = require 'color_scheme'
 
 local config = {}
 
@@ -7,10 +8,10 @@ if wezterm.config_builder then
 end
 
 -- Colors & Appearance
-config.color_scheme = 'Rosé Pine (Gogh)'
+config.color_scheme = color_scheme
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = 'RESIZE'
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.90
 config.macos_window_background_blur = 20
 config.window_padding = {
 	top = 0,
