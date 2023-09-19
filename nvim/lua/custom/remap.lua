@@ -26,19 +26,13 @@ vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = "[L]ist" }
 -- [[LSP]]
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-	callback = function(ev)
-		local function nmap(lhs, rhs, desc)
-			vim.keymap.set('n', lhs, rhs, { buffer = ev.buf, desc = desc })
-		end
-
-		nmap('<leader>cr', vim.lsp.buf.rename, '[R]ename')
-		nmap('<leader>ca', vim.lsp.buf.code_action, '[A]ction')
-		nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-		nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-		nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-
-		nmap('<leader>Ff', function() vim.lsp.buf.format { async = true } end, '[F]ormat')
-		nmap('<leader>Ft', '<cmd>ToggleFormat<CR>', '[T]oggle')
+	callback = function()
+		vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[R]ename' })
+		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[A]ction' })
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
+		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+		vim.keymap.set('n', '<leader>Fb', vim.lsp.buf.format, { desc = '[B]uffer' })
+		vim.keymap.set('n', '<leader>Ft', '<cmd>ToggleFormat<CR>', { desc = '[T]oggle' })
 	end
 })
 
