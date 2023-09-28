@@ -2,37 +2,40 @@ local format_is_enabled = true
 
 vim.api.nvim_create_user_command('ToggleFormat', function()
 	format_is_enabled = not format_is_enabled
-	print('Autoformatting is now: ' .. tostring(format_is_enabled))
+	print('AutoFormatting is now: ' .. tostring(format_is_enabled))
 end, {})
 
 vim.api.nvim_create_augroup('AutoFormatting', {})
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = { '*.lua', '*.go' },
-	group = 'AutoFormatting',
-	callback = function()
-		if format_is_enabled then
+local langs = {
+	lua = {
+		pattern = { '*.lua', '*.go' },
+		callback = function()
 			vim.lsp.buf.format({ async = true })
 		end
-	end,
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = { '*.json' },
-	group = 'AutoFormatting',
-	callback = function()
-		if format_is_enabled then
+	},
+	json = {
+		pattern = { '*.json' },
+		callback = function()
 			vim.cmd('silent! %!jq .')
 		end
-	end
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-	group = 'AutoFormatting',
-	callback = function()
-		if format_is_enabled then
+	},
+	typescript = {
+		pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+		callback = function()
 			vim.cmd('silent! EslintFixAll')
 		end
-	end
-})
+	}
+}
+
+for _, lang in pairs(langs) do
+	vim.api.nvim_create_autocmd('BufWritePre', {
+		pattern = lang.pattern,
+		group = 'AutoFormatting',
+		callback = function()
+			if format_is_enabled then
+				lang.callback()
+			end
+		end,
+	})
+end
