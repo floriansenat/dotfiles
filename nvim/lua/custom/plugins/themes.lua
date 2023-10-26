@@ -1,8 +1,21 @@
 return {
-	'rose-pine/neovim',
-	name = 'rose-pine',
-	priority = 1000,
-	config = function()
-		vim.cmd.colorscheme('rose-pine')
-	end,
+	{
+		'sainnhe/everforest',
+		name = 'everforest',
+		priority = 1000,
+	},
+	{
+		"f-person/auto-dark-mode.nvim",
+		config = {
+			update_interval = 1000,
+			set_dark_mode = function()
+				vim.api.nvim_set_option("background", "dark")
+				vim.cmd("colorscheme everforest")
+			end,
+			set_light_mode = function()
+				vim.api.nvim_set_option("background", "light")
+				vim.cmd("colorscheme everforest")
+			end,
+		},
+	}
 }
