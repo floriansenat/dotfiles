@@ -2,10 +2,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-bindkey -v
 
 # Work
 # ----
@@ -15,6 +14,7 @@ export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/bin/docker-credential-ecr-login:$PATH"
+export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 
 alias python=python3
 alias pip=pip3
@@ -69,3 +69,10 @@ load-nvmrc
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bun completions
+[ -s "/Users/florian/.bun/_bun" ] && source "/Users/florian/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
