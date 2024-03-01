@@ -39,6 +39,7 @@ alias v="nvim"
 alias ll="ls -al"
 alias cl="clear"
 alias rm="rm -i"
+alias cat="bat -p"
 
 
 # nvm
