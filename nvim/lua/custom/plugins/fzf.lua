@@ -3,9 +3,7 @@ return {
 	config = function()
 		local fzf = require 'fzf-lua'
 
-		fzf.setup({
-			winopts = { fullscreen = true }
-		})
+		fzf.setup({ winopts = { fullscreen = true } })
 
 		-- Common
 		vim.keymap.set('n', '<C-p>', fzf.files)
