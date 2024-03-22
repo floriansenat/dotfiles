@@ -12,7 +12,7 @@ config.color_scheme = color_scheme
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = 'RESIZE'
 config.window_padding = {
-	top = 0,
+	top = 30,
 	bottom = 0,
 }
 

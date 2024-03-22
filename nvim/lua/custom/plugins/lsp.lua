@@ -6,4 +6,5 @@ return {
 		'j-hui/fidget.nvim',
 		'folke/neodev.nvim',
 	},
+	otps = {}
 }

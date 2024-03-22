@@ -16,12 +16,9 @@ return {
 		})
 
 		wk.register({ ['<leader>s'] = { name = '[S]earch' } })
-		wk.register({ ['<leader>ss'] = { name = '[S]ymbols' } })
 		wk.register({ ['<leader>p'] = { name = '[P]roject' } })
-		wk.register({ ["<leader>d"] = { name = "[D]iagnostic" } })
 		wk.register({ ['<leader>c'] = { name = '[C]ode' } })
-		wk.register({ ['<leader>F'] = { name = '[F]ormat' } })
-		wk.register({ ['<leader>f'] = { name = '[F]iles' } })
+		wk.register({ ['<leader>b'] = { name = '[B]uffer' } })
 		wk.register({ ['<leader>u'] = { name = '[U]ndotree' } })
 	end
 }

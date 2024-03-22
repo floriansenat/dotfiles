@@ -1,7 +1,7 @@
-local builtin = require('telescope.builtin');
+local fzf = require('fzf-lua');
 
 vim.api.nvim_create_autocmd('VimEnter', {
 	callback = function()
-		builtin.find_files()
+		fzf.files()
 	end
 })
