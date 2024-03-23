@@ -34,7 +34,7 @@ return {
 
 			neogit.setup({})
 
-			vim.keymap.set('n', '<leader>G', neogit.open, { desc = '[G]it' })
+			vim.keymap.set('n', '<leader>g', neogit.open, { desc = '[G]it' })
 		end
 	}
 }
