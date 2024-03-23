@@ -3,7 +3,21 @@ return {
 	config = function()
 		local fzf = require 'fzf-lua'
 
-		fzf.setup({ winopts = { fullscreen = true } })
+		fzf.setup({
+			lsp = {
+				symbols = { symbol_style = 3 }
+			},
+			winopts = { fullscreen = true },
+			previewers = {
+				builtin = {
+					extensions = {
+						['png'] = { 'viu', '-b' },
+						['jpg'] = { 'viu', '-b' },
+						['gif'] = { 'viu', '-b', '-1' },
+					},
+				}
+			},
+		})
 
 		-- Common
 		vim.keymap.set('n', '<C-p>', fzf.files)
