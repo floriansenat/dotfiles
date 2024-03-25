@@ -33,8 +33,6 @@ export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!v
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 
 alias lzg="lazygit"
-alias vim="nvim"
-alias vi="nvim"
 alias v="nvim"
 alias ll="ls -al"
 alias cl="clear"
