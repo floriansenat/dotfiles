@@ -3,8 +3,70 @@
 
 add_newline = true
 
+format = """
+$directory\
+[](fg:#A7C080 bg:#475258)\
+$git_branch\
+$git_status\
+[](fg:#475258 bg:#343F44)\
+$nodejs\
+$rust\
+$golang\
+$php\
+$docker_context\
+[](fg:#343F44 bg:#2D353B)\
+$time\
+[ ](fg:#2D353B)\
+\n$character"""
+
+[directory]
+style = "fg:#343F44 bg:#A7C080"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#475258"
+format = '[[ $symbol $branch ](fg:#9DA9A0 bg:#475258)]($style)'
+
+[git_status]
+style = "bg:#475258"
+format = '[[($all_status$ahead_behind )](fg:#9DA9A0 bg:#475258)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#343F44"
+format = '[[ $symbol ($version) ](fg:#A7C080 bg:#343F44)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#343F44"
+format = '[[ $symbol ($version) ](fg:#E69875 bg:#343F44)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#343F44"
+format = '[[ $symbol ($version) ](fg:#7EB9B2 bg:#343F44)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#343F44"
+format = '[[ $symbol ($version) ](fg:#7EB9B2 bg:#343F44)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:#343F44 fg:#9DA9A0"
+format = '[via [ $symbol( $context) ](fg:#7EB9B2 bg:#343F44)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#2D353B"
+format = '[[  $time ](fg:#859289 bg:#2D353B)]($style)'
+
 [character] 
-success_symbol = '[➜](bold green)'
+success_symbol = '[:](bold #A7C080)'
 
 [package]
 disabled = true
