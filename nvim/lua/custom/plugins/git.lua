@@ -32,7 +32,12 @@ return {
 		opts = function()
 			local neogit = require 'neogit'
 
-			neogit.setup({})
+			neogit.setup({
+				integrations = {
+					diffview = true,
+					fzf_lua = true,
+				}
+			})
 
 			vim.keymap.set('n', '<leader>g', neogit.open, { desc = '[G]it' })
 		end
