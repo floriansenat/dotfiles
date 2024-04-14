@@ -13,15 +13,14 @@ vim.keymap.set('n', '<leader>bw', '<cmd>bw<CR>', { silent = true, desc = '[W]ipe
 
 -- [[ Navigation ]]
 
--- Buffers
 vim.keymap.set('n', '[b', ':bp<CR>', { silent = true, desc = 'Previous [B]uffer' })
 vim.keymap.set('n', ']b', ':bn<CR>', { silent = true, desc = 'Next [B]uffer' })
 vim.keymap.set('n', '[B', ':bf<CR>', { silent = true, desc = 'First [B]uffer' })
 vim.keymap.set('n', ']B', ':bl<CR>', { silent = true, desc = 'Last [B]uffer' })
-
--- Tabs
 vim.keymap.set('n', '[t', ':tabp<CR>', { silent = true, desc = 'Previous [T]ab' })
 vim.keymap.set('n', ']t', ':tabn<CR>', { silent = true, desc = 'Next [T]ab' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true, desc = 'Previous [D]iagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { silent = true, desc = 'Next [D]iagnostic' })
 
 -- Use Shift + J/K to moves selected lines up/down in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -39,9 +38,7 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- [[ Diagnostic ]]
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic' })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = '[D]iagnostic' })
+vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
 
 -- [[ LSP ]]
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -49,7 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function()
 		local fzf = require 'fzf-lua'
 
-		-- Code Action
+		-- Code Actions
 		vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[R]ename' })
 		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[A]ctions' })
 
@@ -57,23 +54,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
 		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
 
-		-- Project
-		vim.keymap.set('n', '<leader>ps', fzf.lsp_workspace_symbols, { desc = '[S]ymbols' })
-		vim.keymap.set('n', '<leader>pd', function()
-			fzf.lsp_workspace_diagnostics({ winopts = { preview = { layout = 'vertical' } } })
-		end, { desc = '[D]iagnostic' })
-
-		-- Buffer
+		-- Format
 		vim.keymap.set('n', '<leader>bf', vim.lsp.buf.format, { desc = '[F]ormat' })
-		vim.keymap.set('n', '<leader>bs', fzf.lsp_document_symbols, { desc = '[S]ymbols' })
-		vim.keymap.set('n', '<leader>bd', function()
-			fzf.lsp_document_diagnostics({ winopts = { preview = { layout = 'vertical' } } })
-		end, { desc = '[D]iagnostic' })
 
-		-- Goto
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
-		vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation' })
-		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
-		vim.keymap.set('n', 'gr', fzf.lsp_references, { desc = '[G]oto [R]eferences' })
+		-- Definition
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[D]efinition' })
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[D]eclaration' })
+		vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = '[I]mplementation' })
+		vim.keymap.set('n', 'gr', fzf.lsp_references, { desc = '[R]eferences' })
+
+		-- Symbols
+		vim.keymap.set('n', 'gs', fzf.lsp_document_symbols, { desc = 'Buffer [S]ymbols' })
+		vim.keymap.set('n', 'gS', fzf.lsp_workspace_symbols, { desc = 'Project [S]ymbols' })
+
+		-- Diagnostic
+		vim.keymap.set('n', 'ge', function()
+			fzf.lsp_document_diagnostics({ winopts = { preview = { layout = 'vertical' } } })
+		end, { desc = 'Buffer [E]rrors' })
+		vim.keymap.set('n', 'gE', function()
+			fzf.lsp_workspace_diagnostics({ winopts = { preview = { layout = 'vertical' } } })
+		end, { desc = 'Project [E]rros' })
 	end
 })

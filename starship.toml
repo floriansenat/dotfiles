@@ -14,9 +14,9 @@ $rust\
 $golang\
 $php\
 $docker_context\
-[](fg:#343F44 bg:#2D353B)\
+[](fg:#343F44)\
 $time\
-[ ](fg:#2D353B)\
+[ ]()\
 \n$character"""
 
 [directory]
@@ -57,13 +57,12 @@ format = '[[ $symbol ($version) ](fg:#7EB9B2 bg:#343F44)]($style)'
 [docker_context]
 symbol = ""
 style = "bg:#343F44 fg:#9DA9A0"
-format = '[via [ $symbol( $context) ](fg:#7EB9B2 bg:#343F44)]($style)'
+format = '[via[ $symbol( $context) ](fg:#7EB9B2 bg:#343F44)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#2D353B"
-format = '[[  $time ](fg:#859289 bg:#2D353B)]($style)'
+format = '[[  $time ](fg:#859289)]($style)'
 
 [character] 
 success_symbol = '[:](bold #A7C080)'

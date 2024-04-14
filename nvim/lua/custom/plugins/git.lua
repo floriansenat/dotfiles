@@ -1,5 +1,4 @@
 return {
-	-- Gitsigns
 	{
 		'lewis6991/gitsigns.nvim',
 		opts = {
@@ -20,26 +19,4 @@ return {
 			end
 		}
 	},
-
-	-- Neogit
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-			"ibhagwan/fzf-lua",
-		},
-		opts = function()
-			local neogit = require 'neogit'
-
-			neogit.setup({
-				integrations = {
-					diffview = true,
-					fzf_lua = true,
-				}
-			})
-
-			vim.keymap.set('n', '<leader>g', neogit.open, { desc = '[G]it' })
-		end
-	}
 }
