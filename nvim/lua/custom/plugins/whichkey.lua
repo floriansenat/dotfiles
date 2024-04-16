@@ -15,10 +15,8 @@ return {
 			}
 		})
 
-		wk.register({ ['<leader>s'] = { name = '[S]earch' } })
-		wk.register({ ['<leader>p'] = { name = '[P]roject' } })
-		wk.register({ ['<leader>c'] = { name = '[C]ode' } })
-		wk.register({ ['<leader>b'] = { name = '[B]uffer' } })
 		wk.register({ ['<leader>u'] = { name = '[U]ndotree' } })
+		wk.register({ ['<leader>s'] = { name = '[S]earch' } })
+		wk.register({ ['<leader>f'] = { name = '[F]ile' } })
 	end
 }

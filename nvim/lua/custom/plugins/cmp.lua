@@ -1,4 +1,4 @@
-function select_next_item(fallback)
+local function select_next_item(fallback)
 	local luasnip = require 'luasnip'
 	local cmp = require 'cmp'
 
@@ -11,7 +11,7 @@ function select_next_item(fallback)
 	end
 end
 
-function select_prev_item(fallback)
+local function select_prev_item(fallback)
 	local luasnip = require 'luasnip'
 	local cmp = require 'cmp'
 

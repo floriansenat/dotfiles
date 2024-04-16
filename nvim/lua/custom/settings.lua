@@ -1,5 +1,3 @@
--- See `:help vim.o`
-
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'
