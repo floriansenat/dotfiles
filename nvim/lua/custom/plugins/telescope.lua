@@ -1,14 +1,3 @@
-local file_picker = {
-	theme = 'dropdown',
-	layout_config = {
-		anchor = 'N',
-		width = 0.3,
-		height = 0.3,
-	},
-	prompt_title = false,
-	previewer = false,
-}
-
 return {
 	{
 		'nvim-telescope/telescope.nvim',
@@ -16,32 +5,47 @@ return {
 		config = function()
 			local telescope = require('telescope')
 			local builtin = require('telescope.builtin')
+			local themes = require('telescope.themes')
+
+			local file_picker = {
+				theme = 'dropdown',
+				layout_config = {
+					anchor = 'N',
+					width = 0.3,
+					height = 0.3,
+				},
+				previewer = false,
+				prompt_title = false,
+			}
 
 			telescope.setup({
-				defaults = {
+				defaults = themes.get_dropdown({
+					path_display = { "tail" },
+					layout_config = { width = 0.5 },
 					prompt_prefix = '',
-					-- path_display = { truncate = 2 }
-					path_display = {"smart"}
-				},
+					prompt_title = false,
+				}),
 				pickers = {
 					find_files = file_picker,
 					oldfiles = file_picker,
-					lsp_document_symbols = {
-						theme = 'dropdown',
-						prompt_title = false,
-						layout_config = {
-							anchor = 'N',
-							width = 0.5,
-							height = 0.3,
-						}
-					}
+					buffers = file_picker,
 				},
+				extensions = {
+					["ui-select"] = {
+						themes.get_cursor({
+							prompt_title = false,
+							layout_config = { width = 0.25 },
+						})
+					}
+				}
 			})
 			telescope.load_extension('fzf')
 			telescope.load_extension('ui-select')
 
 			vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = "[F]iles" })
-			vim.keymap.set('n', '<leader>sw', builtin.live_grep, { desc = "[W]ord" })
+			vim.keymap.set('n', '<leader>sW', builtin.live_grep, { desc = "[W]ord" })
+			vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = "[W]ord under cursor" })
+			vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = "[R]esume" })
 			vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = "Show buffers" })
 			vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = "Oldfiles" })
 			vim.keymap.set('n', 'gw', builtin.grep_string, { desc = "Grep cursor [W]ord" })

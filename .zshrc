@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
 
 source $ZSH/oh-my-zsh.sh
 

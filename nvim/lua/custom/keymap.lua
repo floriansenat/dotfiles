@@ -55,7 +55,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = '[I]mplementation' })
 		vim.keymap.set('n', 'gA', builtin.lsp_references, { desc = '[A]ll references' })
 		vim.keymap.set('n', 'gs', builtin.lsp_document_symbols, { desc = 'Buffer [S]ymbols' })
-		vim.keymap.set('n', 'gS', builtin.lsp_workspace_symbols, { desc = 'Project [S]ymbols' })
 		vim.keymap.set('n', 'ge', function()
 			builtin.diagnostics({ bufnr = 0 })
 		end, { desc = 'Buffer [E]rrors' })
