@@ -18,5 +18,6 @@ return {
 		wk.register({ ['<leader>u'] = { name = '[U]ndotree' } })
 		wk.register({ ['<leader>s'] = { name = '[S]earch' } })
 		wk.register({ ['<leader>f'] = { name = '[F]ile' } })
+		wk.register({ ['<leader>l'] = { name = '[L]sp' } })
 	end
 }

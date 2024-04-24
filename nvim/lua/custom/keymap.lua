@@ -59,5 +59,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			builtin.diagnostics({ bufnr = 0 })
 		end, { desc = 'Buffer [E]rrors' })
 		vim.keymap.set('n', 'gE', builtin.diagnostics, { desc = 'Project [E]rros' })
+
+		vim.keymap.set('n', '<leader>li', "<cmd>LspInfo<CR>", { desc = '[I]nfo' })
+		vim.keymap.set('n', '<leader>lr', "<cmd>LspRestart<CR>", { desc = '[R]estart' })
 	end
 })

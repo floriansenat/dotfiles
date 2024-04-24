@@ -4,10 +4,8 @@ vim.o.mouse = 'a'
 vim.o.termguicolors = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
-vim.o.colorcolumn = '120'
+-- vim.o.colorcolumn = '120'
 
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.o.foldcolumn = 'auto'
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
