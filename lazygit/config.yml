@@ -1,0 +1,15 @@
+gui:
+  mouseEvents: true
+  theme:
+    selectedLineBgColor:
+      - black
+os:
+  edit: "zed-preview {{filename}}"
+  editAtLine: "zed-preview --line={{line}} {{filename}}"
+  editAtLineAndWait: "zed-preview --block --line={{line}} {{filename}}"
+  editInTerminal: true
+  openDirInEditor: "zed-preview {{dir}}"
+  open: "zed-preview {{filename}}"
+git:
+  paging:
+    externalDiffCommand: difft --color=always
