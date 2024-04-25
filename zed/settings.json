@@ -1,0 +1,46 @@
+{
+  // -:: UI ::-
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light Hard",
+    "dark": "Everforest Dark"
+  },
+  "ui_font_size": 14,
+  "buffer_font_family": "Dank Mono",
+  "buffer_font_size": 13,
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  "scrollbar": { "show": "never" },
+
+  // -:: LSP ::-
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true
+  },
+
+  // -:: Features ::-
+  "vim_mode": true,
+  "git": {
+    "inline_blame": { "enabled": false }
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  "terminal": {
+    "button": false,
+    "line_height": "standard",
+    "env": { "GIT_EDITOR": "zed-preview --wait" }
+  },
+  "project_panel": { "button": false },
+  "chat_panel": { "button": false },
+  "collaboration_panel": { "button": false },
+  "notification_panel": { "button": false },
+  "assistant": {
+    "version": "1",
+    "button": false,
+    "provider": {
+      "name": "openai",
+      "default_model": "gpt-3.5-turbo"
+    }
+  },
+  "features": { "copilot": false }
+}
