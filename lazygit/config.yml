@@ -1,8 +1,5 @@
 gui:
   mouseEvents: true
-  theme:
-    selectedLineBgColor:
-      - black
 os:
   edit: "zed-preview {{filename}}"
   editAtLine: "zed-preview --line={{line}} {{filename}}"
