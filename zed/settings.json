@@ -3,10 +3,9 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light Hard",
-    "dark": "Everforest Dark"
+    "dark": "Gruvbox Dark"
   },
   "ui_font_size": 14,
-  "buffer_font_family": "Dank Mono",
   "buffer_font_size": 13,
   "cursor_blink": false,
   "relative_line_numbers": true,
