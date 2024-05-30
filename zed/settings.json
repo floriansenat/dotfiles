@@ -3,13 +3,26 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light Hard",
-    "dark": "Gruvbox Dark"
+    "dark": "Gruvbox Dark Hard"
   },
   "ui_font_size": 14,
-  "buffer_font_size": 13,
+  "buffer_font_size": 13.5,
+  // "buffer_font_family": "Dank Mono",
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
+  "tab_bar": {
+    "show": false,
+    "show_nav_history_buttons": false
+  },
+  "project_panel": { "button": false },
+  "chat_panel": { "button": false },
+  "collaboration_panel": { "button": false },
+  "notification_panel": { "button": false },
+  "gutter": {
+    "code_actions": false,
+    "folds": false
+  },
 
   // -:: LSP ::-
   "code_actions_on_format": {
@@ -21,25 +34,14 @@
   "git": {
     "inline_blame": { "enabled": false }
   },
-  "tab_bar": {
-    "show_nav_history_buttons": false
-  },
   "terminal": {
     "button": false,
     "line_height": "standard",
     "env": { "GIT_EDITOR": "zed-preview --wait" }
   },
-  "project_panel": { "button": false },
-  "chat_panel": { "button": false },
-  "collaboration_panel": { "button": false },
-  "notification_panel": { "button": false },
   "assistant": {
     "version": "1",
-    "button": false,
-    "provider": {
-      "name": "openai",
-      "default_model": "gpt-3.5-turbo"
-    }
+    "button": false
   },
   "features": { "copilot": false }
 }

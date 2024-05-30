@@ -1,7 +1,15 @@
 [
   {
-    "label": "Lazygit",
+    "label": "lazygit",
     "command": "lazygit",
+    "args": [],
+    "env": {},
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "go run",
+    "command": "go run .",
     "args": [],
     "env": {},
     "use_new_terminal": true,
