@@ -1,3 +1,10 @@
+local function filename_first(_, path)
+	local tail = vim.fs.basename(path)
+	local parent = vim.fs.dirname(path)
+	if parent == "." then return tail end
+	return string.format("%s\t-\t%s", tail, parent)
+end
+
 return {
 	{
 		'nvim-telescope/telescope.nvim',
@@ -8,6 +15,7 @@ return {
 			local themes = require('telescope.themes')
 
 			local file_picker = {
+				path_display = filename_first,
 				theme = 'dropdown',
 				layout_config = {
 					anchor = 'N',
