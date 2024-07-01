@@ -15,8 +15,8 @@ local handlers = {
 			root_dir = lspconfig.util.root_pattern "deno.json", "deno.jsonc",
 		}
 	end,
-	['tsserver'] = function()
-		lspconfig.tsserver.setup {
+	['vtsls'] = function()
+		lspconfig.vtsls.setup {
 			root_dir = lspconfig.util.root_pattern "package.json", "tsconfig.json", "jsconfig.json",
 			single_file_support = false
 		}
@@ -34,4 +34,4 @@ local handlers = {
 }
 
 require 'mason'.setup()
-require 'mason-lspconfig'.setup { ensure_installed = { "lua_ls", "tsserver", "jsonls", "gopls" }, handlers = handlers }
+require 'mason-lspconfig'.setup { ensure_installed = { "lua_ls", "vtsls", "jsonls", "gopls" }, handlers = handlers }
