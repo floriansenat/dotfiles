@@ -2,12 +2,11 @@
   // -:: UI ::-
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Light Hard",
-    "dark": "Gruvbox Dark Hard"
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark"
   },
   "ui_font_size": 14,
   "buffer_font_size": 13.5,
-  // "buffer_font_family": "Dank Mono",
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
@@ -21,7 +20,13 @@
   "notification_panel": { "button": false },
   "gutter": {
     "code_actions": false,
+    "runnables": false,
     "folds": false
+  },
+  "indent_guides": {
+    // "enabled": false,
+    "line_width": 1,
+    "active_line_width": 3
   },
 
   // -:: LSP ::-
