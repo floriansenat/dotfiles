@@ -42,6 +42,8 @@ alias ll="ls -al"
 alias cl="clear"
 alias rm="rm -i"
 alias cat="bat -p"
+alias z="zed-preview"
+alias gt="git town"
 
 # --- NVM ---
 # [https://github.com/nvm-sh/nvm]
