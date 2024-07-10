@@ -6,6 +6,7 @@ plugins=(zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
 
 source <(git-town completions zsh)
 source $ZSH/oh-my-zsh.sh
+source $HOME/.localrc
 
 export FIXUID=$(id -u)
 export FIXGID=$(id -g)
