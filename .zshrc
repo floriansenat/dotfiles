@@ -2,8 +2,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
 
+source <(git-town completions zsh)
 source $ZSH/oh-my-zsh.sh
 
 export FIXUID=$(id -u)
@@ -36,14 +37,18 @@ export PATH="/Users/florian/go/bin:$PATH"
 
 # --- Aliases ---
 alias awslog='aws sso login'
-alias lzg="lazygit"
-alias v="nvim"
 alias ll="ls -al"
 alias cl="clear"
 alias rm="rm -i"
 alias cat="bat -p"
+alias v="nvim"
 alias z="zed-preview"
-alias gt="git town"
+
+# GIT
+alias lzg="lazygit"
+alias gs="git town switch"
+alias gmu="git switch master && git fetch --prune --tags && git pull && git switch -"
+alias gus="gmu && git town sync"
 
 # --- NVM ---
 # [https://github.com/nvm-sh/nvm]
@@ -83,4 +88,3 @@ export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!v
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
