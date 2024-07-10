@@ -1,5 +1,4 @@
 {
-  // -:: UI ::-
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
@@ -11,7 +10,7 @@
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": false
   },
   "project_panel": { "button": false },
@@ -28,13 +27,9 @@
     "line_width": 1,
     "active_line_width": 3
   },
-
-  // -:: LSP ::-
   "code_actions_on_format": {
     "source.fixAll.eslint": true
   },
-
-  // -:: Features ::-
   "vim_mode": true,
   "git": {
     "inline_blame": { "enabled": false }
@@ -48,5 +43,7 @@
     "version": "1",
     "button": false
   },
-  "features": { "copilot": false }
+  "features": {
+    "inline_completion_provider": "none"
+  }
 }
