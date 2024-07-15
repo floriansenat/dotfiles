@@ -1,0 +1,17 @@
+[includeIf "gitdir:~/"]
+    path = ~/.gitconfig-personal
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig-work
+[maintenance]
+    repo = /Users/florian/work/v3
+[diff]
+    external = difft
+[alias]
+	gl = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | fgrep '[gone]' | cut -d' ' -f1
+	gc = ! git gone-list | xargs -r git branch -D
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	mu = ! git switch master && git fetch -p --tags && git pull && git switch -
+	st = status
+	ap = add -p
+	co = checkout
