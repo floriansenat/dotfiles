@@ -2,10 +2,10 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "Gruvbox Dark"
+    "dark": "Gruvbox Dark Hard"
   },
-  "ui_font_size": 14,
-  "buffer_font_size": 13.5,
+  "ui_font_size": 13,
+  "buffer_font_size": 13,
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
