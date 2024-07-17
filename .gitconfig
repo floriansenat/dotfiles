@@ -13,12 +13,13 @@
 	co = checkout
 	ci = commit
 	ap = add -p
-	aa = add -A
-	pf = push --force-with-lease --force-if-includes
 	ll = log --pretty=format:'%s'
+	force = push --force-with-lease --force-if-includes
+	amend = commit --amend
 	fusion = rebase -i HEAD~2
 	gone = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | fgrep '[gone]' | cut -d' ' -f1 | xargs -r git branch -D
 	last = log -1 HEAD
 	unstage = reset HEAD --
 	up = ! git switch master && git fetch -p --tags && git pull && git switch -
 	sync = ! git up && git rebase master && git pf
+	open = ! open "$GIT_WORK_REPO_CREATE_MR_URL=$(git branch --show-current)"
