@@ -4,7 +4,6 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
 
-source <(git-town completions zsh)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.localrc
 
@@ -17,7 +16,7 @@ export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 
 # --- Bun ---
 # [https://bun.sh/]
-[ -s "/Users/florian/.bun/_bun" ] && source "/Users/florian/.bun/_bun" # Completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun" # Completions
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
@@ -29,12 +28,12 @@ alias pip=pip3
 
 # --- PNPM ---
 # [https://pnpm.io/]
-export PNPM_HOME="/Users/florian/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # --- Go ---
 # [https://go.dev/]
-export PATH="/Users/florian/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 # --- Aliases ---
 alias awslog='aws sso login'
