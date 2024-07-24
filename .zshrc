@@ -43,6 +43,7 @@ alias rm="rm -i"
 alias cat="bat -p"
 alias v="nvim"
 alias z="zed-preview"
+alias g="git"
 alias lzg="lazygit"
 alias gs="git town switch"
 

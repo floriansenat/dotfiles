@@ -8,18 +8,21 @@
     external = difft
 [alias]
 	st = status
-	ss = status -s
+	ss = status -sb
 	cb = checkout -b
 	co = checkout
 	ci = commit
 	ap = add -p
-	ll = log --pretty=format:'%s'
+	aa = add -A
+	ll = log --color --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	df = diff -w
+	default = ! git remote show origin | grep 'HEAD branch:' | awk '{print $3}'
 	last = log -1 HEAD
 	unstage = reset HEAD --
 	force = push --force-with-lease --force-if-includes
 	fusion = ! git add -p && git commit --amend --no-edit
 	goners = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | fgrep '[gone]' | cut -d' ' -f1
 	flush = ! git goners | xargs -r git branch -D
-	up = ! git switch master && git fetch -p --tags && git pull && git switch -
-	sync = ! git up && git rebase master && git force
+	up = ! git switch $(git default) && git fetch -p --tags && git pull && git switch -
+	sync = ! git up && git rebase $(git default) && git force
 	open = ! curb=$(git branch --show-current) && git push -u origin ${curb} && open "$GIT_WORK_REPO_CREATE_MR_URL=${curb}"
