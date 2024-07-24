@@ -27,7 +27,7 @@
       "space z": "workspace::ToggleCenteredLayout",
       "space f /": "editor::CopyPath",
       "space f %": "editor::CopyRelativePath",
-      "space f r": "editor::RevealInFinder",
+      "space f r": "editor::RevealInFileManager",
       "space l r": "editor::RestartLanguageServer",
       "space h": "editor::ToggleInlayHints",
       "space g h": "editor::ToggleHunkDiff",
@@ -54,7 +54,7 @@
       "g r": "editor::Rename",
       "z a": "editor::Fold",
       "z x": "editor::UnfoldLines",
-      "H x": "editor::RevertSelectedHunks",
+      "h x": "editor::RevertSelectedHunks",
       "[ b": "pane::ActivatePrevItem",
       "] b": "pane::ActivateNextItem"
     }

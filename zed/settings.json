@@ -2,7 +2,7 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "Gruvbox Dark Hard"
+    "dark": "Gruvbox Dark"
   },
   "ui_font_size": 13,
   "buffer_font_size": 13,
@@ -10,7 +10,7 @@
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
   "tab_bar": {
-    "show": true,
+    "show": false,
     "show_nav_history_buttons": false
   },
   "project_panel": { "button": false },
@@ -23,7 +23,6 @@
     "folds": false
   },
   "indent_guides": {
-    // "enabled": false,
     "line_width": 1,
     "active_line_width": 3
   },
