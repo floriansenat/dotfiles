@@ -45,7 +45,6 @@ alias v="nvim"
 alias z="zed-preview"
 alias g="git"
 alias lzg="lazygit"
-alias gs="git town switch"
 
 # --- NVM ---
 # [https://github.com/nvm-sh/nvm]
