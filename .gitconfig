@@ -16,7 +16,11 @@
 	aa = add -A
 	ll = log --color --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	df = diff -w
-	default = ! git remote show origin | grep 'HEAD branch:' | awk '{print $3}'
+	; | Get the remote default branch and set it as local HEAD.
+	; | This step is needed in order to use `git default`.
+	;  Otherwise no ref origin/HEAD will be found.
+	set-local-default = remote set-head origin --auto
+	default = ! git rev-parse --abbrev-ref origin/HEAD | cut -c8-
 	last = log -1 HEAD
 	unstage = reset HEAD --
 	force = push --force-with-lease --force-if-includes
