@@ -54,7 +54,6 @@
       "g r": "editor::Rename",
       "z a": "editor::Fold",
       "z x": "editor::UnfoldLines",
-      "h x": "editor::RevertSelectedHunks",
       "[ b": "pane::ActivatePrevItem",
       "] b": "pane::ActivateNextItem"
     }
