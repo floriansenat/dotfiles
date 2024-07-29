@@ -34,5 +34,5 @@
 	list-remote = ! git branch -r | fzf | tr -d ‘[:space:]*’
 	change = ! git switch $(git list)
 	drop = ! git branch -D $(git list)
-	bring = ! git switch $(git list-remote)
+	bring = ! b=$(git list-remote | cut -d'/' -f2-) && git branch --track ${b} origin/${b} && git switch ${b}
 	search = "!f(){ git grep --break --heading --line-number -e $1 $(git list) -- $2;}; f"
