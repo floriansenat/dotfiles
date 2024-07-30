@@ -7,7 +7,6 @@
 [diff]
     external = difft
 [alias]
-	st = status
 	ss = status -sb
 	cb = checkout -b
 	co = change
@@ -16,23 +15,24 @@
 	aa = add -A
 	ll = log --color --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	df = diff -w
-	; | Get the remote default branch and set it as local HEAD.
-	; | This step is needed in order to use `git default`.
-	;  Otherwise no ref origin/HEAD will be found.
+	; Get the remote default branch and set it as local HEAD.
+	; This step is needed in order to use `git default`.
+	; Otherwise no ref origin/HEAD will be found.
 	set-local-default = remote set-head origin --auto
 	default = ! git rev-parse --abbrev-ref origin/HEAD | cut -c8-
 	last = ll -1 HEAD
-	unstage = reset HEAD --
+	discard = reset --hard HEAD
 	force = push --force-with-lease --force-if-includes
 	fusion = ! git add -p && git commit --amend --no-edit
 	goners = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | fgrep '[gone]' | cut -d' ' -f1
 	flush = ! git branch -D $(git goners)
 	up = ! git switch $(git default) && git fetch -p --tags && git pull && git switch -
 	sync = ! git up && git rebase $(git default) && git force
-	open = ! git push -u origin $(git branch --show-current) 2>&1 | grep 'remote:' | grep -o 'https://[^ ]*' | xargs open
+	ship = ! git push -u origin $(git branch --show-current) 2>&1 | grep 'remote:' | grep -o 'https://[^ ]*' | xargs open
 	list = ! git branch | fzf | tr -d ‘[:space:]*’
 	list-remote = ! git branch -r | fzf | tr -d ‘[:space:]*’
-	change = ! git switch $(git list)
+	; Usage: `git change BRANCH_NAME` or `git change`. The last one will pop up a list of all local branch to choose from.
+	change = "!f() { git switch \"$(if [[ -n \"$1\" ]]; then echo \"$1\"; else git list; fi)\"; }; f"
 	drop = ! git branch -D $(git list)
 	bring = ! b=$(git list-remote | cut -d'/' -f2-) && git branch --track ${b} origin/${b} && git switch ${b}
 	search = "!f(){ git grep --break --heading --line-number -e $1 $(git list) -- $2;}; f"
