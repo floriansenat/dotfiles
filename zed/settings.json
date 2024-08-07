@@ -10,9 +10,10 @@
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": false
   },
+  "outline_panel": { "button": false },
   "project_panel": { "button": false },
   "chat_panel": { "button": false },
   "collaboration_panel": { "button": false },
@@ -39,7 +40,7 @@
     "env": { "GIT_EDITOR": "zed-preview --wait" }
   },
   "assistant": {
-    "version": "1",
+    "version": "2",
     "button": false
   },
   "features": {
