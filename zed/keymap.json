@@ -30,8 +30,6 @@
       "space f r": "editor::RevealInFileManager",
       "space l r": "editor::RestartLanguageServer",
       "space h": "editor::ToggleInlayHints",
-      "space g h": "editor::ToggleHunkDiff",
-      "space g H": "editor::ExpandAllHunkDiffs",
       "space g g": ["task::Spawn", { "task_name": "lazygit" }]
     }
   },
