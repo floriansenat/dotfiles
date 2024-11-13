@@ -2,8 +2,6 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/work/"]
     path = ~/.gitconfig-work
-[maintenance]
-    repo = /Users/florian/work/v3
 [diff]
     external = difft --color=always
 [alias]
