@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/florian/.zsh/completions:"* ]]; then export FPATH="/Users/florian/.zsh/completions:$FPATH"; fi
 export ZSH="$HOME/.oh-my-zsh"
 
 HIST_STAMPS="yyyy-mm-dd"
@@ -73,10 +75,6 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 # end
 
-# --- Starship ---
-# [https://starship.rs/]
-eval "$(starship init zsh)"
-
 # --- FZF Config ---
 # [https://github.com/junegunn/fzf]
 export FZF_DEFAULT_OPTS='--layout=reverse --preview "bat --style=numbers --color=always  --line-range=:500 {}"'
@@ -84,3 +82,8 @@ export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!v
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# --- Starship ---
+# [https://starship.rs/]
+eval "$(starship init zsh)"
+. "/Users/florian/.deno/env"
