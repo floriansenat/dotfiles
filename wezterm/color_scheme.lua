@@ -2,9 +2,9 @@ local wezterm = require 'wezterm'
 
 local function scheme_for_appearance(appearance)
 	if appearance:find 'Dark' then
-		return 'Everforest Dark (Gogh)'
+		return 'OneDark (base16)'
 	else
-		return 'Everforest Light (Gogh)'
+		return 'One Light (base16)'
 	end
 end
 

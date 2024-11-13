@@ -20,7 +20,7 @@ config.window_padding = {
 -- Fonts
 config.font =
     wezterm.font('Dank Mono', { weight = 'Medium' })
-config.font_size = 14.0
+config.font_size = 16.0
 config.line_height = 1.4
 
 return config
