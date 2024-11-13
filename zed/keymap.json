@@ -50,8 +50,6 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "g r": "editor::Rename",
-      "z a": "editor::Fold",
-      "z x": "editor::UnfoldLines",
       "[ b": "pane::ActivatePrevItem",
       "] b": "pane::ActivateNextItem"
     }

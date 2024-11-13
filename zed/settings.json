@@ -1,17 +1,33 @@
 {
+  "ssh_connections": [
+    {
+      "host": "fsenat",
+      "projects": [
+        {
+          "paths": ["/var/www/fsen.at"]
+        }
+      ]
+    }
+  ],
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "Rosé Pine"
+    "dark": "Zedokai (Filter Spectrum)"
   },
   "ui_font_size": 13,
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.5
+  },
   "tab_bar": {
     "show": false,
     "show_nav_history_buttons": false
+  },
+  "toolbar": {
+    "quick_actions": false
   },
   "outline_panel": { "button": false },
   "project_panel": { "button": false },
@@ -40,6 +56,10 @@
     "env": { "GIT_EDITOR": "zed-preview --wait" }
   },
   "assistant": {
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o"
+    },
     "version": "2",
     "button": false
   },
