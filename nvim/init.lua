@@ -1,5 +1,5 @@
-require('custom.settings')
-require('custom.keymap')
+require('settings')
+require('keymap')
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -14,4 +14,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ import = "custom.plugins" })
+require("lazy").setup({ import = "plugins" })

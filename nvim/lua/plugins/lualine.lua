@@ -18,10 +18,6 @@ local modes = {
 	['MORE'] = 'M',
 }
 
-local function format_mode(mode)
-	return modes[mode] or mode
-end
-
 return {
 	'nvim-lualine/lualine.nvim',
 	opts = {
@@ -31,7 +27,12 @@ return {
 			component_separators = '',
 		},
 		sections = {
-			lualine_a = { { 'mode', fmt = format_mode } },
+			lualine_a = { {
+				'mode',
+				fmt = function(mode)
+					return modes[mode] or mode
+				end
+			} },
 			lualine_b = { 'diff', 'diagnostics' },
 			lualine_c = { '%=', { 'filename', path = 1 } },
 			lualine_x = {},
