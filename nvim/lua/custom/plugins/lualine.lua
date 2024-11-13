@@ -29,15 +29,14 @@ return {
 			icons_enabled = false,
 			theme = 'auto',
 			component_separators = '',
-			section_separators = { left = '', right = '' },
 		},
 		sections = {
-			lualine_a = { { 'mode', fmt = format_mode} },
+			lualine_a = { { 'mode', fmt = format_mode } },
 			lualine_b = { 'diff', 'diagnostics' },
 			lualine_c = { '%=', { 'filename', path = 1 } },
 			lualine_x = {},
 			lualine_y = { 'filetype' },
-			lualine_z = {  'branch'},
+			lualine_z = { 'branch' },
 		},
 	},
 }

@@ -4,7 +4,6 @@ vim.o.mouse = 'a'
 vim.o.termguicolors = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
--- vim.o.colorcolumn = '120'
 
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
