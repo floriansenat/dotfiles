@@ -1,5 +1,6 @@
 return {
 	'lewis6991/gitsigns.nvim',
+	event = "VeryLazy",
 	opts = {
 		on_attach = function()
 			local gitsigns = require 'gitsigns'
@@ -18,9 +19,9 @@ return {
 		end
 	},
 	keys = {
-		{ '<leader>gh', ':Gitsigns preview_hunk_inline<CR>', { desc = '[H]unk' } },
-		{ '<leader>gb', ':Gitsigns blame<CR>',               { desc = '[B]lame' } },
-		{ '<leader>gr', ':Gitsigns reset_hunk<CR>',          { desc = '[R]eset hunk' } },
+		{ '<leader>gh', ':Gitsigns preview_hunk_inline<CR>',  desc = '[H]unk'  },
+		{ '<leader>gb', ':Gitsigns blame<CR>',                desc = '[B]lame'  },
+		{ '<leader>gr', ':Gitsigns reset_hunk<CR>',           desc = '[R]eset hunk'  },
 	}
 
 }

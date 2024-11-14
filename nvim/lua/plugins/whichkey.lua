@@ -11,11 +11,13 @@ return {
 			}
 		}
 
-		wk.add { { '<leader>g', group = '[G]it' } }
+		wk.add { { '<leader>b', group = '[B]uffer' } }
 		wk.add { { '<leader>d', group = '[D]iff' } }
-		wk.add { { '<leader>u', group = '[U]ndotree' } }
-		wk.add { { '<leader>s', group = '[S]earch' } }
 		wk.add { { '<leader>f', group = '[F]ile' } }
+		wk.add { { '<leader>g', group = '[G]it' } }
 		wk.add { { '<leader>l', group = '[L]sp' } }
+		wk.add { { '<leader>q', group = '[Q]uickfix' } }
+		wk.add { { '<leader>s', group = '[S]earch' } }
+		wk.add { { '<leader>u', group = '[U]ndotree' } }
 	end
 }

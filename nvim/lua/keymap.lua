@@ -21,12 +21,11 @@ vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
 --
 ---:: Buffers ::---
 --
-vim.keymap.set('n', '<leader>q', ':bp|bd #<CR>', { silent = true, desc = '[Q]uit' }) -- (keep window splits)
+vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = '[Q]uit Buffer' }) -- (keep window splits)
 vim.keymap.set('n', '[b', ':bp<CR>', { silent = true, desc = 'Previous [B]uffer' })
 vim.keymap.set('n', ']b', ':bn<CR>', { silent = true, desc = 'Next [B]uffer' })
 vim.keymap.set('n', '[B', ':bf<CR>', { silent = true, desc = 'First [B]uffer' })
 vim.keymap.set('n', ']B', ':bl<CR>', { silent = true, desc = 'Last [B]uffer' })
-
 
 --
 ---:: Tabs ::---
@@ -40,7 +39,6 @@ vim.keymap.set('n', ']t', ':tabn<CR>', { silent = true, desc = 'Next [T]ab' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { silent = true, desc = 'Previous [D]iagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { silent = true, desc = 'Next [D]iagnostic' })
 vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
-
 
 --
 ---:: Quickfix ::---
@@ -86,7 +84,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'ge', function() builtin.diagnostics({ bufnr = 0 }) end, { desc = 'Buffer [E]rrors' })
 		vim.keymap.set('n', 'gE', builtin.diagnostics, { desc = 'Project [E]rros' })
 
-		vim.keymap.set('n', '<leader>li', "<cmd>LspInfo<CR>", { desc = '[I]nfo' })
-		vim.keymap.set('n', '<leader>lr', "<cmd>LspRestart<CR>", { desc = '[R]estart' })
+		vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", { desc = '[I]nfo' })
+		vim.keymap.set('n', '<leader>lr', ":LspRestart<CR>", { desc = '[R]estart' })
 	end
 })

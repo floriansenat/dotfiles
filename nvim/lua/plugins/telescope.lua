@@ -39,10 +39,12 @@ return {
 		telescope.load_extension 'ui-select'
 	end,
 	keys = {
-		{ '<leader>sf',       ':Telescope find_files<CR>', { desc = '[F]iles' } },
-		{ '<leader>sg',       ':Telescope live_grep<CR>',  { desc = 'Live [G]rep' } },
-		{ '<leader>sr',       ':Telescope resume<CR>',     { desc = '[R]esume' } },
-		{ '<leader><leader>', ':Telescope buffers<CR>',    { desc = 'Buffers' } },
-		{ '<leader>?',        ':Telescope oldfiles<CR>',   { desc = 'Oldfiles' } },
+		{ '<leader>sf',       ':Telescope find_files<CR>', desc = '[F]iles' },
+		{ '<leader>sg',       ':Telescope live_grep<CR>',  desc = 'Live [G]rep' },
+		{ '<leader>sr',       ':Telescope resume<CR>',     desc = '[R]esume' },
+		{ '<leader><leader>', ':Telescope buffers<CR>',    desc = 'Buffers' },
+		{ '<leader>?',        ':Telescope help_tags<CR>',  desc = 'Help' },
+		{ '<leader>;',        ':Telescope oldfiles<CR>',   desc = 'Oldfiles' },
+
 	}
 }
