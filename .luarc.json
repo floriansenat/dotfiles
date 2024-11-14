@@ -1,5 +1,10 @@
 {
-    "diagnostics.globals": [
-        "vim"
-    ]
+  "diagnostics.globals": [
+    "vim"
+  ],
+  "diagnostics.neededFileStatus": "Any",
+  "Lua.format.defaultConfig": {
+    "indent_style": "space",
+    "indent_size": "2"
+  }
 }

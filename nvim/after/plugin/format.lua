@@ -9,7 +9,7 @@ vim.api.nvim_create_augroup('AutoFormatting', {})
 
 local langs = {
 	lua = {
-		pattern = { '*.lua', '*.go' },
+		pattern = { '*.lua' },
 		callback = function()
 			vim.lsp.buf.format({ async = true })
 		end
