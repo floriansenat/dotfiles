@@ -2,6 +2,8 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/work/"]
     path = ~/.gitconfig-work
+[core]
+    editor = nvim
 [diff]
     external = difft --color=always
 [alias]
@@ -13,7 +15,6 @@
 	aa = add -A
 	ll = log --color --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	lb = ! git ll $(git current) --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$(git current)")
-	; TODO: pipe git lb with fzf, on selection of commit show diffs
 	df = diff -w
 	; Get the remote default branch and set it as local HEAD.
 	; This step is needed in order to use `git default`.
