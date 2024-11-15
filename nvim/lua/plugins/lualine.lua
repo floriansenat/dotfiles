@@ -29,9 +29,7 @@ return {
 		sections = {
 			lualine_a = { {
 				'mode',
-				fmt = function(mode)
-					return modes[mode] or mode
-				end
+				fmt = function(mode) return modes[mode] or mode end
 			} },
 			lualine_b = { 'diff', 'diagnostics' },
 			lualine_c = { '%=', { 'filename', path = 1 } },
