@@ -21,7 +21,8 @@ vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
 --
 ---:: Buffers ::---
 --
-vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = '[Q]uit Buffer' }) -- (keep window splits)
+vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = 'Buffer' }) -- (keep window splits)
+vim.keymap.set('n', '<leader>bQ', ':bd|e#<CR>', { silent = true, desc = 'All Buffer Except Focused One' })
 vim.keymap.set('n', '[b', ':bp<CR>', { silent = true, desc = 'Previous [B]uffer' })
 vim.keymap.set('n', ']b', ':bn<CR>', { silent = true, desc = 'Next [B]uffer' })
 vim.keymap.set('n', '[B', ':bf<CR>', { silent = true, desc = 'First [B]uffer' })

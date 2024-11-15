@@ -1,7 +1,7 @@
 return {
 	'nvim-treesitter/nvim-treesitter',
 	build = ':TSUpdate',
-	dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', 'nvim-treesitter/nvim-treesitter-context' },
+	dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
 	config = function()
 		pcall(require('nvim-treesitter.install').update({ with_sync = true }))
 
@@ -21,13 +21,6 @@ return {
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					node_incremental = 'È',
-					node_decremental = 'Ï',
-				},
-			},
 			textobjects = {
 				select = {
 					enable = true,
