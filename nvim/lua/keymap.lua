@@ -3,7 +3,6 @@ vim.g.maplocalleader = ' '
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>e', vim.cmd.Ex, { silent = true, desc = "[E]xplorer" })
 
 --
 ---:: Movements ::---
@@ -84,7 +83,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'gs', builtin.lsp_document_symbols, { desc = 'Buffer [S]ymbols' })
 		vim.keymap.set('n', 'ge', function() builtin.diagnostics({ bufnr = 0 }) end, { desc = 'Buffer [E]rrors' })
 		vim.keymap.set('n', 'gE', builtin.diagnostics, { desc = 'Project [E]rros' })
-
 		vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", { desc = '[I]nfo' })
 		vim.keymap.set('n', '<leader>lr', ":LspRestart<CR>", { desc = '[R]estart' })
 	end

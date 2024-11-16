@@ -2,24 +2,10 @@ return {
 	{
 		'lewis6991/gitsigns.nvim',
 		event = "VeryLazy",
-		opts = {
-			on_attach = function()
-				local gitsigns = require 'gitsigns'
-
-				vim.keymap.set('n', ']c', function()
-					if vim.wo.diff then return ']c' end
-					vim.schedule(function() gitsigns.next_hunk() end)
-					return '<Ignore>'
-				end, { expr = true, desc = 'Next [H]unk' })
-
-				vim.keymap.set('n', '[c', function()
-					if vim.wo.diff then return '[c' end
-					vim.schedule(function() gitsigns.prev_hunk() end)
-					return '<Ignore>'
-				end, { expr = true, desc = 'Previous [H]unk' })
-			end
-		},
+		opts = {},
 		keys = {
+			{ ']c',         ':Gitsigns next_hunk<CR>',           desc = 'Next [C]hange' },
+			{ '[c',         ':Gitsigns prev_hunk<CR>',           desc = 'Previous [C]hange' },
 			{ '<leader>dh', ':Gitsigns preview_hunk_inline<CR>', desc = '[H]unk' },
 			{ '<leader>db', ':Gitsigns blame<CR>',               desc = '[B]lame' },
 			{ '<leader>dr', ':Gitsigns reset_hunk<CR>',          desc = '[R]eset hunk' },
