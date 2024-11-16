@@ -53,13 +53,10 @@ vim.keymap.set('n', '<leader>qc', ':cclose<CR>', { silent = true, desc = '[C]los
 --
 ---:: Files ::---
 --
-vim.api.nvim_create_user_command('Reveal',
-	function()
-		local path = vim.api.nvim_buf_get_name(0)
-		os.execute('open -R ' .. path)
-	end,
-	{}
-)
+vim.api.nvim_create_user_command('Reveal', function()
+  local path = vim.api.nvim_buf_get_name(0)
+  os.execute('open -R ' .. path)
+end, {})
 vim.keymap.set('n', '<leader>fr', '<cmd>Reveal<CR>', { desc = '[R]eveal in finder' })
 vim.keymap.set('n', '<leader>f/', '<cmd>let @*=expand("%")<CR>', { desc = 'Copy relative path' })
 vim.keymap.set('n', '<leader>f%', '<cmd>let @*=expand("%:t")<CR>', { desc = 'Copy name' })
@@ -68,22 +65,24 @@ vim.keymap.set('n', '<leader>f%', '<cmd>let @*=expand("%:t")<CR>', { desc = 'Cop
 ---:: LSP ::---
 --
 vim.api.nvim_create_autocmd('LspAttach', {
-	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-	callback = function()
-		local builtin = require('telescope.builtin')
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function()
+    local builtin = require 'telescope.builtin'
 
-		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
-		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
-		vim.keymap.set('n', 'g.', vim.lsp.buf.code_action, { desc = '[A]ctions' })
-		vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { desc = '[R]ename' })
-		vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = '[D]efinition' })
-		vim.keymap.set('n', 'gD', builtin.lsp_type_definitions, { desc = '[D]eclaration' })
-		vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = '[I]mplementation' })
-		vim.keymap.set('n', 'gA', builtin.lsp_references, { desc = '[A]ll references' })
-		vim.keymap.set('n', 'gs', builtin.lsp_document_symbols, { desc = 'Buffer [S]ymbols' })
-		vim.keymap.set('n', 'ge', function() builtin.diagnostics({ bufnr = 0 }) end, { desc = 'Buffer [E]rrors' })
-		vim.keymap.set('n', 'gE', builtin.diagnostics, { desc = 'Project [E]rros' })
-		vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", { desc = '[I]nfo' })
-		vim.keymap.set('n', '<leader>lr', ":LspRestart<CR>", { desc = '[R]estart' })
-	end
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+    vim.keymap.set('n', 'g.', vim.lsp.buf.code_action, { desc = '[A]ctions' })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { desc = '[R]ename' })
+    vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = '[D]efinition' })
+    vim.keymap.set('n', 'gD', builtin.lsp_type_definitions, { desc = '[D]eclaration' })
+    vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = '[I]mplementation' })
+    vim.keymap.set('n', 'gA', builtin.lsp_references, { desc = '[A]ll references' })
+    vim.keymap.set('n', 'gs', builtin.lsp_document_symbols, { desc = 'Buffer [S]ymbols' })
+    vim.keymap.set('n', 'ge', function()
+      builtin.diagnostics { bufnr = 0 }
+    end, { desc = 'Buffer [E]rrors' })
+    vim.keymap.set('n', 'gE', builtin.diagnostics, { desc = 'Project [E]rros' })
+    vim.keymap.set('n', '<leader>li', ':LspInfo<CR>', { desc = '[I]nfo' })
+    vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = '[R]estart' })
+  end,
 })
