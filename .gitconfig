@@ -33,9 +33,8 @@
 	ship = ! git push -u origin $(git current) 2>&1 | grep 'remote:' | grep -o 'https://[^ ]*' | xargs open
 	list = ! git branch | fzf | tr -d ‘[:space:]*’
 	list-remote = ! git branch -r | fzf | tr -d ‘[:space:]*’
-	; Usage: `git change BRANCH_NAME` or `git change`. The last one will pop up a list of all local branch to choose from.
 	change = "!f() { git switch \"$(if [[ -n \"$1\" ]]; then echo \"$1\"; else git list; fi)\"; }; f"
-	drop = ! git branch -D $(git list)
+	drop = ! git branch -D $(git list) ; TODO: Add multi-select from fzf with `fzf -m`.
 	bring = ! b=$(git list-remote | cut -d'/' -f2-) && git branch --track ${b} origin/${b} && git switch ${b}
 	search = "!f(){ git grep --break --heading --line-number -e $1 $(git list) -- $2;}; f"
 	clash = ! git diff --name-only --diff-filter=U --relative | fzf | xargs open
