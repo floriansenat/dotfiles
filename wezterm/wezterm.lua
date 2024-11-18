@@ -22,4 +22,40 @@ config.font = wezterm.font('Departure Mono', { weight = 'Medium' }) -- For fun o
 config.font_size = 15.0
 config.line_height = 1.4
 
+config.keys = {
+  -- Vertical split w/ CTRL+SHIFT+"
+  {
+    key = '"',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  -- Horizontal split w/ CTRL+SHIFT+:
+  {
+    key = ':',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  -- Split navigation
+  {
+    key = 'h',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'l',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'k',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'j',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Down',
+  },
+}
+
 return config
