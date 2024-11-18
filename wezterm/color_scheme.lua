@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 
-local function scheme_for_appearance(appearance)
+local function scheme_for_appearance()
+  local appearance = wezterm.gui.get_appearance()
+
   if appearance:find 'Dark' then
     return 'Catppuccin Mocha'
   else
@@ -8,4 +10,4 @@ local function scheme_for_appearance(appearance)
   end
 end
 
-return scheme_for_appearance(wezterm.gui.get_appearance())
+return scheme_for_appearance()
