@@ -8,7 +8,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
     opts = {
-      ensure_installed = { 'lua_ls', 'vtsls', 'jsonls', 'gopls', 'intelephense' },
+      ensure_installed = { 'lua_ls', 'vtsls', 'jsonls', 'gopls', 'phpactor' },
     },
   },
   {
@@ -43,7 +43,10 @@ return {
           },
         },
       }
-      lspconfig.intelephense.setup {
+      lspconfig.phpactor.setup {
+        capabilities = capabilities,
+      }
+      lspconfig.gopls.setup {
         capabilities = capabilities,
       }
     end,
