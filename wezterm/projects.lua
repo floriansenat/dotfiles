@@ -3,7 +3,7 @@ local wezterm = require 'wezterm'
 local module = {}
 
 local function get_projects()
-  local projects = { wezterm.home_dir .. '/dotfiles' }
+  local projects = { wezterm.home_dir .. '/dotfiles', wezterm.home_dir .. '/notes' }
 
   for _, dir in ipairs(wezterm.glob(wezterm.home_dir .. '/work/*')) do
     table.insert(projects, dir)
