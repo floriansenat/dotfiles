@@ -1,15 +1,16 @@
 local wezterm = require 'wezterm'
 
 local module = {}
+local home = wezterm.home_dir
 
 local function get_projects()
-  local projects = { wezterm.home_dir .. '/dotfiles', wezterm.home_dir .. '/notes' }
+  local projects = { home .. '/dotfiles', home .. '/notes', home .. '/Downloads' }
 
-  for _, dir in ipairs(wezterm.glob(wezterm.home_dir .. '/work/*')) do
+  for _, dir in ipairs(wezterm.glob(home .. '/work/*')) do
     table.insert(projects, dir)
   end
 
-  for _, dir in ipairs(wezterm.glob(wezterm.home_dir .. '/personal/*')) do
+  for _, dir in ipairs(wezterm.glob(home .. '/personal/*')) do
     table.insert(projects, dir)
   end
 
