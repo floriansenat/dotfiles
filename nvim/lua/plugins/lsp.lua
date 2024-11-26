@@ -1,3 +1,16 @@
+local SERVERS = {
+  'lua_ls',
+  'denols',
+  'gopls',
+  'phpactor',
+  'vtsls',
+  'jsonls',
+  'eslint',
+  'html',
+  'emmet_ls',
+  'cssls',
+}
+
 return {
   {
     'williamboman/mason.nvim',
@@ -7,9 +20,7 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
-    opts = {
-      ensure_installed = { 'lua_ls', 'vtsls', 'jsonls', 'gopls', 'phpactor' },
-    },
+    opts = { ensure_installed = SERVERS },
   },
   {
     'neovim/nvim-lspconfig',
@@ -21,6 +32,10 @@ return {
     config = function()
       local lspconfig = require 'lspconfig'
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      for _, lsp in pairs(SERVERS) do
+        lspconfig[lsp].setup { capabilities = capabilities }
+      end
 
       lspconfig.denols.setup {
         capabilities = capabilities,
@@ -42,12 +57,6 @@ return {
             telemetry = { enable = false },
           },
         },
-      }
-      lspconfig.phpactor.setup {
-        capabilities = capabilities,
-      }
-      lspconfig.gopls.setup {
-        capabilities = capabilities,
       }
     end,
   },
