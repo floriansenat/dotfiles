@@ -19,9 +19,9 @@ config.window_padding = {
 }
 
 -- Fonts
-config.font = wezterm.font('Departure Mono', { weight = 'Medium' }) -- For fun only :D
--- config.font = wezterm.font('Dank Mono', { weight = 'Medium' })
-config.font_size = 15.0
+-- config.font = wezterm.font('Departure Mono', { weight = 'Medium' }) -- For fun only :D
+config.font = wezterm.font('Dank Mono', { weight = 'Medium' })
+config.font_size = 16.0
 config.line_height = 1.4
 
 config.leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 }
