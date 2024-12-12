@@ -33,3 +33,6 @@ vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+
+-- Hides the command bar when not used
+vim.o.cmdheight = 0

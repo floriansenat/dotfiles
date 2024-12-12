@@ -13,16 +13,12 @@ end
 config.color_scheme = color_scheme
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = 'RESIZE'
-config.window_padding = {
-  top = 30,
-  bottom = 0,
-}
+config.window_padding = { top = 20, right = 10, left = 10, bottom = 0 }
 
 -- Fonts
--- config.font = wezterm.font('Departure Mono', { weight = 'Medium' }) -- For fun only :D
-config.font = wezterm.font('Dank Mono', { weight = 'Medium' })
-config.font_size = 16.0
-config.line_height = 1.4
+config.font = wezterm.font('Iosevka Curly Extended', { weight = 'Medium' })
+config.font_size = 15.0
+config.line_height = 1.5
 
 config.leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
