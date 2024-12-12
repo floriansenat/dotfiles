@@ -6,7 +6,7 @@ local SERVERS = {
   'vtsls',
   'jsonls',
   'biome',
-  -- 'eslint',
+  'eslint',
   'html',
   'emmet_ls',
   'cssls',
@@ -42,6 +42,11 @@ return {
         capabilities = capabilities,
         root_dir = lspconfig.util.root_pattern 'deno.json',
         'deno.jsonc',
+      }
+      lspconfig.biome.setup {
+        capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern 'biome.json',
+        single_file_support = false,
       }
       lspconfig.vtsls.setup {
         capabilities = capabilities,
