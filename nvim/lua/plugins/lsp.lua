@@ -13,23 +13,12 @@ local SERVERS = {
 }
 
 return {
-  {
-    'williamboman/mason.nvim',
-    lazy = false,
-    opts = {},
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    lazy = false,
-    opts = { ensure_installed = SERVERS },
-  },
+  { 'williamboman/mason.nvim', lazy = false, opts = {} },
+  { 'williamboman/mason-lspconfig.nvim', lazy = false, opts = { ensure_installed = SERVERS } },
   {
     'neovim/nvim-lspconfig',
     lazy = false,
-    dependencies = {
-      { 'j-hui/fidget.nvim', opts = {} },
-      'folke/lazydev.nvim',
-    },
+    dependencies = { { 'j-hui/fidget.nvim', opts = {} }, 'folke/lazydev.nvim' },
     config = function()
       local lspconfig = require 'lspconfig'
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -46,7 +35,6 @@ return {
       lspconfig.biome.setup {
         capabilities = capabilities,
         root_dir = lspconfig.util.root_pattern 'biome.json',
-        single_file_support = false,
       }
       lspconfig.vtsls.setup {
         capabilities = capabilities,
