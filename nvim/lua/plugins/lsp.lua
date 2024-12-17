@@ -10,6 +10,7 @@ local SERVERS = {
   'html',
   'emmet_ls',
   'cssls',
+  'astro',
 }
 
 return {
