@@ -88,3 +88,6 @@ export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!
 # [https://starship.rs/]
 eval "$(starship init zsh)"
 . "/Users/florian/.deno/env"
+
+# bun completions
+[ -s "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun"
