@@ -17,8 +17,8 @@ config.window_padding = { top = 20, right = 10, left = 10, bottom = 0 }
 
 -- Fonts
 config.font = wezterm.font('Iosevka Curly Extended', { weight = 'Medium' })
-config.font_size = 15.0
-config.line_height = 1.5
+config.font_size = 14.0
+config.line_height = 1.4
 
 config.leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
