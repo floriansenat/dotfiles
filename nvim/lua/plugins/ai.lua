@@ -1,3 +1,6 @@
+local adapter = 'anthropic'
+local model = 'claude-3-5-sonnet-20241022'
+
 return {
   'olimorris/codecompanion.nvim',
   dependencies = {
@@ -7,19 +10,15 @@ return {
   config = function()
     require('codecompanion').setup {
       strategies = {
-        chat = { adapter = 'anthropic' },
-        inline = { adapter = 'anthropic' },
+        chat = { adapter = adapter },
+        inline = { adapter = adapter },
       },
       adapters = {
         anthropic = function()
-          return require('codecompanion.adapters').extend('anthropic', {
-            env = {
-              api_key = 'ANTHROPIC_API_KEY',
-            },
+          return require('codecompanion.adapters').extend(adapter, {
+            env = { api_key = 'ANTHROPIC_API_KEY' },
             schema = {
-              model = {
-                default = 'claude-3-5-sonnet-20241022',
-              },
+              model = { default = model },
             },
           })
         end,

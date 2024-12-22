@@ -1,16 +1,20 @@
-local SERVERS = {
+local servers = {
   'lua_ls',
   'gopls',
   'phpactor',
   'denols',
   'vtsls',
   'jsonls',
-  'biome',
-  'eslint',
+
+  -- Front only
   'html',
   'emmet_ls',
   'cssls',
   'astro',
+
+  -- Format & Lint
+  'biome',
+  'eslint',
 }
 
 return {
@@ -23,7 +27,7 @@ return {
   config = function()
     require('mason').setup()
     require('mason-lspconfig').setup {
-      ensure_installed = SERVERS,
+      ensure_installed = servers,
     }
 
     local lspconfig = require 'lspconfig'
@@ -36,7 +40,7 @@ return {
       vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { desc = '[R]ename' })
     end
 
-    for _, lsp in pairs(SERVERS) do
+    for _, lsp in pairs(servers) do
       lspconfig[lsp].setup {
         capabilities = capabilities,
         on_attach = on_attach,
