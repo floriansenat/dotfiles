@@ -69,10 +69,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
     local builtin = require 'telescope.builtin'
 
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
-    vim.keymap.set('n', 'g.', vim.lsp.buf.code_action, { desc = '[A]ctions' })
-    vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { desc = '[R]ename' })
     vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = '[D]efinition' })
     vim.keymap.set('n', 'gD', builtin.lsp_type_definitions, { desc = '[D]eclaration' })
     vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = '[I]mplementation' })

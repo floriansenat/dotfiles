@@ -16,6 +16,7 @@ return {
         'vim',
         'markdown',
         'markdown_inline',
+        'astro',
       },
       highlight = { enable = true },
       indent = { enable = true },
