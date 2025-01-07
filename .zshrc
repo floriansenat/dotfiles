@@ -16,6 +16,8 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/bin/docker-credential-ecr-login:$PATH"
 export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
 
 # --- Bun ---
 # [https://bun.sh/]
