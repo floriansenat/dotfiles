@@ -37,4 +37,4 @@
 	drop = ! git branch -D $(git list) ; TODO: Add multi-select from fzf with `fzf -m`.
 	bring = ! b=$(git list-remote | cut -d'/' -f2-) && git branch --track ${b} origin/${b} && git switch ${b}
 	search = "!f(){ git grep --break --heading --line-number -e $1 $(git list) -- $2;}; f"
-	clash = ! git diff --name-only --diff-filter=U --relative | fzf | xargs open
+	clash = ! git diff --name-only --diff-filter=U --relative | fzf | xargs nvim
