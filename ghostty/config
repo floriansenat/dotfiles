@@ -21,11 +21,6 @@ keybind = ctrl+shift+l=goto_split:right
 keybind = ctrl+shift+j=goto_split:bottom
 keybind = ctrl+shift+k=goto_split:top
 
-# Tabs
-keybind = ctrl+space>t=new_tab
-keybind = ctrl+shift+[=previous_tab
-keybind = ctrl+shift+]=next_tab
-
 # Other
 keybind = ctrl+space>c=open_config
 keybind = ctrl+space>r=reload_config
