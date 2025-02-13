@@ -9,6 +9,6 @@ return {
   keys = {
     { '<leader>do', ':DiffviewOpen<CR>', desc = '[O]pen' },
     { '<leader>dc', ':DiffviewClose<CR>', desc = '[C]lose' },
-    { '<leader>df', ':DiffviewFileHistory %<CR>', desc = '[F]ile' },
+    { '<leader>fh', ':DiffviewFileHistory %<CR>', desc = '[H]istory' },
   },
 }
