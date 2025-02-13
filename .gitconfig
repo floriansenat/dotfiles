@@ -7,16 +7,17 @@
 [diff]
     external = difft --color=always
 [alias]
-	s = status -sb
+	st = status -sb
 	co = change
-	c = commit
-	a = add
-	l = log --color --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	d = diff -w
+	ci = commit
+	ap = add -p
+	aa = add -A
+	lg = log --graph --color --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	df = diff -w
 	; [B]ranch [C]heckout
 	bc = checkout -b
 	; [B]ranch [L]og
-	bl = ! git ll $(git current) --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$(git current)")
+	bl = ! git -P lg $(git current) --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$(git current)")
 	; Get the remote default branch and set it as local HEAD.
 	; This step is needed in order to use `git default`.
 	; Otherwise no ref origin/HEAD will be found.
