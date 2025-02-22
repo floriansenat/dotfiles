@@ -1,5 +1,9 @@
 gui:
-  mouseEvents: true
+  border: "single"
+  theme:
+    lightTheme: true
+    activeBorderColor:
+      - bold
 os:
   edit: "nvim {{filename}}"
   editAtLine: "nvim --line={{line}} {{filename}}"
@@ -7,6 +11,6 @@ os:
   editInTerminal: true
   openDirInEditor: "nvim {{dir}}"
   open: "nvim {{filename}}"
-git:
-  paging:
-    externalDiffCommand: difft --color=always
+# git:
+#   paging:
+#     externalDiffCommand: difft --color=auto

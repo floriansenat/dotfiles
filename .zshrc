@@ -93,3 +93,6 @@ eval "$(starship init zsh)"
 
 # bun completions
 [ -s "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"

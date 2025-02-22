@@ -1,11 +1,11 @@
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+# theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:everforest-dark,light:everforest-light
+
 # font-family = Departure Mono
 font-family = Iosevka Curly Extended
 font-size = 14
 adjust-cell-height = 12
-unfocused-split-opacity = 0.5
-unfocused-split-fill = #1E1E2E
-split-divider-color = #171723
+unfocused-split-opacity = 1
 macos-titlebar-style = hidden
 window-padding-x = 12
 window-padding-y = 12

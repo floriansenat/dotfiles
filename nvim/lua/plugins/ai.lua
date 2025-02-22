@@ -1,4 +1,14 @@
-local adapter = 'openai'
+local function lm_studio_adapter()
+  return require('codecompanion.adapters').extend('openai_compatible', {
+    name = 'lm_studio',
+    env = {
+      url = 'http://localhost:1234',
+    },
+    schema = {
+      model = { default = 'deepseek-r1-distill-qwen-7b' },
+    },
+  })
+end
 
 local function codestral_adapter()
   return require('codecompanion.adapters').extend('openai_compatible', {
@@ -6,7 +16,6 @@ local function codestral_adapter()
     env = {
       api_key = 'CODESTRAL_API_KEY',
       url = 'https://codestral.mistral.ai',
-      char_url = '/v1/chat/completions',
     },
     handlers = {
       form_parameters = function(_, params, _)
@@ -27,20 +36,6 @@ local function codestral_adapter()
   })
 end
 
-local function anthropic_adapter()
-  return require('codecompanion.adapters').extend(adapter, {
-    env = { api_key = 'ANTHROPIC_API_KEY' },
-    schema = {
-      model = { default = 'claude-3-5-sonnet-20241022' },
-    },
-  })
-end
-
-local ADAPTERS = {
-  codestral = codestral_adapter,
-  anthropic = anthropic_adapter,
-}
-
 return {
   'olimorris/codecompanion.nvim',
   dependencies = {
@@ -50,15 +45,18 @@ return {
   config = function()
     require('codecompanion').setup {
       strategies = {
-        chat = { adapter = adapter },
-        inline = { adapter = adapter },
+        chat = { adapter = 'openai' },
+        inline = { adapter = 'openai' },
       },
       opts = { stream = true },
-      adapters = ADAPTERS[adapter],
+      adapters = {
+        anthropic = 'anthropic',
+        openai = codestral_adapter(),
+      },
     }
   end,
   keys = {
-    { '<leader>a', ':CodeCompanionChat Toggle<CR>', mode = { 'n', 'v' } },
-    { 'ga', ':CodeCompanionActions<CR>', mode = { 'n', 'v' } },
+    { '<leader>a', '<cmd>CodeCompanionChat Toggle<cr>', mode = { 'n', 'v' } },
+    { 'ga', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' } },
   },
 }
