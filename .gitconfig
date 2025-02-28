@@ -1,7 +1,7 @@
-[includeIf "gitdir:~/"]
-    path = ~/.gitconfig-personal
+[includeIf "gitdir:~/sandbox"]
+    path = ~/sandbox/.gitconfig
 [includeIf "gitdir:~/work/"]
-    path = ~/.gitconfig-work
+    path = ~/work/.gitconfig
 [core]
     editor = nvim
 [diff]
