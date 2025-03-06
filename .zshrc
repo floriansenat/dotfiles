@@ -15,15 +15,8 @@ export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/bin/docker-credential-ecr-login:$PATH"
 export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
-
-# --- Bun ---
-# [https://bun.sh/]
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun" # Completions
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 # --- Python ---
 # [https://www.python.org/]
@@ -83,13 +76,11 @@ load-nvmrc
 export FZF_DEFAULT_OPTS='--layout=reverse --preview "bat --style=numbers --color=always  --line-range=:500 {}"'
 export FZF_CTRL_T_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
 export FZF_DEFAULT_COMMAND='rg -uu --files -g "!node_modules/" -g "!.git/" -g "!vendor/"'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # --- Starship ---
 # [https://starship.rs/]
 eval "$(starship init zsh)"
-. "/Users/florian/.deno/env"
 
 # bun completions
 [ -s "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun"
