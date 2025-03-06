@@ -51,7 +51,7 @@ return {
       opts = { stream = true },
       adapters = {
         anthropic = 'anthropic',
-        openai = codestral_adapter(),
+        openai = lm_studio_adapter(),
       },
     }
   end,
