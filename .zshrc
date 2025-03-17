@@ -87,3 +87,6 @@ eval "$(starship init zsh)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
+
+# Created by `pipx` on 2025-03-17 13:12:19
+export PATH="$PATH:/Users/floriansenat/.local/bin"
