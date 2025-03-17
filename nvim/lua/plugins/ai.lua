@@ -1,61 +1,47 @@
 return {
-  'yetone/avante.nvim',
-  event = 'VeryLazy',
-  version = '*',
+  'olimorris/codecompanion.nvim',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-treesitter/nvim-treesitter',
+    'j-hui/fidget.nvim',
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {
+        file_types = { 'markdown', 'codecompanion' },
+      },
+      ft = { 'markdown', 'codecompanion' },
+    },
+  },
   opts = {
-    provider = 'claude',
-    claude = {
-      endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-7-sonnet-20250219',
-      temperature = 0,
-      max_tokens = 4096,
+    strategies = {
+      chat = { adapter = 'ollama', roles = {
+        user = 'fsenat',
+      } },
+      inline = { adapter = 'ollama' },
     },
-    openai = {
-      endpoint = 'https://api.openai.com/v1',
-      model = 'gpt-4o',
-      timeout = 30000,
-      temperature = 0,
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
-    },
-    windows = {
-      width = 40,
-      sidebar_header = {
+    opts = { stream = true },
+    display = {
+      chat = {
+        window = {
+          position = 'right',
+          width = 0.4,
+        },
+      },
+      diff = {
         enabled = true,
-        align = 'left', -- (left, center, right)
-        rounded = false,
+        close_chat_at = 240,
+        layout = 'vertical',
+        opts = { 'internal', 'filler', 'closeoff', 'algorithm:patience', 'followwrap', 'linematch:120' },
+        provider = 'default', -- default|mini_diff
       },
     },
   },
-  build = 'make',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    'stevearc/dressing.nvim',
-    'nvim-lua/plenary.nvim',
-    'MunifTanjim/nui.nvim',
-    'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-    'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
-    {
-      -- Support for image pasting
-      'HakonHarnes/img-clip.nvim',
-      event = 'VeryLazy',
-      opts = {
-        default = {
-          embed_image_as_base64 = false,
-          prompt_for_file_name = false,
-          drag_and_drop = {
-            insert_mode = true,
-          },
-        },
-      },
-    },
-    {
-      -- Make sure to set this up properly if you have lazy=true
-      'MeanderingProgrammer/render-markdown.nvim',
-      opts = {
-        file_types = { 'markdown', 'Avante' },
-      },
-      ft = { 'markdown', 'Avante' },
-    },
+  init = function()
+    require('plugins.fidget'):init()
+  end,
+  keys = {
+    { '<leader>at', '<cmd>CodeCompanionChat Toggle<cr>', desc = '[T]oggle', mode = { 'n', 'v' } },
+    { '<leader>aa', '<cmd>CodeCompanionChat Add<cr>', desc = '[A]dd', mode = { 'n', 'v' } },
+    { 'ga', '<cmd>CodeCompanionActions<cr>', desc = 'Ai [A]ctions', mode = { 'n', 'v' } },
   },
 }
