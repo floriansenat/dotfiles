@@ -11,6 +11,6 @@ os:
   editInTerminal: true
   openDirInEditor: "nvim {{dir}}"
   open: "nvim {{filename}}"
-# git:
-#   paging:
-#     externalDiffCommand: difft --color=auto
+git:
+  paging:
+    externalDiffCommand: difft --color=always
