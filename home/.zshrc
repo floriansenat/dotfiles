@@ -11,6 +11,7 @@ source $HOME/.localrc
 
 export FIXUID=$(id -u)
 export FIXGID=$(id -g)
+export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/bin/docker-credential-ecr-login:$PATH"
