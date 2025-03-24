@@ -1,0 +1,11 @@
+alias awslog='aws sso login'
+alias ll="ls -al"
+alias cl="clear"
+alias rm="rm -i"
+alias cat="bat -p"
+alias nv="nvim"
+alias g="git"
+alias lzg="lazygit"
+alias python=python3
+alias pip=pip3
+

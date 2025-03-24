@@ -8,15 +8,13 @@ else
     echo "Homebrew already installed."
 fi
 
-# Install packages from Brewfile
 echo "Installing packages from Brewfile..."
 brew bundle
 
-# Create symlinks using stow
 echo "Creating symlinks..."
 stow -v -t ~ home
-stow -t ~ /Volumes/Local/02.dev/ai
-stow -t ~ /Volumes/Local/02.dev/sandbox
-stow -t ~ /Volumes/Local/02.dev/.localrc
+ln -s /Volumes/Local/02.dev/ai ~/ai
+ln -s /Volumes/Local/02.dev/sandbox ~/sandbox
+ln -s /Volumes/Local/02.dev/.localrc ~/.localrc
 
 echo "Installation complete!"
