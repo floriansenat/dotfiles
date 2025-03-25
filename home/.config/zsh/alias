@@ -4,6 +4,7 @@ alias cl="clear"
 alias rm="rm -i"
 alias cat="bat -p"
 alias nv="nvim"
+alias n.="nvim ."
 alias g="git"
 alias lzg="lazygit"
 alias python=python3
