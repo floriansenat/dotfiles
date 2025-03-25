@@ -7,12 +7,13 @@ plugins=(zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.localrc
 
+export EDITOR=nvim
 export FIXUID=$(id -u)
 export FIXGID=$(id -g)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
-export EDITOR=nvim
 export PNPM_HOME="$HOME/Library/pnpm"
+export BUN_INSTALL="$HOME/.bun"
 
 for f in ~/.config/zsh/*; do source $f; done
 

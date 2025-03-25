@@ -8,3 +8,4 @@ export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin" # pipx
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
