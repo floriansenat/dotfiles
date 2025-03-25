@@ -1,10 +1,5 @@
-export ZSH="$HOME/.oh-my-zsh"
-
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions vi-mode golang)
-
-source $ZSH/oh-my-zsh.sh
 source $HOME/.localrc
 
 export EDITOR=nvim
@@ -21,3 +16,4 @@ eval "$(starship init zsh)"
 
 # bun completions
 [ -s "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun"
+
