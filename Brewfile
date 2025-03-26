@@ -3,23 +3,26 @@ cask_args appdir: "~/Applications", require_sha: true
 # Tools
 brew "stow"
 brew "bat"
-brew "go"
 brew "tree"
 brew "ffmpeg"
-brew "bat"
 brew "neovim"
 brew "pipx"
 brew "ripgrep"
 brew "fzf"
 brew "tree-sitter"
-brew "deno"
+brew "sqlite"
 brew "lazygit"
 brew "difftastic"
-brew "sqlite"
 brew "starship"
 brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "zsh-vi-mode"
+
+# Langs
+brew "go"
+brew "lua"
+brew "luarocks"
+brew "deno"
 
 # Apps
 cask "obsidian"
