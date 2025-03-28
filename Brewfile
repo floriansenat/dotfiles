@@ -27,6 +27,7 @@ brew "deno"
 # Apps
 cask "obsidian"
 cask "ollama"
+cask "msty"
 cask "appcleaner"
 cask "flux"
 cask "ghostty"
