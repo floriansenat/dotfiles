@@ -22,6 +22,7 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
+    'saghen/blink.cmp',
     { 'j-hui/fidget.nvim', opts = {} },
   },
   config = function()
@@ -31,7 +32,7 @@ return {
     }
 
     local lspconfig = require 'lspconfig'
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local on_attach = function()
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
