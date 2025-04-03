@@ -2,7 +2,7 @@ theme = dark:catppuccin-mocha,light:catppuccin-latte
 
 # font-family = Departure Mono
 font-family = Iosevka Curly Extended
-font-size = 14
+font-size = 16
 adjust-cell-height = 12
 unfocused-split-opacity = 1
 macos-titlebar-style = hidden
