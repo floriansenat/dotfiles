@@ -19,5 +19,6 @@ return {
     wk.add { { '<leader>q', group = '[Q]uickfix' } }
     wk.add { { '<leader>s', group = '[S]earch' } }
     wk.add { { '<leader>g', group = '[G]it' } }
+    wk.add { { '<leader>m', group = '[M]arks' } }
   end,
 }
