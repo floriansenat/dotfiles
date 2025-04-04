@@ -14,8 +14,4 @@ brew bundle
 echo "Creating symlinks from dotfiles"
 stow -v -t ~ home
 
-echo "Creating symlinks from local ssd"
-cd /Volumes/Local/02.dev
-stow -v -t ~ home --ignore='\.DS_Store' --ignore='\._.*' --ignore='\.AppleDouble'
-
 echo "Installation complete!"
