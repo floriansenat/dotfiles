@@ -21,6 +21,7 @@ local modes = {
 return {
   'nvim-lualine/lualine.nvim',
   opts = {
+    extensions = { 'oil', 'man' },
     options = {
       icons_enabled = false,
       section_separators = '',
