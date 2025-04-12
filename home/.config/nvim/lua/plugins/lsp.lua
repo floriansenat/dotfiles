@@ -34,23 +34,14 @@ return {
     local lspconfig = require 'lspconfig'
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    local on_attach = function()
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
-      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
-      vim.keymap.set('n', 'g.', vim.lsp.buf.code_action, { desc = '[A]ctions' })
-      vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { desc = '[R]ename' })
-    end
-
     for _, lsp in pairs(servers) do
       lspconfig[lsp].setup {
         capabilities = capabilities,
-        on_attach = on_attach,
       }
     end
 
     lspconfig.vtsls.setup {
       capabilities = capabilities,
-      on_attach = on_attach,
       root_dir = lspconfig.util.root_pattern 'tsconfig.json',
       'jsconfig.json',
       '!deno.json',
@@ -59,18 +50,15 @@ return {
     }
     lspconfig.denols.setup {
       capabilities = capabilities,
-      on_attach = on_attach,
       root_dir = lspconfig.util.root_pattern 'deno.json',
       'deno.jsonc',
     }
     lspconfig.biome.setup {
       capabilities = capabilities,
-      on_attach = on_attach,
       root_dir = lspconfig.util.root_pattern 'biome.json',
     }
     lspconfig.lua_ls.setup {
       capabilities = capabilities,
-      on_attach = on_attach,
       settings = {
         Lua = {
           yorkspace = { checkThirdParty = false },

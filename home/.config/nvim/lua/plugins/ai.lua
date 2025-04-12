@@ -1,14 +1,14 @@
 return {
-  {
-    'supermaven-inc/supermaven-nvim',
-    opts = {
-      condition = function()
-        local current_dir = vim.fn.getcwd()
-        local target_dir = 'work'
-        return string.find(current_dir, target_dir)
-      end,
-    },
-  },
+  -- {
+  --   'supermaven-inc/supermaven-nvim',
+  --   opts = {
+  --     condition = function()
+  --       local current_dir = vim.fn.getcwd()
+  --       local target_dir = 'work'
+  --       return string.find(current_dir, target_dir)
+  --     end,
+  --   },
+  -- },
   -- {
   --   'yetone/avante.nvim',
   --   event = 'VeryLazy',
