@@ -1,6 +1,7 @@
 return {
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-  -- { 'neanias/everforest-nvim', name = 'everforest', priority = 1000, lazy = false },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000, opts = {
+    transparent_background = true,
+  } },
   {
     'f-person/auto-dark-mode.nvim',
     opts = {
