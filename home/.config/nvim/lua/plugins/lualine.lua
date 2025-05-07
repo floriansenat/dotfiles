@@ -38,7 +38,7 @@ return {
       lualine_c = { '%=', { 'filename', path = 1 } },
       lualine_x = {},
       lualine_y = { 'filetype' },
-      lualine_z = { 'branch' },
+      lualine_z = {},
     },
   },
 }
