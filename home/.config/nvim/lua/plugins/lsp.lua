@@ -2,73 +2,64 @@ local servers = {
   'lua_ls',
   'gopls',
   'phpactor',
-  'denols',
   'vtsls',
   'jsonls',
-
-  -- Front only
   'html',
   'emmet_ls',
   'cssls',
-  'astro',
-
-  -- Format & Lint
   'biome',
-  'eslint',
+  -- 'eslint',
 }
 
 return {
-  'neovim/nvim-lspconfig',
+  'mason-org/mason-lspconfig.nvim',
+  opts = {
+    ensure_installed = servers,
+  },
   dependencies = {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    { 'mason-org/mason.nvim', opts = {} },
+    'neovim/nvim-lspconfig',
     'saghen/blink.cmp',
     { 'j-hui/fidget.nvim', opts = {} },
   },
-  config = function()
-    require('mason').setup()
-    require('mason-lspconfig').setup {
-      ensure_installed = servers,
-    }
 
-    local lspconfig = require 'lspconfig'
+  config = function()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     for _, lsp in pairs(servers) do
-      lspconfig[lsp].setup {
-        capabilities = capabilities,
-      }
+      vim.lsp.config[lsp] = { capabilities = capabilities }
     end
 
-    lspconfig.vtsls.setup {
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern 'tsconfig.json',
-      'jsconfig.json',
-      '!deno.json',
-      '!deno.jsonc',
-      single_file_support = false,
-    }
-    lspconfig.denols.setup {
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern 'deno.json',
-      'deno.jsonc',
-    }
-    lspconfig.biome.setup {
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern 'biome.json',
-    }
-    lspconfig.lua_ls.setup {
-      capabilities = capabilities,
+    vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
-          yorkspace = { checkThirdParty = false },
+          runtime = { version = 'LuaJIT' },
+          diagnostics = {
+            globals = { 'vim', 'require' },
+          },
           telemetry = { enable = false },
         },
       },
-    }
+    })
+
+    vim.lsp.config('vtsls', {
+      root_markers = {
+        'tsconfig.json',
+        'jsconfig.json',
+        '!deno.json',
+        '!deno.jsonc',
+      },
+      single_file_support = false,
+    })
+
+    vim.lsp.config('biome', {
+      root_markers = { 'biome.json' },
+    })
 
     vim.filetype.add {
       extension = { astro = 'astro' },
     }
+
+    vim.lsp.enable(servers)
   end,
 }
