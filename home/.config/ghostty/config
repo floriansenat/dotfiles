@@ -1,4 +1,5 @@
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+# theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:Melange_dark,light:Melange_light
 
 # font-family = Departure Mono
 font-family = Iosevka Curly Extended

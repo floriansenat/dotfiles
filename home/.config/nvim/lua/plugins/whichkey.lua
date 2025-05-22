@@ -5,6 +5,7 @@ return {
     local wk = require 'which-key'
 
     wk.setup {
+      preset = 'helix',
       icons = { mappings = false },
       plugins = {
         presets = { operators = false, motions = false },
