@@ -1,14 +1,16 @@
 local servers = {
+  'astro',
   'lua_ls',
   'gopls',
   'phpactor',
   'vtsls',
+  'jq-lsp',
   'jsonls',
   'html',
   'emmet_ls',
   'cssls',
   'biome',
-  -- 'eslint',
+  'eslint',
 }
 
 return {
