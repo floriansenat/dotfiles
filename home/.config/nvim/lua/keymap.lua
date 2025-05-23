@@ -20,6 +20,7 @@ vim.keymap.set('n', '<leader>bQ', ':bd|e#<CR>', { silent = true, desc = 'All Buf
 
 ---:: Diagnostics ::---
 vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
+vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
 
 ---:: Quickfix ::---
 vim.keymap.set('n', '<leader>qo', ':copen<CR>', { silent = true, desc = '[O]pen' })
@@ -33,3 +34,7 @@ end, {})
 vim.keymap.set('n', '<leader>fr', '<cmd>FileReveal<CR>', { desc = '[R]eveal in finder' })
 vim.keymap.set('n', '<leader>f/', '<cmd>let @*=expand("%")<CR>', { desc = 'Copy relative path' })
 vim.keymap.set('n', '<leader>f%', '<cmd>let @*=expand("%:t")<CR>', { desc = 'Copy name' })
+
+---:: LSP ::---
+vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = '[R]eattach' })
+vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = '[C]heckhealth' })

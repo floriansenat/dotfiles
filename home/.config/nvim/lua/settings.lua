@@ -36,3 +36,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Hides the command bar when not used
 vim.o.cmdheight = 0
+
+---:: Diagnostics ::---
+vim.diagnostic.config {
+  jump = { float = true },
+}
