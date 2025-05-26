@@ -59,7 +59,10 @@ return {
     })
 
     vim.filetype.add {
-      extension = { astro = 'astro' },
+      extension = {
+        astro = 'astro',
+        http = 'http',
+      },
     }
 
     vim.lsp.enable(servers)
