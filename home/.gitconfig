@@ -1,42 +1,55 @@
-[includeIf "gitdir:~/sandbox"]
-    path = ~/sandbox/.gitconfig
-[includeIf "gitdir:~/work/"]
-    path = ~/work/.gitconfig
+[user]
+	email = github.conductor645@passmail.net
+	name = Florian Sénat
+	username = floriansenat
 [core]
-    editor = nvim
+	editor = nvim
 [diff]
-    external = difft --color=always
+	external = difft --color=always
+[fetch]
+	prune = true
+	pruneTags = true
+[format]
+	pretty = "format:%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
+[status]
+	short = true
+	branch = true
 [alias]
-	st = status -sb
-	co = change
-	ci = commit
-	ap = add -p
-	aa = add -A
-	lg = log --graph --color --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	df = diff -w
-	; [B]ranch [C]heckout
-	bc = checkout -b
-	; [B]ranch [L]og
-	bl = ! git -P lg $(git current) --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$(git current)")
+	; --:: Default ::--
 	; Get the remote default branch and set it as local HEAD.
 	; This step is needed in order to use `git default`.
 	; Otherwise no ref origin/HEAD will be found.
-	set-local-default = remote set-head origin --auto
-	default = ! git rev-parse --abbrev-ref origin/HEAD | cut -c8-
-	current = branch --show-current
-	last = ll -1 HEAD
-	abandon = reset --hard HEAD
-	force = push --force-with-lease --force-if-includes
-	squash = ! git add -p && git commit --amend --no-edit
-	goners = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | fgrep '[gone]' | cut -d' ' -f1
-	flush = ! git branch -D $(git goners)
-	up = ! git switch $(git default) && git fetch -p --tags && git pull && git switch - && git rebase $(git default)
-	sync = ! git up && git force
-	ship = ! git push -u origin $(git current) 2>&1 | grep 'remote:' | grep -o 'https://[^ ]*' | xargs open
+	default-set = remote set-head origin --auto
+	default-get = ! git rev-parse --abbrev-ref origin/HEAD | cut -c8-
+	default-update = ! git switch $(git default-get) && git fetch && git pull
+
+	; --:: Branch ::--
+	; Change to branch if exists or create one. If no branch name provided it'll prompt the branch list to choose from.
+	change = "!f() { if [[ -n \"$1\" ]]; then git switch $1; else git switch $(git list); fi }; f"
+	create = "!f() { git switch -c $1; }; f"
+	delete = "!f() { if [[-n \"$1\" ]]; then git branch -D $1; else git branch -D $(git list); fi }; f"
+	rename = "!f() { git branch -m $(git branch --show-current) $1; }; f"
 	list = ! git branch | fzf | tr -d ‘[:space:]*’
+	history = ! git -P log $(git branch --show-current) --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$(git branch --show-current)")
+
+	; --:: Remote ::--
+	force = push --force-with-lease --force-if-includes
 	list-remote = ! git branch -r | fzf | tr -d ‘[:space:]*’
-	change = "!f() { git switch \"$(if [[ -n \"$1\" ]]; then echo \"$1\"; else git list; fi)\"; }; f"
-	drop = ! git branch -D $(git list) 
 	bring = ! b=$(git list-remote | cut -d'/' -f2-) && git branch --track ${b} origin/${b} && git switch ${b}
-	search = "!f(){ git grep --break --heading --line-number -e $1 $(git list) -- $2;}; f"
+	update = ! git default-update && git switch - && git rebase $(git default-get)
+	sync = ! git update && git force
+	ship = ! git push -u origin $(git branch --show-current) 2>&1 | grep 'remote:' | grep -o 'https://[^ ]*' | xargs open
+	gone = ! git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | fgrep '[gone]' | cut -d' ' -f1
+	flush = ! git branch -D $(git gone)
+
+	; --:: Changes ::--
+	st = status
+	squash = ! git add -p && git commit --amend --no-edit
 	clash = ! git diff --name-only --diff-filter=U --relative | fzf | xargs nvim
+	abandon = reset --hard HEAD
+
+	; --:: Tools ::--
+	lz = ! lazygit
+
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig

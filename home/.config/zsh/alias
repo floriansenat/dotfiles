@@ -6,7 +6,6 @@ alias cat="bat -p"
 alias nv="nvim"
 alias n.="nvim ."
 alias g="git"
-alias lzg="lazygit"
 alias python=python3
 alias pip=pip3
 
