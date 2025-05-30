@@ -58,12 +58,6 @@ return {
       root_markers = { 'biome.json' },
     })
 
-    vim.filetype.add {
-      extension = {
-        astro = 'astro',
-      },
-    }
-
     vim.lsp.enable(servers)
   end,
 }

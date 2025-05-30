@@ -1,7 +1,7 @@
+vim.o.termguicolors = true
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'
-vim.o.termguicolors = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
 
@@ -15,8 +15,8 @@ vim.o.swapfile = false
 vim.o.undofile = true
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Remove this option if you want your OS clipboard to remain independent.
+-- See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
 -- Case insensitive searching UNLESS /C or capital in search
@@ -37,7 +37,12 @@ vim.o.completeopt = 'menuone,noselect'
 -- Hides the command bar when not used
 vim.o.cmdheight = 0
 
----:: Diagnostics ::---
+vim.filetype.add {
+  extension = {
+    astro = 'astro',
+  },
+}
+
 vim.diagnostic.config {
   jump = { float = true },
 }

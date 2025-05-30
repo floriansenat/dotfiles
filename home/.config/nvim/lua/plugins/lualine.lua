@@ -9,9 +9,9 @@ return {
     },
     sections = {
       lualine_a = {},
-      lualine_b = { 'diff', 'diagnostics' },
+      lualine_b = {},
       lualine_c = { { 'filename', path = 1 } },
-      lualine_x = {},
+      lualine_x = { 'diagnostics', 'diff' },
       lualine_y = { 'filetype' },
       lualine_z = {},
     },

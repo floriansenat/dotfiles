@@ -1,8 +1,5 @@
 return {
   { 'savq/melange-nvim', name = 'melange', priority = 1000 },
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000, opts = {
-    transparent_background = true,
-  } },
   {
     'f-person/auto-dark-mode.nvim',
     opts = {
