@@ -2,5 +2,19 @@
 name = 'floriansenat'
 email = 'github.conductor645@passmail.net'
 
+[[--scope]]
+--when.repositories = ["~/work"]
+[--scope.user]
+name = 'Florian Sénat'
+email = "florian.senat@yousign.com"
+
 [ui]
 default-command = "log"
+editor = "nvim"
+
+[ui.diff]
+tool = 'difft'
+
+[merge-tools.difft]
+diff-args = ["--color=always", "$left", "$right"]
+
