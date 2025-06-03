@@ -1,4 +1,3 @@
-# theme = dark:catppuccin-mocha,light:catppuccin-latte
 theme = dark:Melange_dark,light:Melange_light
 
 # font-family = Departure Mono
@@ -11,8 +10,6 @@ window-padding-x = 12
 window-padding-y = 12
 window-save-state = always
 auto-update = download
-background-opacity = 0.9
-background-blur = 40
 
 # Splits
 keybind = ctrl+space>h=new_split:left
