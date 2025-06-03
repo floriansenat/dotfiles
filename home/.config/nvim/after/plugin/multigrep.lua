@@ -45,4 +45,4 @@ local search_multigrep = function(opts)
     :find()
 end
 
-vim.keymap.set('n', '<leader>sg', search_multigrep)
+vim.keymap.set('n', '<leader>sg', search_multigrep, { desc = '[G]rep' })

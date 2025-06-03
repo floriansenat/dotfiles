@@ -15,8 +15,8 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
 
 ---:: Buffers ::---
-vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = 'Buffer' }) -- (keep window splits)
-vim.keymap.set('n', '<leader>bQ', ':bd|e#<CR>', { silent = true, desc = 'All Buffer Except Focused One' })
+vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = '[Q]uit' }) -- (keep window splits)
+vim.keymap.set('n', '<leader>bQ', ':bd|e#<CR>', { silent = true, desc = '[Q]uit all except focused' })
 
 ---:: Diagnostics ::---
 vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })

@@ -1,9 +1,9 @@
 return {
   'mistweaverco/kulala.nvim',
   keys = {
-    { '<leader>hs', desc = 'Send request' },
-    { '<leader>ha', desc = 'Send all requests' },
-    { '<leader>hb', desc = 'Open scratchpad' },
+    { '<leader>hs', desc = '[S]end' },
+    { '<leader>ha', desc = 'Send [A]ll requests' },
+    { '<leader>hd', desc = '[D]raft' },
   },
   ft = { 'http', 'rest' },
   opts = {
