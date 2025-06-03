@@ -5,7 +5,7 @@ alias rm="rm -i"
 alias cat="bat -p"
 alias nv="nvim"
 alias n.="nvim ."
-alias g="git"
+alias git="echo '[deprecated] please use jj instead'"
 alias python=python3
 alias pip=pip3
 
