@@ -13,6 +13,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       http = { 'kulala' },
+      typescript = { 'biome', lsp_format = 'never' },
     },
     default_format_opts = {
       lsp_format = 'fallback',
