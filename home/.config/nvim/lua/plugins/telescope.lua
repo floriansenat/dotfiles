@@ -12,8 +12,13 @@ return {
     local builtin = require 'telescope.builtin'
 
     telescope.setup {
+      defaults = { layout_strategy = 'bottom_pane' },
       pickers = {
+        buffers = { layout_strategy = 'center' },
+        oldfiles = { layout_strategy = 'center' },
+        help_tags = { layout_strategy = 'center' },
         find_files = {
+          layout_strategy = 'center',
           hidden = true,
           find_command = {
             'rg',
