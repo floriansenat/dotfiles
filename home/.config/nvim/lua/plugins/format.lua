@@ -14,6 +14,7 @@ return {
       lua = { 'stylua' },
       http = { 'kulala' },
       typescript = { 'biome', lsp_format = 'never' },
+      json = { 'biome', lsp_format = 'never' },
     },
     default_format_opts = {
       lsp_format = 'fallback',

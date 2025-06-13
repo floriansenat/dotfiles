@@ -22,7 +22,7 @@ return {
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
       sources = {
-        default = { 'lsp', 'path', 'buffer', 'snippets' },
+        default = { 'lsp', 'path', 'buffer' },
       },
     },
     opts_extend = { 'sources.default' },
