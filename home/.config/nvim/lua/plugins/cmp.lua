@@ -10,7 +10,6 @@ return {
       -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = {
         preset = 'default',
-        ['<CR>'] = { 'select_and_accept', 'fallback' },
       },
       appearance = {
         -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -18,11 +17,11 @@ return {
         nerd_font_variant = 'mono',
       },
       completion = {
-        -- Show documentation when selecting a completion item
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        accept = { auto_brackets = { enabled = true } },
       },
       sources = {
-        default = { 'lsp', 'path', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
     },
     opts_extend = { 'sources.default' },

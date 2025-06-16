@@ -12,7 +12,16 @@ return {
     local builtin = require 'telescope.builtin'
 
     telescope.setup {
-      defaults = { layout_strategy = 'bottom_pane' },
+      defaults = {
+        layout_strategy = 'bottom_pane',
+        path_display = { 'truncate' },
+        mappings = {
+          n = {
+            ['d'] = require('telescope.actions').delete_buffer,
+            ['q'] = require('telescope.actions').close,
+          },
+        },
+      },
       pickers = {
         buffers = { layout_strategy = 'center' },
         oldfiles = { layout_strategy = 'center' },
