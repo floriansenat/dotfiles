@@ -62,4 +62,8 @@
         "command": "-renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
+    {
+        "key": "cmd+e",
+        "command": "composerMode.background"
+    },
 ]

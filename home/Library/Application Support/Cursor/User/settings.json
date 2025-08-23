@@ -10,7 +10,7 @@
     "workbench.editor.editorActionsLocation": "hidden",
     "cursor.cmdk.useThemedDiffBackground": false,
     // ui.fonts
-    "editor.fontFamily": "Iosevka Curly Extended,  monospace",
+    "editor.fontFamily": "Zed Mono Extended,  monospace",
     "editor.fontSize": 16,
     "terminal.integrated.fontSize": 16,
     "debug.console.fontSize": 16,
