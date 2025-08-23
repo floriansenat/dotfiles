@@ -54,10 +54,6 @@ return {
       single_file_support = false,
     })
 
-    vim.lsp.config('biome', {
-      root_markers = { 'biome.json' },
-    })
-
     vim.lsp.enable(servers)
   end,
 }
