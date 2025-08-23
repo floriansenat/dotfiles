@@ -1,7 +1,7 @@
 theme = dark:Melange_dark,light:Melange_light
 
 # font-family = Departure Mono
-font-family = Iosevka Curly Extended
+font-family = Zed Mono Extended
 font-size = 16
 adjust-cell-height = 12
 unfocused-split-opacity = 1
