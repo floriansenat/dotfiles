@@ -3,16 +3,8 @@ return {
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
   opts = {
-    formatters = {
-      kulala = {
-        command = 'kulala-fmt',
-        args = { 'format', '$FILENAME' },
-        stdin = false,
-      },
-    },
     formatters_by_ft = {
       lua = { 'stylua' },
-      http = { 'kulala' },
       typescript = { 'biome', lsp_format = 'never' },
       json = { 'biome', lsp_format = 'never' },
     },
