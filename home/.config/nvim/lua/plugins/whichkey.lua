@@ -16,6 +16,7 @@ return {
     wk.add { { '<leader>b', group = '[B]uffer' } }
     wk.add { { '<leader>d', group = '[D]iff' } }
     wk.add { { '<leader>f', group = '[F]ile' } }
+    wk.add { { '<leader>F', group = '[F]ormat' } }
     wk.add { { '<leader>l', group = '[L]sp' } }
     wk.add { { '<leader>q', group = '[Q]uickfix List' } }
     wk.add { { '<leader>s', group = '[S]earch' } }
