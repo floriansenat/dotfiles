@@ -1,8 +1,8 @@
 return {
   {
-    'lunacookies/vim-colors-xcode',
+    'savq/melange-nvim',
     config = function()
-      vim.cmd.colorscheme 'xcodehc'
+      vim.cmd.colorscheme 'melange'
     end,
   },
   {
