@@ -1,4 +1,4 @@
-theme = dark:Melange_dark,light:Melange_light
+theme = dark:Melange Dark,light:Melange Light
 
 # font-family = Departure Mono
 font-family = Zed Mono Extended
@@ -12,10 +12,10 @@ window-save-state = always
 auto-update = download
 
 # Splits
-keybind = ctrl+space>h=new_split:left
-keybind = ctrl+space>l=new_split:right
-keybind = ctrl+space>k=new_split:up
-keybind = ctrl+space>j=new_split:down
+keybind = option+space>h=new_split:left
+keybind = option+space>l=new_split:right
+keybind = option+space>k=new_split:up
+keybind = option+space>j=new_split:down
 
 keybind = ctrl+shift+z=toggle_split_zoom
 keybind = ctrl+shift+h=goto_split:left
@@ -24,7 +24,7 @@ keybind = ctrl+shift+j=goto_split:bottom
 keybind = ctrl+shift+k=goto_split:top
 
 # Other
-keybind = ctrl+space>c=open_config
-keybind = ctrl+space>r=reload_config
+keybind = option+space>c=open_config
+keybind = option+space>r=reload_config
 keybind = global:cmd+escape=toggle_quick_terminal
 
