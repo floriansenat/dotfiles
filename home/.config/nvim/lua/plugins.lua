@@ -90,7 +90,6 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = {
-      'rafamadriz/friendly-snippets',
       'neovim/nvim-lspconfig',
     },
     version = '1.*',
@@ -107,7 +106,7 @@ return {
         accept = { auto_brackets = { enabled = false } },
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'buffer' },
       },
       signature = { enabled = true },
     },
