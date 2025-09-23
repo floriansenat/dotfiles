@@ -22,27 +22,17 @@ vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevelstart = 999
 
-vim.diagnostic.config {
-  jump = { float = true },
-}
-
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- Keep cursor centered when moving
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- Keep cursor centered when moving
 vim.keymap.set('n', 'n', 'nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'N', 'Nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
-vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
-vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
 -- Tryit —  Remove it after a month if not used
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>W', ':wq<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 vim.keymap.set('n', '<leader>Q', ':quit!<CR>')
 -- Tryit.end
-vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = '[R]eattach lsp' })
-vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = '[C]heck lsp health' })
 
 --:: Buffers ::--
 vim.api.nvim_create_user_command('BufferRevealInFinder', function()
@@ -64,6 +54,8 @@ vim.api.nvim_create_user_command('ToggleFormat', function()
   end
 end, {})
 vim.keymap.set('n', '<leader>f', ':ToggleFormat<CR>', { desc = '[F]ormat toggle' })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -72,6 +64,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 --:: LSP ::--
+vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = '[R]eattach lsp' })
+vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = '[C]heck lsp health' })
 vim.lsp.enable {
   'astro',
   'lua_ls',
@@ -86,6 +80,14 @@ vim.lsp.enable {
   'biome',
   'eslint',
 }
+
+--:: Diagnostic ::--
+vim.diagnostic.config {
+  jump = { float = true },
+}
+vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
+vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
+
 
 --:: Lazy Setup ::--
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
