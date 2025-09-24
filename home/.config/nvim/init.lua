@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 
 vim.o.termguicolors = true
+vim.o.wrap = false
 vim.o.mouse = 'a'
 vim.o.number = true
 vim.o.relativenumber = true
@@ -27,12 +28,11 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz') -- Keep cursor centered when moving
 vim.keymap.set('n', 'n', 'nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'N', 'Nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
--- Tryit —  Remove it after a month if not used
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>W', ':wq<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 vim.keymap.set('n', '<leader>Q', ':quit!<CR>')
--- Tryit.end
+vim.keymap.set('n', '<leader>x', ':wq<CR>')
 
 --:: Buffers ::--
 vim.api.nvim_create_user_command('BufferRevealInFinder', function()
@@ -63,6 +63,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+--:: Diagnostic ::--
+vim.diagnostic.config {
+  jump = { float = true },
+}
+vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
+vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
+
 --:: LSP ::--
 vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = '[R]eattach lsp' })
 vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = '[C]heck lsp health' })
@@ -80,13 +87,6 @@ vim.lsp.enable {
   'biome',
   'eslint',
 }
-
---:: Diagnostic ::--
-vim.diagnostic.config {
-  jump = { float = true },
-}
-vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
-vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
 
 --:: Lazy Setup ::--
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
