@@ -32,7 +32,7 @@ return {
   },
 
   --:: Text Manipulation ::--
-  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
+  { 'nvim-mini/mini.pairs', version = '*', opts = {} },
   { 'kylechui/nvim-surround', event = 'InsertEnter', opts = {} },
   {
     'shortcuts/no-neck-pain.nvim',
@@ -150,6 +150,18 @@ return {
     'f-person/auto-dark-mode.nvim',
     opts = { update_interval = 1000 },
   },
+  {
+    'nvim-mini/mini.hipatterns',
+    version = '*',
+    config = function()
+      local hipatterns = require 'mini.hipatterns'
+      hipatterns.setup {
+        highlighters = {
+          hex_color = hipatterns.gen_highlighter.hex_color(),
+        },
+      }
+    end,
+  },
 
   --:: Navigation ::--
   {
@@ -175,7 +187,6 @@ return {
     },
     config = function()
       local telescope = require 'telescope'
-      local builtin = require 'telescope.builtin'
 
       telescope.setup {
         defaults = {
@@ -220,14 +231,6 @@ return {
       }
       telescope.load_extension 'fzf'
       telescope.load_extension 'ui-select'
-
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function()
-          vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = 'Go to Definition' })
-          vim.keymap.set('n', 'gs', builtin.lsp_document_symbols, { desc = 'Buffer Symbols' })
-        end,
-      })
     end,
     keys = {
       { '<leader>/', ':Telescope find_files<CR>', desc = 'Search Files' },
