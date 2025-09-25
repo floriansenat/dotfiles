@@ -1,10 +1,11 @@
-alias awslog='aws sso login'
+alias awslog="aws sso login"
 alias ll="ls -al"
-alias cl="clear"
+alias cl=clear
 alias rm="rm -i"
 alias cat="bat -p"
-alias nv="nvim"
+alias nv=nvim
 alias n.="nvim ."
 alias python=python3
 alias pip=pip3
+alias cd=z
 

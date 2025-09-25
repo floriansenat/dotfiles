@@ -13,6 +13,7 @@ export BUN_INSTALL="$HOME/.bun"
 for f in ~/.config/zsh/*; do source $f; done
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # bun completions
 [ -s "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/Cellar/bun/1.1.34/share/zsh/site-functions/_bun"
