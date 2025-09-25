@@ -28,22 +28,21 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz') -- Keep cursor centered when moving
 vim.keymap.set('n', 'n', 'nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'N', 'Nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
-vim.keymap.set('n', '<leader>w', ':write<CR>')
-vim.keymap.set('n', '<leader>W', ':wq<CR>')
-vim.keymap.set('n', '<leader>q', ':quit<CR>')
-vim.keymap.set('n', '<leader>Q', ':quit!<CR>')
+vim.keymap.set('n', '<leader>w', ':w<CR>')
 vim.keymap.set('n', '<leader>x', ':wq<CR>')
+vim.keymap.set('n', '<leader>q', ':q<CR>')
+vim.keymap.set('n', '<leader>Q', ':q!<CR>')
 
 --:: Buffers ::--
 vim.api.nvim_create_user_command('BufferRevealInFinder', function()
   local path = vim.api.nvim_buf_get_name(0)
   os.execute('open -R ' .. path)
 end, {})
-vim.keymap.set('n', '<leader>br', ':BufferRevealInFinder<CR>', { desc = '[R]eveal in finder' })
+vim.keymap.set('n', '<leader>br', ':BufferRevealInFinder<CR>', { desc = 'Reveal in finder' })
 vim.keymap.set('n', '<leader>b/', ':let @*=expand("%")<CR>', { desc = 'Copy relative path' })
 vim.keymap.set('n', '<leader>b%', ':let @*=expand("%:t")<CR>', { desc = 'Copy name' })
-vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = '[Q]uit' }) -- (keep window splits)
-vim.keymap.set('n', '<leader>bk', ':%bd | e# | bd#<CR>', { silent = true, desc = '[K]eep' })
+vim.keymap.set('n', '<leader>bq', ':bp|bd #<CR>', { silent = true, desc = 'Quit' }) -- (keep window splits)
+vim.keymap.set('n', '<leader>bk', ':%bd | e# | bd#<CR>', { silent = true, desc = 'Keep' })
 
 --:: Text Manipulation ::--
 vim.api.nvim_create_user_command('ToggleFormat', function()
@@ -53,7 +52,7 @@ vim.api.nvim_create_user_command('ToggleFormat', function()
     vim.g.disable_autoformat = true
   end
 end, {})
-vim.keymap.set('n', '<leader>f', ':ToggleFormat<CR>', { desc = '[F]ormat toggle' })
+vim.keymap.set('n', '<leader>f', ':ToggleFormat<CR>', { desc = 'Format toggle' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
 
@@ -71,8 +70,8 @@ vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error
 vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
 
 --:: LSP ::--
-vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = '[R]eattach lsp' })
-vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = '[C]heck lsp health' })
+vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = 'Reattach lsp' })
+vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = 'Check lsp health' })
 vim.lsp.enable {
   'astro',
   'lua_ls',

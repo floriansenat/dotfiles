@@ -39,7 +39,7 @@ return {
     version = '*',
     opts = { width = 120 },
     keys = {
-      { '<leader>c', '<cmd>NoNeckPain<CR>', desc = '[C]enter mode' },
+      { '<leader>c', '<cmd>NoNeckPain<CR>', desc = 'Center mode' },
     },
   },
   {
@@ -87,7 +87,7 @@ return {
           require('conform').format { async = true }
         end,
         mode = '',
-        desc = '[F]ormat',
+        desc = 'Format',
       },
     },
   },
@@ -123,7 +123,7 @@ return {
       vim.g.undotree_WindowLayout = 2
     end,
     keys = {
-      { '<leader>bh', ':UndotreeToggle<CR>', desc = '[H]istory' },
+      { '<leader>bh', ':UndotreeToggle<CR>', desc = 'History' },
     },
   },
   {
@@ -131,11 +131,11 @@ return {
     event = 'VeryLazy',
     opts = {},
     keys = {
-      { ']c', ':Gitsigns next_hunk<CR>', desc = 'Next [C]hange' },
-      { '[c', ':Gitsigns prev_hunk<CR>', desc = 'Previous [C]hange' },
-      { '<leader>gh', ':Gitsigns preview_hunk_inline<CR>', desc = '[H]unk' },
-      { '<leader>gb', ':Gitsigns blame<CR>', desc = '[B]lame' },
-      { '<leader>gr', ':Gitsigns reset_hunk<CR>', desc = '[R]eset hunk' },
+      { ']c', ':Gitsigns next_hunk<CR>', desc = 'Next Change' },
+      { '[c', ':Gitsigns prev_hunk<CR>', desc = 'Previous Change' },
+      { '<leader>hs', ':Gitsigns preview_hunk_inline<CR>', desc = 'Show' },
+      { '<leader>hr', ':Gitsigns reset_hunk<CR>', desc = 'Reset' },
+      { '<leader>bb', ':Gitsigns blame<CR>', desc = 'Blame' },
     },
   },
 
@@ -256,10 +256,10 @@ return {
         },
       }
 
-      wk.add { { '<leader>b', group = '[B]uffer' } }
-      wk.add { { '<leader>d', group = '[D]iagnostics' } }
-      wk.add { { '<leader>l', group = '[L]sp' } }
-      wk.add { { '<leader>g', group = '[G]it' } }
+      wk.add { { '<leader>b', group = 'Buffer' } }
+      wk.add { { '<leader>d', group = 'Diagnostics' } }
+      wk.add { { '<leader>l', group = 'Lsp' } }
+      wk.add { { '<leader>g', group = 'Git' } }
     end,
   },
 }
