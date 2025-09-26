@@ -31,7 +31,7 @@ vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
 vim.keymap.set('n', '<leader>w', ':w<CR>')
 vim.keymap.set('n', '<leader>x', ':wq<CR>')
 vim.keymap.set('n', '<leader>q', ':q<CR>')
-vim.keymap.set('n', '<leader>Q', ':q!<CR>')
+vim.keymap.set('n', '<leader>Q', ':qa<CR>')
 
 --:: Buffers ::--
 vim.api.nvim_create_user_command('BufferRevealInFinder', function()
