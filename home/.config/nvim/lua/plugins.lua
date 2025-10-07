@@ -65,10 +65,15 @@ return {
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
     opts = {
+      notify_on_error = false,
       formatters_by_ft = {
         lua = { 'stylua' },
-        typescript = { 'biome', lsp_format = 'never' },
-        json = { 'biome', lsp_format = 'never' },
+        javascript = { 'biome', 'biome-organize-imports' },
+        javascriptreact = { 'biome', 'biome-organize-imports' },
+        typescript = { 'biome', 'biome-organize-imports' },
+        typescriptreact = { 'biome', 'biome-organize-imports' },
+        go = { 'goimports', 'gofmt' },
+        rust = { 'rustfmt' },
       },
       default_format_opts = {
         lsp_format = 'fallback',
@@ -77,14 +82,14 @@ return {
         if vim.g.disable_autoformat then
           return
         end
-        return { timeout_ms = 500, lsp_format = 'fallback' }
+        return { timeout_ms = 500, lsp_format = 'never' }
       end,
     },
     keys = {
       {
         '<leader>bf',
         function()
-          require('conform').format { async = true }
+          require('conform').format { async = true, lsp_format = 'never' }
         end,
         mode = '',
         desc = 'Format',

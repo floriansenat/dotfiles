@@ -85,6 +85,7 @@ vim.lsp.enable {
   'cssls',
   'biome',
   'eslint',
+  'docker_language_server',
 }
 
 --:: Lazy Setup ::--

@@ -17,9 +17,10 @@ local util = require 'lspconfig.util'
 return {
   cmd = function(dispatchers, config)
     local cmd = 'biome'
-    local local_cmd = (config or {}).root_dir and config.root_dir .. '/node_modules/.bin/biome'
-    if local_cmd and vim.fn.executable(local_cmd) == 1 then
-      cmd = local_cmd
+    local mason_cmd = vim.fn.stdpath 'data' .. '/mason/bin/biome'
+    -- local local_cmd = (config or {}).root_dir and config.root_dir .. '/node_modules/.bin/biome'
+    if mason_cmd and vim.fn.executable(mason_cmd) == 1 then
+      cmd = mason_cmd
     end
     return vim.lsp.rpc.start({ cmd, 'lsp-proxy' }, dispatchers)
   end,
@@ -46,7 +47,7 @@ return {
     -- manager lock file.
     local root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
     -- Give the root markers equal priority by wrapping them in a table
-    root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers } or root_markers
+    root_markers = vim.fn.has 'nvim-0.11.3' == 1 and { root_markers } or root_markers
     local project_root = vim.fs.root(bufnr, root_markers)
     if not project_root then
       return
