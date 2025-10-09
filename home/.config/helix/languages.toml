@@ -1,0 +1,2 @@
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
