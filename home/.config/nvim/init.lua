@@ -28,10 +28,10 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz') -- Keep cursor centered when moving
 vim.keymap.set('n', 'n', 'nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'N', 'Nzzzv') -- Keep cursor centered when moving
 vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
-vim.keymap.set('n', '<leader>w', ':w<CR>')
-vim.keymap.set('n', '<leader>x', ':wq<CR>')
-vim.keymap.set('n', '<leader>q', ':q<CR>')
-vim.keymap.set('n', '<leader>Q', ':qa<CR>')
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Write' })
+vim.keymap.set('n', '<leader>x', ':wq<CR>', { desc = 'Write & Quit' })
+vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>Q', ':qa<CR>', { desc = 'Quit All' })
 
 --:: Buffers ::--
 vim.api.nvim_create_user_command('BufferRevealInFinder', function()

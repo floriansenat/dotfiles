@@ -7,27 +7,28 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
-          'lua',
-          'php',
-          'go',
-          'tsx',
-          'typescript',
-          'javascript',
-          'json',
-          'html',
-          'css',
-          'vimdoc',
-          'vim',
-          'markdown',
-          'markdown_inline',
-        },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      }
+    opts = {
+      ensure_installed = {
+        'lua',
+        'php',
+        'go',
+        'tsx',
+        'typescript',
+        'javascript',
+        'json',
+        'html',
+        'css',
+        'vimdoc',
+        'vim',
+        'markdown',
+        'markdown_inline',
+      },
+      auto_install = true,
+      highlight = { enable = true, additional_vim_regex_highlighting = false },
+      indent = { enable = true },
+    },
+    config = function(_, opts)
+      require('nvim-treesitter.configs').setup(opts)
     end,
   },
 
@@ -155,18 +156,6 @@ return {
     'f-person/auto-dark-mode.nvim',
     opts = { update_interval = 1000 },
   },
-  {
-    'nvim-mini/mini.hipatterns',
-    version = '*',
-    config = function()
-      local hipatterns = require 'mini.hipatterns'
-      hipatterns.setup {
-        highlighters = {
-          hex_color = hipatterns.gen_highlighter.hex_color(),
-        },
-      }
-    end,
-  },
 
   --:: Navigation ::--
   {
@@ -195,8 +184,16 @@ return {
 
       telescope.setup {
         defaults = {
-          layout_strategy = 'bottom_pane',
-          path_display = { 'truncate' },
+          preview = { treesitter = false },
+          sorting_strategy = 'ascending',
+          path_display = { 'smart' },
+          borderchars = { '', '', '', '', '', '', '', '' },
+          layout_config = {
+            height = 100,
+            width = 400,
+            prompt_position = 'top',
+            preview_cutoff = 40,
+          },
           mappings = {
             n = {
               ['d'] = require('telescope.actions').delete_buffer,
@@ -205,11 +202,7 @@ return {
           },
         },
         pickers = {
-          buffers = { layout_strategy = 'center' },
-          oldfiles = { layout_strategy = 'center' },
-          help_tags = { layout_strategy = 'center' },
           find_files = {
-            layout_strategy = 'center',
             hidden = true,
             find_command = {
               'rg',
@@ -230,6 +223,16 @@ return {
             require('telescope.themes').get_cursor {
               prompt_title = false,
               layout_config = { width = 0.25 },
+              borderchars = {
+                '─',
+                '│',
+                '─',
+                '│',
+                '┌',
+                '┐',
+                '┘',
+                '└',
+              },
             },
           },
         },
@@ -238,8 +241,7 @@ return {
       telescope.load_extension 'ui-select'
     end,
     keys = {
-      { '<leader>/', ':Telescope find_files<CR>', desc = 'Search Files' },
-      { '<leader>.', ':Telescope resume<CR>', desc = 'Search Resume' },
+      { '<leader>sf', ':Telescope find_files<CR>', desc = 'Search Files' },
       { '<leader><leader>', ':Telescope buffers<CR>', desc = 'Buffers' },
       { '<leader>?', ':Telescope help_tags<CR>', desc = 'Search Help' },
       { '<leader>;', ':Telescope oldfiles<CR>', desc = 'Oldfiles' },
@@ -264,7 +266,8 @@ return {
       wk.add { { '<leader>b', group = 'Buffer' } }
       wk.add { { '<leader>d', group = 'Diagnostics' } }
       wk.add { { '<leader>l', group = 'Lsp' } }
-      wk.add { { '<leader>g', group = 'Git' } }
+      wk.add { { '<leader>h', group = 'Hunk' } }
+      wk.add { { '<leader>s', group = 'Search' } }
     end,
   },
 }
