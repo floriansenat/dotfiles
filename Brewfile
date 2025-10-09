@@ -1,6 +1,7 @@
 cask_args appdir: "~/Applications", require_sha: true
 
 # Tools
+brew "direnv"
 brew "stow"
 brew "bat"
 brew "tree"
@@ -24,12 +25,9 @@ brew "zsh-vi-mode"
 brew "go"
 brew "lua"
 brew "luarocks"
-brew "deno"
 
 # Apps
-cask "obsidian"
 cask "ollama"
-cask "msty"
 cask "appcleaner"
 cask "flux"
 cask "ghostty"
@@ -41,6 +39,6 @@ cask "orbstack"
 cask "raycast"
 
 # Browsers
-cask "orion"
 cask "google-chrome"
 cask "firefox"
+cask "zen"
