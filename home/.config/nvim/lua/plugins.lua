@@ -69,12 +69,15 @@ return {
       notify_on_error = false,
       formatters_by_ft = {
         lua = { 'stylua' },
+        json = { 'biome' },
+        jsonc = { 'biome' },
         javascript = { 'biome', 'biome-organize-imports' },
         javascriptreact = { 'biome', 'biome-organize-imports' },
         typescript = { 'biome', 'biome-organize-imports' },
         typescriptreact = { 'biome', 'biome-organize-imports' },
         go = { 'goimports', 'gofmt' },
         rust = { 'rustfmt' },
+        php = { 'php_cs_fixer' },
       },
       default_format_opts = {
         lsp_format = 'fallback',
@@ -184,7 +187,6 @@ return {
 
       telescope.setup {
         defaults = {
-          preview = { treesitter = false },
           sorting_strategy = 'ascending',
           path_display = { 'smart' },
           borderchars = { '', '', '', '', '', '', '', '' },
@@ -204,6 +206,8 @@ return {
         pickers = {
           find_files = {
             hidden = true,
+            results_title = false,
+            preview_title = false,
             find_command = {
               'rg',
               '--files',
@@ -216,6 +220,22 @@ return {
               '--glob=!**/yarn.lock',
               '--glob=!**/package-lock.json',
             },
+          },
+          live_grep = {
+            results_title = false,
+            preview_title = false,
+          },
+          buffers = {
+            results_title = false,
+            preview_title = false,
+          },
+          oldfiles = {
+            results_title = false,
+            preview_title = false,
+          },
+          help_tags = {
+            results_title = false,
+            preview_title = false,
           },
         },
         extensions = {

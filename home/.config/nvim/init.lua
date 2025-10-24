@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 
 vim.o.termguicolors = true
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.mouse = 'a'
 vim.o.number = true
 vim.o.relativenumber = true
@@ -85,7 +85,8 @@ vim.lsp.enable {
   'cssls',
   'biome',
   'eslint',
-  'docker_language_server',
+  'dockerls',
+  'docker_compose_language_service',
 }
 
 --:: Lazy Setup ::--
