@@ -1,5 +1,5 @@
 alias awslog="aws sso login"
-alias ll="ls -al"
+alias ll="eza -a -1"
 alias cl=clear
 alias rm="rm -i"
 alias cat="bat -p"
