@@ -5,4 +5,3 @@ source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # use this to enable fzf keybindings
 # see: https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#execute-extra-commands
 zvm_after_init_commands+=('source <(fzf --zsh)')
-

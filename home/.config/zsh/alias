@@ -8,6 +8,5 @@ alias n.="nvim ."
 alias python=python3
 alias pip=pip3
 alias cd=z
-alias hx=helix-local-lsp
 alias jup="jj git fetch && jj rebase -d main@origin"
 alias jsync="jup && jj git push"
