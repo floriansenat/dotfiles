@@ -1,0 +1,14 @@
+cask_args appdir: "~/Applications", require_sha: true
+
+cask "ollama"
+cask "appcleaner" 
+cask "flux" 
+cask "ghostty" 
+cask "ngrok" 
+cask "postman" 
+cask "spotify" 
+cask "discord" 
+cask "orbstack" 
+cask "raycast" 
+cask "google-chrome" 
+cask "zen" 
