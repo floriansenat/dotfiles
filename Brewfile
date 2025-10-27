@@ -1,5 +1,5 @@
-brew "stow" if OS.mac?
-brew "tree" if OS.mac?
+eval(File.read("Brewfile.darwin")) if OS.mac?
+
 brew "btop"
 brew "eza"
 brew "bat"
@@ -15,10 +15,11 @@ brew "starship"
 brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "zsh-vi-mode"
+brew "opencode"
 
 # Langs
 brew "go"
 brew "lua"
 brew "luarocks"
 
-eval(File.read("Brewfile.cask")) if OS.mac?
+cask "claude-code"

@@ -1,5 +1,8 @@
 cask_args appdir: "~/Applications", require_sha: true
 
+brew "stow"
+brew "tree"
+
 cask "appcleaner" 
 cask "flux-app" 
 cask "ghostty" 
