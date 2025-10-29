@@ -85,6 +85,7 @@ vim.lsp.enable {
   'cssls',
   'biome',
   'eslint',
+  'yamlls',
   'dockerls',
   'docker_compose_language_service',
 }
