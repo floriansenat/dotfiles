@@ -10,6 +10,7 @@ window-padding-x = 12
 window-padding-y = 12
 window-save-state = always
 auto-update = download
+shell-integration = zsh
 
 # Splits
 keybind = option+space>h=new_split:left
