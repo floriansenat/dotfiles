@@ -12,6 +12,7 @@ email = "florian.senat@yousign.com"
 default-command = "log"
 editor = "nvim"
 diff-formatter = ["difft", "--color=always", "$left", "$right"]
+diff-editor = ":builtin"
 
 [merge-tools.difft]
 diff-args = ["--color=always", "$left", "$right"]
