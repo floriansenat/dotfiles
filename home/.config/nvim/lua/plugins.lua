@@ -149,10 +149,16 @@ return {
   },
 
   --:: Theme ::--
+  -- {
+  --   'savq/melange-nvim',
+  --   config = function()
+  --     vim.cmd.colorscheme 'melange'
+  --   end,
+  -- },
   {
-    'savq/melange-nvim',
+    'datsfilipe/vesper.nvim',
     config = function()
-      vim.cmd.colorscheme 'melange'
+      vim.cmd.colorscheme 'vesper'
     end,
   },
   {
@@ -261,10 +267,10 @@ return {
       telescope.load_extension 'ui-select'
     end,
     keys = {
-      { '<leader>sf', ':Telescope find_files<CR>', desc = 'Search Files' },
+      { '<leader>sf', ':Telescope find_files<CR>', desc = 'Files' },
       { '<leader><leader>', ':Telescope buffers<CR>', desc = 'Buffers' },
-      { '<leader>?', ':Telescope help_tags<CR>', desc = 'Search Help' },
-      { '<leader>;', ':Telescope oldfiles<CR>', desc = 'Oldfiles' },
+      { '<leader>sh', ':Telescope help_tags<CR>', desc = 'Help' },
+      { '<leader>so', ':Telescope oldfiles<CR>', desc = 'Oldfiles' },
     },
   },
 
