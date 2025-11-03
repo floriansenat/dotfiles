@@ -14,6 +14,10 @@ editor = "nvim"
 diff-formatter = ["difft", "--color=always", "$left", "$right"]
 diff-editor = ":builtin"
 
+[colors]
+"diff removed" = "magenta"
+"diff modified" = "yellow"
+
 [merge-tools.difft]
 diff-args = ["--color=always", "$left", "$right"]
 
