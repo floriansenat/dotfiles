@@ -16,6 +16,7 @@ brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "zsh-vi-mode"
 brew "opencode"
+brew "gum"
 
 # Langs
 brew "go"
