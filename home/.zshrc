@@ -7,14 +7,16 @@ export FIXUID=$(id -u)
 export FIXGID=$(id -g)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
-export PNPM_HOME="$HOME/Library/pnpm"
-export BUN_INSTALL="$HOME/.bun"
+export PNPM_HOME=$HOME/Library/pnpm
+export BUN_INSTALL=$HOME/.bun
+export ZSH_CONFIG_PATH=$XDG_CONFIG_HOME/zsh
+
+source $ZSH_CONFIG_PATH/alias
 
 os="${OSTYPE%%[^a-z]*}"
-source ~/.config/zsh/$os.conf
+source $ZSH_CONFIG_PATH/$os.conf
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 
-. "$HOME/.grit/bin/env"
