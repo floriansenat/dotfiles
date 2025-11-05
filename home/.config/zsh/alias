@@ -8,5 +8,17 @@ alias n.="nvim ."
 alias python=python3
 alias pip=pip3
 alias cd=z
-alias jup="jj git fetch && jj rebase -d main@origin"
-alias jsync="jup && jj git push"
+alias g=git
+
+mkcd () {
+  \mkdir -p "$1"
+  cd "$1"
+}
+
+now () {
+  echo -n "$(date '+%Y-%m-%d')"
+}
+
+jsave () {
+  ~/.config/jj/save.sh "$@"
+}
