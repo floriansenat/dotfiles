@@ -12,11 +12,11 @@ export BUN_INSTALL=$HOME/.bun
 export ZSH_CONFIG_PATH=$XDG_CONFIG_HOME/zsh
 
 source $ZSH_CONFIG_PATH/alias
+source $HOME/.grit/bin/env
 
 os="${OSTYPE%%[^a-z]*}"
 source $ZSH_CONFIG_PATH/$os.conf
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
 
