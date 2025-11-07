@@ -21,3 +21,9 @@ diff-editor = ":builtin"
 [merge-tools.difft]
 diff-args = ["--color=always", "$left", "$right"]
 
+[aliases]
+gp = ["git", "push"]
+gf = ["git", "fetch"]
+nm = ["new", "main@origin"]
+bm- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+
