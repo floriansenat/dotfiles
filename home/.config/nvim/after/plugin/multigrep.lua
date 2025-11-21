@@ -27,7 +27,7 @@ local search_multigrep = function(opts)
 
       return vim.tbl_flatten {
         args,
-        { '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
+        { '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--hidden' },
       }
     end,
     entry_maker = make_entry.gen_from_vimgrep(opts),
@@ -47,3 +47,4 @@ local search_multigrep = function(opts)
 end
 
 vim.keymap.set('n', '<leader>sg', search_multigrep, { desc = 'Search Grep' })
+
