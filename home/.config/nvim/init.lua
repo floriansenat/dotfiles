@@ -76,6 +76,7 @@ vim.lsp.enable {
   'astro',
   'lua_ls',
   'gopls',
+  'zls',
   'phpactor',
   'vtsls',
   'jq-lsp',
