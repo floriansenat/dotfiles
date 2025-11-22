@@ -17,7 +17,12 @@ now () {
   echo -n "$(date '+%Y-%m-%d')"
 }
 
-jsave () {
-  ~/.config/jj/save.sh "$@"
+jj () {
+  if [ "$1" = "switch" ]; then
+    local bookmark=$(\command jj bookmark list --all | grep -v '^\s*@' | sed 's/:.*//' | gum choose --height 10)
+    [ -n "$bookmark" ] && \command jj bookmark set "$bookmark"
+  else
+    \command jj "$@"
+  fi
 }
 
