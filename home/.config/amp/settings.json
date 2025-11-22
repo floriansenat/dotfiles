@@ -1,0 +1,15 @@
+{
+	"amp.notifications.enabled": true,
+	"amp.notifications.system.enabled": true,
+	"amp.updates.mode": "auto",
+	"amp.mcpServers": {
+		"playwright": {
+			"command": "npx",
+			"args": ["@playwright/mcp@latest"]
+		},
+		"context7": {
+			"command": "npx",
+			"args": ["-y", "@upstash/context7-mcp"]
+		}
+	}
+}
