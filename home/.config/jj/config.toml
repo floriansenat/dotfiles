@@ -25,5 +25,5 @@ diff-args = ["--color=always", "$left", "$right"]
 gp = ["git", "push"]
 gf = ["git", "fetch"]
 nm = ["new", "main@origin"]
-bm- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+bm- = ["bookmark", "move", "-f", "heads(::@ & bookmarks())", "-t", "@-", "-B"]
 
