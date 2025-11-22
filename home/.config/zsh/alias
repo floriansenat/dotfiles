@@ -19,8 +19,12 @@ now () {
 
 jj () {
   if [ "$1" = "switch" ]; then
-    local bookmark=$(\command jj bookmark list --all | grep -v '^\s*@' | sed 's/:.*//' | gum choose --height 10)
-    [ -n "$bookmark" ] && \command jj bookmark set "$bookmark"
+    local bookmark=$(\command jj bookmark list | sed 's/:.*//' | gum filter)
+    [ -n "$bookmark" ] && \command jj bookmark edit "$bookmark"
+  elif [ "$1" = "bring" ]; then
+    local local_bookmarks=$(\command jj bookmark list | sed 's/:.*//')
+    local bookmark=$(\command jj bookmark list --all | sed 's/:.*//' | grep -E -v "$(echo "$local_bookmarks" | paste -sd '|' -)" | gum filter)
+    [ -n "$bookmark" ] && \command jj bookmark track "$bookmark" && \command jj edit "$bookmark"
   else
     \command jj "$@"
   fi
