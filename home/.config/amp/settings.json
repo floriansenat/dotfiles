@@ -2,6 +2,7 @@
 	"amp.notifications.enabled": true,
 	"amp.notifications.system.enabled": true,
 	"amp.updates.mode": "auto",
+	"amp.editor.command": "nvim",
 	"amp.mcpServers": {
 		"playwright": {
 			"command": "npx",
