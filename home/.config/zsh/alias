@@ -18,15 +18,21 @@ now () {
 }
 
 jj () {
-  if [ "$1" = "switch" ]; then
+  if [ "$1" = "sw" ]; then
     local bookmark=$(\command jj bookmark list | sed 's/:.*//' | gum filter)
     [ -n "$bookmark" ] && \command jj new "$bookmark"
   elif [ "$1" = "bring" ]; then
     local local_bookmarks=$(\command jj bookmark list | sed 's/:.*//')
     local bookmark=$(\command jj bookmark list --all | sed 's/:.*//' | grep -E -v "$(echo "$local_bookmarks" | paste -sd '|' -)" | gum filter)
     [ -n "$bookmark" ] && \command jj bookmark track "$bookmark" && \command jj edit "$bookmark"
+  elif [ "$1" = "rm" ]; then
+    local bookmark=$(\command jj bookmark list | sed 's/:.*//' | gum filter)
+    if [ -n "$bookmark" ]; then
+      local revs=$(\command jj log -r "bookmarks(\"$bookmark\")" --no-graph -T "change_id\n" | paste -sd "|" -)
+      \command jj bookmark forget --include-remotes "$bookmark"
+      [ -n "$revs" ] && \command jj abandon -r "$revs"
+    fi
   else
     \command jj "$@"
   fi
 }
-
