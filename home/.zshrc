@@ -8,7 +8,6 @@ export FIXGID=$(id -g)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export PNPM_HOME=$HOME/Library/pnpm
-export BUN_INSTALL=$HOME/.bun
 export ZSH_CONFIG_PATH=$XDG_CONFIG_HOME/zsh
 
 source $ZSH_CONFIG_PATH/alias
