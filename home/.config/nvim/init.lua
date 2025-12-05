@@ -70,8 +70,10 @@ vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error
 vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
 
 --:: LSP ::--
-vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = 'Reattach lsp' })
-vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = 'Check lsp health' })
+vim.keymap.set('n', '<leader>lr', ':e<CR>', { desc = 'Reattach' })
+vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = 'Check health' })
+vim.keymap.set('n', '<leader>li', ':LspInfo<CR>', { desc = 'Info' })
+vim.keymap.set('n', '<leader>ll', ':LspLog<CR>', { desc = 'Log' })
 vim.lsp.enable {
   'astro',
   'lua_ls',
