@@ -9,9 +9,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export PNPM_HOME=$HOME/Library/pnpm
 export ZSH_CONFIG_PATH=$XDG_CONFIG_HOME/zsh
+export GPG_TTY=$(tty)
 
 source $ZSH_CONFIG_PATH/alias
-source $HOME/.grit/bin/env
 
 os="${OSTYPE%%[^a-z]*}"
 source $ZSH_CONFIG_PATH/$os.conf

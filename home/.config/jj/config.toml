@@ -1,12 +1,17 @@
 [user]
-name = 'floriansenat'
-email = 'github.conductor645@passmail.net'
+name = "floriansenat"
+email = "github.conductor645@passmail.net"
 
 [[--scope]]
 --when.repositories = ["~/work"]
+
 [--scope.user]
-name = 'Florian Sénat'
+name = "Florian Sénat"
 email = "florian.senat@yousign.com"
+
+[--scope.signing]
+behavior = "own"
+backend = "gpg"
 
 [ui]
 default-command = "log"
