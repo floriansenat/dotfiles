@@ -2,16 +2,13 @@
 name = "floriansenat"
 email = "github.conductor645@passmail.net"
 
-[[--scope]]
---when.repositories = ["~/work"]
-
-[--scope.user]
-name = "Florian Sénat"
-email = "florian.senat@yousign.com"
-
-[--scope.signing]
+[signing]
 behavior = "own"
-backend = "gpg"
+backend = "ssh"
+key = "~/.ssh/github.pub"
+
+# [git]
+# sign-on-push = true
 
 [ui]
 default-command = "log"
@@ -32,4 +29,16 @@ gf = ["git", "fetch"]
 nm = ["new", "main@origin"]
 "bm@-" = ["bookmark", "move", "-f", "heads(::@ & bookmarks())", "-t", "@-", "-B"]
 "st@" = ["log", "-r", "main@origin::@"]
+
+[[--scope]]
+--when.repositories = ["~/work"]
+
+[--scope.user]
+name = "Florian Sénat"
+email = "florian.senat@yousign.com"
+
+[--scope.signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/yousign.pub"
 
