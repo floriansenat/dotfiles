@@ -4,16 +4,17 @@
 	"amp.updates.mode": "auto",
 	"amp.editor.command": "nvim",
 	"amp.mcpServers": {
-		"playwright": {
+		"linear": {
 			"command": "npx",
-			"args": ["@playwright/mcp@latest"]
+			"args": [
+				"-y",
+				"mcp-remote",
+				"https://mcp.linear.app/mcp"
+			]
+		},
+		"playwriter": {
+			"command": "npx",
+			"args": ["-y", "playwriter@latest"]
 		}
-	},
-	"amp.mcpTrustedServers": [
-		{
-			"serverName": "postgres",
-			"specHash": "f311b1fe67b2ff7fe8da79d6645f8a5aecc6484106d8e8773c3ada395352d222",
-			"allow": true
-		}
-	]
+	}
 }
