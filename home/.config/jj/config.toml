@@ -5,7 +5,7 @@ email = "github.conductor645@passmail.net"
 [signing]
 behavior = "own"
 backend = "ssh"
-key = "~/.ssh/github.pub"
+key = "~/.ssh/github_sign.pub"
 
 # [git]
 # sign-on-push = true
@@ -40,5 +40,5 @@ email = "florian.senat@yousign.com"
 [--scope.signing]
 behavior = "own"
 backend = "ssh"
-key = "~/.ssh/yousign.pub"
+key = "~/.ssh/gitlab_sign.pub"
 
