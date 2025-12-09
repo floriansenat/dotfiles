@@ -7,9 +7,6 @@ behavior = "own"
 backend = "ssh"
 key = "~/.ssh/github_sign.pub"
 
-# [git]
-# sign-on-push = true
-
 [ui]
 default-command = "log"
 editor = "nvim"
