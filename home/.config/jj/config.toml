@@ -37,5 +37,5 @@ email = "florian.senat@yousign.com"
 [--scope.signing]
 behavior = "own"
 backend = "ssh"
-key = "~/.ssh/gitlab_sign.pub"
+key = "~/.ssh/yousign.pub"
 
