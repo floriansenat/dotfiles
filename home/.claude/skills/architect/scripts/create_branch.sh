@@ -9,18 +9,20 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+if [ -z "$VCS" ]; then
+    echo "Error: VCS variable not set" >&2
+    exit 2
+fi
+
 LTID="$1"
 
-# Detect VCS (inline detection to avoid external dependency)
-if [ -d ".jj" ]; then
-    # Create Jujutsu bookmark
+if [ "$VCS" = "jj" ]; then
     jj bookmark create "$LTID"
     echo "Created jj bookmark: $LTID"
-elif [ -d ".git" ]; then
-    # Create Git branch
+elif [ "$VCS" = "git" ]; then
     git checkout -b "$LTID"
     echo "Created git branch: $LTID"
 else
-    echo "Error: No VCS found (neither .jj nor .git directory)" >&2
-    exit 2
+    echo "Error: Invalid VCS: $VCS" >&2
+    exit 3
 fi

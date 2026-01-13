@@ -10,17 +10,31 @@ model: claude-haiku-4-5
 
 ## Workflow
 
-### 1. Create Branch/Bookmark
+### 1. Detect VCS
 
-Run `scripts/create_branch.sh` with LTID:
+Detect which VCS is used (`jj` or `git`) and save for later use:
+
+```bash
+if command -v jj &> /dev/null && [ -d ".jj" ]; then
+  VCS="jj"
+else
+  VCS="git"
+fi
+```
+
+Use `$VCS` throughout workflow instead of detecting each time.
+
+### 2. Create Branch/Bookmark
+
+Run `scripts/create_branch.sh` with LTID using detected VCS:
 
 ```bash
 ./scripts/create_branch.sh <LTID>
 ```
 
-Handles both jj and git automatically.
+Script uses `$VCS` variable to select jj or git commands.
 
-### 2. Fetch Linear Ticket
+### 3. Fetch Linear Ticket
 
 Use Linear MCP to fetch ticket content by LTID. Extract:
 
@@ -29,7 +43,7 @@ Use Linear MCP to fetch ticket content by LTID. Extract:
 - Dependencies/blockers
 - Context/background
 
-### 3. Explore Codebase
+### 4. Explore Codebase
 
 See [exploration-guide.md](references/exploration-guide.md) for detailed approach.
 
@@ -42,14 +56,14 @@ See [exploration-guide.md](references/exploration-guide.md) for detailed approac
 
 Match exploration depth to ticket complexity.
 
-### 4. Create Plan
+### 5. Create Plan
 
 Write concise plan with:
 
 1. **Packages** - List impacted packages (e.g., @myapp/feature, @myapp/backend)
 2. **Summary** - What's being built (1-2 sentences)
 3. **Approach** - Implementation strategy
-4. **Steps** - Numbered action items
+4. **Steps** - Numbered action items (each step can be a section in the plan or an item in the todo list)
 5. **Testing** - Verification approach
 6. **Unresolved Questions** - List anything unclear/undecided
 
