@@ -8,6 +8,7 @@ alias n.="nvim ."
 alias python=python3
 alias pip=pip3
 alias pkmd=packmind-cli
+alias cc=claude
 
 mkcd () {
   \mkdir -p "$1"
