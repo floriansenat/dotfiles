@@ -152,12 +152,12 @@ return {
   --:: Theme ::--
   {
     'f-person/auto-dark-mode.nvim',
-    dependencies = { { 'savq/melange-nvim' }, { 'datsfilipe/vesper.nvim' } },
+    dependencies = { { 'savq/melange-nvim' } },
     opts = {
       update_interval = 1000,
       set_dark_mode = function()
         vim.api.nvim_set_option_value('background', 'dark', {})
-        vim.cmd.colorscheme 'vesper'
+        vim.cmd.colorscheme 'melange'
       end,
       set_light_mode = function()
         vim.api.nvim_set_option_value('background', 'light', {})
