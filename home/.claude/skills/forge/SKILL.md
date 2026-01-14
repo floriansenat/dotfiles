@@ -45,16 +45,16 @@ Commit message is the step title/description from the plan.
 
 ## Aegis Mode (TDD)
 
-When user requests "Use Aegis" or mentions TDD:
+When user requests "Use Aegis" or mentions TDD, use the Task tool with `subagent_type: "aegis"` for test-first development:
 
 1. **Before each step implementation:**
-   - Create tests based on step requirements
+   - Spawn Aegis agent to write tests for step requirements
    - Run tests (expect failures)
    - Implement step to make tests pass
    - Run linter and full test suite
    - Proceed when all validations pass
 
-Tests are created per-step, not all upfront.
+Aegis handles: Vitest, Testing Library, MSW mocks. Tests are created per-step, not upfront.
 
 ## Validation Rules
 

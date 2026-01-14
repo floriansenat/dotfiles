@@ -69,7 +69,7 @@ Write concise plan with:
 
 Format plan per user's CLAUDE.md preferences if available.
 
-Create a `plan.md` at the root of the repository.
+Create a `requirements.md` at the root of the repository.
 
 ## Error Handling
 
