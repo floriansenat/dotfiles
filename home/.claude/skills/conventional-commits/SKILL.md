@@ -2,6 +2,8 @@
 name: conventional-commits
 description: "Validate & guide commit messages following conventional commits specification with custom type definitions and Linear ID support. Use when crafting commit messages to ensure they follow the correct format with type, optional scope, and title. Includes validation of commit types, scope format, and message structure."
 user-invocable: false
+context: fork
+model: haiku
 ---
 
 # Conventional Commits

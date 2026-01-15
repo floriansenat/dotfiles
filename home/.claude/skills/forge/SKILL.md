@@ -1,116 +1,61 @@
 ---
 name: forge
-description: Execute implementation plans with integrated linting and testing validation at each step. Use when user explicitly requests plan implementation (e.g., "/implement-plan", "implement this plan", "follow plan.md") and provides a plan.md file path. Handles step-by-step execution with automatic pnpm package detection, runs linters (check:error) and tests after each step, and supports TDD mode via Aegis for test-first development.
-context: fork
-model: claude-opus-4-5
+description: Implementation orchestration skill for feature development. Use when user requests to implement features, bug fixes, or code changes that require planning, VCS management, linting, and testing. Triggers on implementation requests like "implement feature X", "build Y", "add functionality Z", "forge this", or when structured implementation workflow is needed. Supports optional TDD with Aegis and code review with Warden.
+model: opus
 ---
 
 # Forge
 
-Execute implementation plans with automated validation workflow: implement step → lint → test → commit → next step.
+Implementation orchestrator that manages the full development workflow from planning to testing.
 
-## Core Workflow
+## Workflow
 
-1. **Load plan** from user-provided file path
-2. **Detect VCS** - Identify if project uses `jj` or `git`
-3. **Parse steps** - If plan has numbered/bulleted steps, execute sequentially. If no explicit steps, treat entire plan as single step
-4. **For each step:**
-   - Implement changes
-   - Run linter: `pnpm --filter "<package>" check:error`
-   - Run tests: `pnpm --filter "<package>" test` (only for changed files)
-   - Fix issues if validation fails (max 3 attempts, then ask user)
-   - Ask user to review changes and confirm to continue to next step
-   - Create commit with step description using detected VCS
-   - Move to next step when user approves
+Execute steps sequentially:
 
-## Package Detection
+### 1. Detect VCS
 
-Target pnpm package is explicitly provided in plan metadata or content.
-If not provided, use `scripts/detect_package.py <file_path>` to find package name from any file in the package.
+Run `scripts/detect_vcs.py` to determine if using jj or git. Store result in context for subsequent steps.
 
-## VCS Detection
+### 2. Create Branch/Bookmark
 
-Detect version control system at project root:
-- If `.jj` directory exists: use `jj` (Jujutsu)
-- Else if `.git` directory exists: use `git`
-- Else: error, no VCS found
+Generate descriptive branch name from task. Use `scripts/create_branch.sh <vcs_type> <branch_name>`.
 
-### Commit Creation
+### 3. Create Plan
 
-After user approves step changes, create commit with appropriate VCS:
-- **Jujutsu**: `jj commit -m "<step description>"`
-- **Git**: `git add . && git commit -m "<step description>"`
+Invoke Architect skill to create implementation plan. Wait for plan approval.
 
-Commit message is the step title/description from the plan.
+### 4. Optional: TDD with Aegis
 
-## Aegis Mode (TDD)
+If user mentions TDD, tests-first, or explicitly requests Aegis, launch Aegis subagent with the approved plan from Architect.
 
-When user requests "Use Aegis" or mentions TDD, use the Task tool with `subagent_type: "aegis"` for test-first development:
+### 5. Implement
 
-1. **Before each step implementation:**
-   - Spawn Aegis agent to write tests for step requirements
-   - Run tests (expect failures)
-   - Implement step to make tests pass
-   - Run linter and full test suite
-   - Proceed when all validations pass
+Execute plan step by step. Use TodoWrite to track progress.
 
-Aegis handles: Vitest, Testing Library, MSW mocks. Tests are created per-step, not upfront.
+### 6. Run Linter
 
-## Validation Rules
+Find the closest `pnpm-workspace.yaml` file.
+Move to the folder containing the file.
+Execute inside this folder: `pnpm --filter "<project>" check:error`
 
-### Linting
-- Run: `pnpm --filter "<package>" check:error`
-- On errors: iterate and fix, max 3 attempts
-- After 3 failures: ask user to continue or skip
+Where `<project>` is defined in the Architect plan. Fix any errors found.
 
-### Testing
-- Run: `pnpm --filter "<package>" test` with file filter for changed files
-- If no tests exist for changed files: skip test validation (acceptable)
-- On failures: iterate and fix, max 3 attempts
-- After 3 failures: ask user to continue or skip
+### 7. Run Tests
 
-### Changed File Detection
-Track files modified during step implementation to determine:
-- Which package to target (if not already determined)
-- Which test files to run (tests for changed source files)
+Find the closest `pnpm-workspace.yaml` file.
+Move to the folder containing the file.
+Execute inside this folder: `pnpm --filter "<project>" test`
 
-## Example Usage
+Where `<project>` is defined in the Architect plan. Run only on modified files when possible using test runner's changed file detection.
 
-```
-User: /implement-plan path/to/plan.md
-```
+### 8. Optional: Code Review with Warden
 
-Plan with steps:
-```markdown
-# Feature: Add User Dashboard
+If user mentions code review or explicitly requests Warden, launch Warden subagent to review changes.
 
-Package: @myapp/frontend
+## Notes
 
-## Steps
-1. Create Dashboard component
-2. Add routing
-3. Integrate with API
-```
-
-Execution:
-1. Detect VCS (e.g., `.git` found → use git)
-2. Implement Dashboard component
-3. Run `pnpm --filter "@myapp/frontend" check:error`
-4. Run `pnpm --filter "@myapp/frontend" test` (filter to Dashboard tests)
-5. Fix any issues (max 3 attempts)
-6. Ask user to review changes and approve
-7. Create commit: `git add . && git commit -m "Create Dashboard component"`
-8. Move to step 2 (routing)...
-
-## Edge Cases
-
-- **No explicit steps**: Treat plan as single step, validate once at end
-- **No tests for changed files**: Skip test validation, continue with linter only
-- **Multiple packages affected**: Ask user which package to target, or run validations for each
-- **Validation failures after 3 attempts**: Prompt user: "Linter/tests failing after 3 attempts. Continue fixing (c), skip step (s), or abort (a)?"
-- **No VCS found**: Error and abort plan execution
-
-## Scripts
-
-- `scripts/detect_package.py <file_path>` - Find pnpm package name from file path
-- VCS detection is inline: check for `.jj` directory, then `.git` directory
+- VCS detection happens once per invocation
+- Branch/bookmark name should be concise, kebab-case, descriptive
+- Always wait for Architect plan approval before implementation
+- Linting must pass before tests
+- Only invoke Aegis/Warden when explicitly requested or clearly implied by user intent

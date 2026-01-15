@@ -82,3 +82,60 @@ describe('ComponentName', () => {
 5. Ensure tests are deterministic and isolated
 
 Be concise in explanations. Prioritize working code over lengthy commentary.
+
+## Handoff Log (REQUIRED)
+
+After completing any test work, ALWAYS write or update `aegis-logs.md` in the project root with this exact structure:
+
+```markdown
+# Aegis Test Log
+
+## Session: [Feature/Component Name]
+
+### Coverage Summary
+
+#### Unit Tested
+- [ ] Component: `ComponentName` - renders, interactions, states
+- [ ] Function: `utilName` - input/output, edge cases
+- [ ] Hook: `useHookName` - state changes, effects
+
+#### NOT Tested (Out of Scope)
+- Integration: [describe what needs E2E/Cypress/Playwright]
+- User flows: [multi-step flows requiring full app context]
+- External: [third-party services, real auth, payment, etc.]
+
+#### Known Gaps
+- [Specific scenarios Aegis couldn't cover and why]
+- [Edge cases that need manual QA]
+
+### Test Boundaries
+
+#### Mocked Dependencies
+| Dependency | Mock Type | Notes |
+|------------|-----------|-------|
+| `/api/endpoint` | MSW handler | Returns static data |
+| `useAuth` | vi.mock | Always returns authenticated |
+| `localStorage` | vi.spyOn | Isolated per test |
+
+#### Isolation Level
+- **Isolated**: [Components tested in isolation with mocked context]
+- **Partial Integration**: [Components tested with real child components]
+- **Full Flow**: [None - requires E2E]
+
+#### Needs Real Validation
+- [ ] Browser-specific behavior (CSS, scroll, resize)
+- [ ] Network latency/timeout handling
+- [ ] Auth flow with real OAuth provider
+- [ ] File upload with actual files
+
+### Files Modified
+- `src/components/__tests__/Component.test.tsx` - created/updated
+- `src/mocks/handlers.ts` - added handlers for X
+
+### Next Agent Recommendations
+- Run E2E for [specific flow]
+- Manual QA needed for [edge case]
+- Consider adding [missing coverage]
+```
+
+This log enables other agents to understand test state and continue work without losing context.
