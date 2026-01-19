@@ -1,12 +1,12 @@
 ---
 name: catalyst
-description: Business-to-ticket workflow that transforms user input (text, links, documents, images) into validated specifications and Linear tickets. Use when converting feature requests, business needs, or project initiatives into tracked work items. Supports parallel business/technical analysis, AI-optimized specifications, human validation, and Linear integration.
+description: Specification workflow that transforms user input (text, links, documents, images) into validated specifications, ready to be used. Use when converting feature requests, business needs, or project initiatives into tracked work items. Supports parallel business/technical analysis, AI-optimized specifications, and human validation.
 model: haiku
 ---
 
 # Catalyst
 
-Transform ideas into tracked work. Catalyst takes raw input—text, links, documents, images—and converts it into a validated specification and Linear ticket.
+Transform ideas into tracked work. Catalyst takes raw input—text, links, documents, images—and converts it into a validated specification.
 
 ## Phase 1: Parallel Analysis
 
@@ -40,49 +40,23 @@ Transform ideas into tracked work. Catalyst takes raw input—text, links, docum
    - Update specification based on feedback
    - Continue until user confirms: "This is complete and accurate"
 
-3. Final specification must include:
-   - Clear problem statement
-   - Explicit success criteria
-   - Technical and business requirements
-   - Constraints and assumptions
-   - Any open questions resolved
+3. Final specification must be clear, complete, and unambiguous:
+     - Clear problem statement
+     - Explicit success criteria
+     - Technical and business requirements
+     - Constraints and assumptions
+     - Any open questions resolved
 
 ---
 
-## Phase 3: Linear Ticket Creation
+## Phase 3: Confirmation
 
-**Goal:** Create Linear ticket in correct squad with specification as content
-
-**Prerequisites:** User has validated specification from Phase 2
+**Goal:** Confirm specification ready for implementation
 
 **Actions:**
-1. If user hasn't specified squad:
-   - Ask: "Which squad should own this ticket?"
-   - Wait for user response
-
-2. Use Linear MCP to create ticket:
-   - Title: Concise summary from specification
-   - Description: Full validated specification
-   - Assign to appropriate squad
-   - Set status to "Backlog"
-
-3. Capture ticket response: ticket ID and URL
-
----
-
-## Phase 4: Confirmation or Error Handling
-
-**Goal:** Confirm success or explain failure
-
-**Actions:**
-1. **If ticket created successfully:**
-   - Display ticket ID and URL to user
-   - Summary: "Ticket created. Team can now begin work."
-
-2. **If ticket creation failed:**
-   - Explain the error clearly
-   - Suggest next steps (retry, check credentials, etc.)
-   - Stop workflow
+1. Present final specification to user
+2. User confirms: "This is complete and accurate"
+3. Specification ready for handoff
 
 ---
 
@@ -92,4 +66,3 @@ Transform ideas into tracked work. Catalyst takes raw input—text, links, docum
 - **Iterative validation**: Ask questions during spec review, don't wait until the end
 - **AI-optimized specs**: Clear structure, explicit assumptions, actionable requirements
 - **Clear error handling**: Fail fast with helpful messages
-- **Linear MCP authentication**: Uses pre-authenticated Linear MCP connection

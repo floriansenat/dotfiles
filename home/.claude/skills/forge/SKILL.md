@@ -16,6 +16,7 @@ Follow a systematic approach: understand the codebase deeply, identify and ask a
 - Read files identified by agents: When launching agents, ask them to return lists of the most important files to read. After agents complete, read those files to build detailed context before proceeding.
 - Simple and elegant: Prioritize readable, maintainable, architecturally sound code
 - Use TodoWrite: Track all progress throughout
+- Always use jj: Use jj for all version control operations
 
 
 ## Phase 1: Prepare local environment
@@ -23,22 +24,8 @@ Follow a systematic approach: understand the codebase deeply, identify and ask a
 **Goal:** VCS is perfectly set before implementation
 
 **Actions:**
-1. Run `scripts/detect_vcs.py` to determine if using jj or git. Store result in context for subsequent steps.
-2. Generate branch name from Linear Id provided by user. Use `scripts/create_branch.sh <vcs_type> <branch_name>`.
-
----
-
-## Phase 2: Discovery
-
-**Goal:** Understand what needs to be built
-
-**Actions:**
-1. Create todo list with all phases
-2. If feature unclear, ask user for:
-   - What problem are they solving?
-   - What should the feature do?
-   - Any constraints or requirements?
-3. Summarize understanding and confirm with user
+1. Generate branch name from Linear Id provided by user. Use `scripts/create_branch.sh <branch_name>`.
+2. Confirm jj is ready and current bookmark created.
 
 ---
 
@@ -84,7 +71,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Goal**: Design multiple implementation approaches with different trade-offs
 
 **Actions**:
-1. Launch 2-3 code-architect agents in parallel with different focuses: minimal changes (smallest change, maximum reuse), clean architecture (maintainability, elegant abstractions), or pragmatic balance (speed + quality)
+1. Launch 2-3 Architect subagents in parallel with different focuses: minimal changes (smallest change, maximum reuse), clean architecture (maintainability, elegant abstractions), or pragmatic balance (speed + quality)
 2. Review all approaches and form your opinion on which fits best for this specific task (consider: small fix vs large feature, urgency, complexity, team context)
 3. Present to user: brief summary of each approach, trade-offs comparison, **your recommendation with reasoning**, concrete implementation differences
 4. **Ask user which approach they prefer**
@@ -98,7 +85,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 **When to use**: User explicitly asks for TDD or to use Aegis agent
 
 **Actions**:
-1. Launch Aegis agent with:
+1. Launch Aegis subagent with:
    - Feature requirements from discovery
    - Architecture design from Phase 4
    - Key files and patterns from exploration
@@ -129,10 +116,12 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Goal**: Ensure code is simple, DRY, elegant, easy to read, and functionally correct
 
 **Actions**:
-1. Launch 3 Warden agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions
+1. Launch 3 Warden subagents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
 4. Address issues based on user decision
+
+---
 
 ## Phase 8: Summary
 
@@ -146,4 +135,3 @@ If the user says "whatever you think is best", provide your recommendation and g
    - Files modified
    - Suggested next steps
 
----
