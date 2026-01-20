@@ -1,4 +1,5 @@
 {
-	"enabledPlugins": {},
-	"alwaysThinkingEnabled": true
+  "enabledPlugins": {},
+  "alwaysThinkingEnabled": true,
+  "model": "opus"
 }
