@@ -23,7 +23,7 @@ diff-args = ["--color=always", "$left", "$right"]
 [aliases]
 gp = ["git", "push"]
 gf = ["git", "fetch"]
-nm = ["new", "main@origin"]
+fresh = ["new", "trunk()"]
 "bm@-" = ["bookmark", "move", "-f", "heads(::@ & bookmarks())", "-t", "@-", "-B"]
 "st@" = ["log", "-r", "main@origin::@"]
 
