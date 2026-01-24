@@ -2,19 +2,5 @@
 	"amp.notifications.enabled": true,
 	"amp.notifications.system.enabled": true,
 	"amp.updates.mode": "auto",
-	"amp.editor.command": "nvim",
-	"amp.mcpServers": {
-		"linear": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote",
-				"https://mcp.linear.app/mcp"
-			]
-		},
-		"playwriter": {
-			"command": "npx",
-			"args": ["-y", "playwriter@latest"]
-		}
-	}
+	"amp.editor.command": "nvim"
 }
