@@ -2,7 +2,7 @@
 
 ## Git
 
-- Never use `git`, use `jj` instead.
+- NEVER use `git`, use `jj` instead.
 
 ## Plan Mode
 
@@ -32,5 +32,3 @@ Use built-in Grep/Glob for plain text/string searches and file lookups.
 - SELECTING from multiple results → pipe to `fzf`
 - JSON → `jq`
 - YAML/XML → `yq`
-
-When in ~/work/v3, load @./AGENTS-WORK.md file
