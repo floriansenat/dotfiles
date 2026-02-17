@@ -180,100 +180,48 @@ return {
     },
   },
   {
-    'nvim-telescope/telescope.nvim',
-    lazy = true,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'nvim-telescope/telescope-ui-select.nvim',
-      { 'nvim-tree/nvim-web-devicons', opts = {} },
-    },
-    config = function()
-      local telescope = require 'telescope'
-
-      telescope.setup {
-        defaults = {
-          sorting_strategy = 'ascending',
-          path_display = { 'smart' },
-          borderchars = { '', '', '', '', '', '', '', '' },
-          layout_config = {
-            height = 100,
-            width = 400,
-            prompt_position = 'top',
-            preview_cutoff = 40,
-          },
-          mappings = {
-            n = {
-              ['d'] = require('telescope.actions').delete_buffer,
-              ['q'] = require('telescope.actions').close,
-            },
-          },
-        },
-        pickers = {
-          find_files = {
-            hidden = true,
-            results_title = false,
-            preview_title = false,
-            find_command = {
-              'rg',
-              '--files',
-              '--hidden',
-              '--glob=!**/.git/*',
-              '--glob=!**/.idea/*',
-              '--glob=!**/.vscode/*',
-              '--glob=!**/build/*',
-              '--glob=!**/dist/*',
-              '--glob=!**/yarn.lock',
-              '--glob=!**/package-lock.json',
-            },
-          },
-          live_grep = {
-            results_title = false,
-            preview_title = false,
-          },
-          buffers = {
-            results_title = false,
-            preview_title = false,
-          },
-          oldfiles = {
-            results_title = false,
-            preview_title = false,
-          },
-          help_tags = {
-            results_title = false,
-            preview_title = false,
-          },
-        },
-        extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_cursor {
-              prompt_title = false,
-              layout_config = { width = 0.25 },
-              borderchars = {
-                '─',
-                '│',
-                '─',
-                '│',
-                '┌',
-                '┐',
-                '┘',
-                '└',
-              },
-            },
-          },
-        },
-      }
-      telescope.load_extension 'fzf'
-      telescope.load_extension 'ui-select'
+    'dmtrKovalenko/fff.nvim',
+    build = function()
+      require('fff.download').download_or_build_binary()
     end,
+    opts = {
+      title = 'Search',
+      layout = {
+        height = 1,
+        width = 1,
+      },
+      debug = {
+        enabled = true, -- we expect your collaboration at least during the beta
+        show_scores = true, -- to help us optimize the scoring system, feel free to share your scores!
+      },
+    },
+    -- No need to lazy-load with lazy.nvim.
+    -- This plugin initializes itself lazily.
+    lazy = false,
     keys = {
-      { '<leader>sf', ':Telescope find_files<CR>', desc = 'Files' },
-      { '<leader><leader>', ':Telescope buffers<CR>', desc = 'Buffers' },
-      { '<leader>sh', ':Telescope help_tags<CR>', desc = 'Help' },
-      { '<leader>so', ':Telescope oldfiles<CR>', desc = 'Oldfiles' },
+      {
+        '<leader>sf',
+        function()
+          require('fff').find_files()
+        end,
+        desc = '[F]iles',
+      },
+      {
+        '<leader>sg',
+        function()
+          require('fff').live_grep()
+        end,
+        desc = '[G]rep',
+      },
+      {
+        '<leader>ss',
+        function()
+          require('fff').scan_files()
+        end,
+        desc = '[S]can',
+      },
     },
   },
-
   --:: Whichkey ::--
   {
     'folke/which-key.nvim',
@@ -295,13 +243,5 @@ return {
       wk.add { { '<leader>h', group = 'Hunk' } }
       wk.add { { '<leader>s', group = 'Search' } }
     end,
-  },
-
-  --:: AI ::--
-  {
-    'sourcegraph/amp.nvim',
-    branch = 'main',
-    lazy = false,
-    opts = { auto_start = true, log_level = 'info' },
   },
 }
