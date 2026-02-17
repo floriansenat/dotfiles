@@ -185,18 +185,14 @@ return {
       require('fff.download').download_or_build_binary()
     end,
     opts = {
+      prompt = '➜ ',
       title = 'Search',
       layout = {
-        height = 1,
-        width = 1,
-      },
-      debug = {
-        enabled = true, -- we expect your collaboration at least during the beta
-        show_scores = true, -- to help us optimize the scoring system, feel free to share your scores!
+        -- Use 0.99 instead of 1.0 because otherwise the first item in list is hidden by the prompt
+        height = 0.99,
+        width = 0.99,
       },
     },
-    -- No need to lazy-load with lazy.nvim.
-    -- This plugin initializes itself lazily.
     lazy = false,
     keys = {
       {
@@ -242,6 +238,79 @@ return {
       wk.add { { '<leader>l', group = 'Lsp' } }
       wk.add { { '<leader>h', group = 'Hunk' } }
       wk.add { { '<leader>s', group = 'Search' } }
+      wk.add { { '<leader>o', group = 'Outline' } }
     end,
+  },
+  {
+    'b0o/incline.nvim',
+    dependencies = { { 'nvim-tree/nvim-web-devicons', opts = {} } },
+    event = 'VeryLazy',
+    config = function()
+      -- Create custom highlight groups for transparent background
+      vim.api.nvim_set_hl(0, 'InclineNormalTransparent', {
+        fg = vim.api.nvim_get_hl(0, { name = 'Comment' }).fg,
+        bg = 'NONE',
+      })
+
+      require('incline').setup {
+        hide = {
+          cursorline = true,
+        },
+        highlight = {
+          groups = {
+            InclineNormal = 'InclineNormalTransparent',
+            InclineNormalNC = 'InclineNormalTransparent',
+          },
+        },
+        window = {
+          padding = 1,
+          margin = { vertical = 0, horizontal = 1 },
+        },
+        render = function(props)
+          local devicons = require 'nvim-web-devicons'
+
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+          if filename == '' then
+            filename = '[No Name]'
+          end
+
+          local ft_icon = devicons.get_icon_color(filename)
+          return {
+            ft_icon and { ' ', ft_icon, ' ' } or '',
+            ' ',
+            { filename },
+            ' ',
+          }
+        end,
+      }
+    end,
+  },
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local harpoon = require 'harpoon'
+      harpoon:setup()
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end, { desc = 'Add file to Harpoon' })
+      vim.keymap.set('n', '<leader><leader>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, { desc = 'Toggle Harpoon menu' })
+    end,
+  },
+  {
+    'bassamsdata/namu.nvim',
+    opts = {
+      global = {},
+      namu_symbols = { -- Specific Module options
+        options = {},
+      },
+    },
+    keys = {
+      { '<leader>os', ':Namu symbols<cr>', desc = '[S]ymbols' },
+      { '<leader>ow', ':Namu workspace<cr>', desc = '[W]orkspace' },
+    },
   },
 }
