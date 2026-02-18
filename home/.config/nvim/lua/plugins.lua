@@ -1,9 +1,6 @@
 return {
-  --:: LSP ::--
   { 'mason-org/mason.nvim', opts = {} },
   { 'j-hui/fidget.nvim', opts = {} },
-
-  --:: Treesitter ::--
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -32,8 +29,6 @@ return {
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
-
-  --:: Text Manipulation ::--
   { 'nvim-mini/mini.pairs', version = '*', opts = {} },
   { 'kylechui/nvim-surround', event = 'InsertEnter', opts = {} },
   {
@@ -124,8 +119,6 @@ return {
     },
     opts_extend = { 'sources.default' },
   },
-
-  --:: History ::--
   {
     'mbbill/undotree',
     lazy = true,
@@ -148,8 +141,6 @@ return {
       { '<leader>bb', ':Gitsigns blame<CR>', desc = 'Blame' },
     },
   },
-
-  --:: Theme ::--
   {
     'f-person/auto-dark-mode.nvim',
     dependencies = { { 'savq/melange-nvim' } },
@@ -165,8 +156,6 @@ return {
       end,
     },
   },
-
-  --:: Navigation ::--
   {
     'stevearc/oil.nvim',
     dependencies = { { 'nvim-tree/nvim-web-devicons', opts = {} } },
@@ -218,7 +207,6 @@ return {
       },
     },
   },
-  --:: Whichkey ::--
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
@@ -283,21 +271,6 @@ return {
           }
         end,
       }
-    end,
-  },
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local harpoon = require 'harpoon'
-      harpoon:setup()
-      vim.keymap.set('n', '<leader>a', function()
-        harpoon:list():add()
-      end, { desc = 'Add file to Harpoon' })
-      vim.keymap.set('n', '<leader><leader>', function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end, { desc = 'Toggle Harpoon menu' })
     end,
   },
   {
