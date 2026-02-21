@@ -226,7 +226,6 @@ return {
       wk.add { { '<leader>l', group = 'Lsp' } }
       wk.add { { '<leader>h', group = 'Hunk' } }
       wk.add { { '<leader>s', group = 'Search' } }
-      wk.add { { '<leader>o', group = 'Outline' } }
     end,
   },
   {
@@ -272,18 +271,5 @@ return {
         end,
       }
     end,
-  },
-  {
-    'bassamsdata/namu.nvim',
-    opts = {
-      global = {},
-      namu_symbols = { -- Specific Module options
-        options = {},
-      },
-    },
-    keys = {
-      { '<leader>os', ':Namu symbols<cr>', desc = '[S]ymbols' },
-      { '<leader>ow', ':Namu workspace<cr>', desc = '[W]orkspace' },
-    },
   },
 }
