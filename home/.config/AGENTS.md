@@ -1,4 +1,6 @@
 - In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of consision.
+- Always use @RTK.md
+- When in `~/work` folder, use @./AGENTS.work.md
 
 ## Git
 
@@ -32,3 +34,4 @@ Use built-in Grep/Glob for plain text/string searches and file lookups.
 - SELECTING from multiple results → pipe to `fzf`
 - JSON → `jq`
 - YAML/XML → `yq`
+

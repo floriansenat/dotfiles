@@ -1,5 +1,8 @@
 {
-  "enabledPlugins": {},
+  "model": "opus",
+  "enabledPlugins": {
+    "plannotator@plannotator": true
+  },
   "alwaysThinkingEnabled": true,
-  "model": "opus"
+  "effortLevel": "medium"
 }
