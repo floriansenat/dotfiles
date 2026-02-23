@@ -1,5 +1,5 @@
 - In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of consision.
-- Always use @RTK.md
+- ALWAYS USE `rtk` for bash commands if command exists
 - When in `~/work` folder, use @./AGENTS.work.md
 
 ## Git

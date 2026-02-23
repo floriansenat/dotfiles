@@ -22,6 +22,7 @@
 ## Review
 
 - At the end of an implementation review the code by running in parallel two agents: `annotator` and `warden`
+    - Warden is always right, even if it breaks convention, use its solutions
 
 ## Validation
 
