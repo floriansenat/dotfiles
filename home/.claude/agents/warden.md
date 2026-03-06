@@ -23,6 +23,12 @@ jj diff -r @::(.)  # All commits in current bookmark back to main
 
 **Code Quality**: Evaluate significant issues like code duplication, missing critical error handling, accessibility problems, and inadequate test coverage.
 
+**TypeScript Delegation**: If the diff contains `.ts` or `.tsx` files, spawn the `warden-ts` sub-agent to review them for TypeScript-specific rules. Do not review TypeScript conventions yourself.
+
+**React Delegation**: If the diff contains `.tsx` or `.jsx` files, spawn the `warden-react` sub-agent to review them for React-specific rules. Do not review React conventions yourself.
+
+**Sub-agent instructions**: When spawning sub-agents, instruct them to follow the same review scope (`jj diff -r @::(.)`) , confidence scoring (≥ 80), and output format defined in this document.
+
 ## Confidence Scoring
 
 Rate each potential issue on a scale from 0-100:
