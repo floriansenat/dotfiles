@@ -22,6 +22,7 @@
       "space a t": "agent::ToggleFocus",
       "space w": "workspace::Save",
       "space q": "pane::CloseActiveItem",
+      "space Q": "pane::CloseAllItems",
       "space x": [
         "action::Sequence",
         ["workspace::Save", "pane::CloseActiveItem"],

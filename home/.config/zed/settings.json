@@ -1,5 +1,9 @@
 {
-  "theme": "Melange Dark",
+  "theme": {
+    "mode": "system",
+    "light": "Melange Light",
+    "dark": "Melange Dark",
+  },
   "vim_mode": true,
   "ui_font_size": 14,
   "buffer_font_size": 14,
