@@ -1,0 +1,35 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift shift": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "-": ["task::Spawn", { "task_name": "Oil", "reveal_target": "center" }],
+      "space space": "tab_switcher::Toggle",
+      "space b k": "workspace::CloseInactiveTabsAndPanes",
+      "space b b": "git::Blame",
+      "space a t": "agent::ToggleFocus",
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space x": [
+        "action::Sequence",
+        ["workspace::Save", "pane::CloseActiveItem"],
+      ],
+      "space c": [
+        "action::Sequence",
+        ["workspace::CloseAllDocks", "workspace::ToggleCenteredLayout"],
+      ],
+    },
+  },
+]

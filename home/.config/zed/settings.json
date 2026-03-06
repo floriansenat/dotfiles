@@ -1,0 +1,53 @@
+{
+  "theme": "Melange Dark",
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
+  "relative_line_numbers": "wrapped",
+  "autosave": "on_focus_change",
+  "format_on_save": "on",
+  "agent_servers": {
+    "claude": {
+      "default_mode": "plan",
+    },
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "enable_feedback": false,
+  },
+  "edit_predictions": {
+    "provider": "none",
+  },
+  "languages": {
+    "JavaScript": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TypeScript": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TSX": {
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+  },
+}
