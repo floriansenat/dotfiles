@@ -22,18 +22,10 @@
 
 ## Testing Strategy (TDD)
 
-- Before creating a plan, define the testing strategy
-  - Explore existing test files (`.test.ts(x)`) colocated with affected code
-  - Check vitest config to understand test infrastructure
-  - Determine: new tests needed vs existing tests to update
-  - Scope: unit tests and integration tests only (E2E handled separately)
-  - Focus on testing components. Do NOT unit test functions/hooks unless they are genuinely complex
-  - Cover: happy path and edge cases
-  - Output a testing plan section for the final plan
-- TDD workflow: tests MUST be written and run BEFORE implementation
-  - Write tests first → run them → confirm they are red (failing)
-  - Implement the feature
-  - Run tests again → confirm they are green (passing)
+- Before planning: explore colocated `.test.ts(x)` files and vitest config
+- Scope: unit + integration only. Focus on components, skip simple hooks/functions
+- Cover: happy path + edge cases
+- Workflow: write failing tests → implement → tests pass
 
 ## Review
 
@@ -42,9 +34,6 @@
 
 ## Validation
 
-- If file changes are in `app` folder, you MUST `cd` into `app` first before launching `pnpm` scripts
-- To target a specific package, use the `--filter` flag. Exemple: `pnpm --filter "@yousign/main" <command>`
-- To test use `pnpm --filter "<package>" test`
-- To check types errors use `pnpm --filter "<package>" check:types`
-- To lint with biome use `pnpm --filter "<package>" check:error`
-- To fix with biome use `pnpm --filter "<package>" fix:error`
+- If changes in `app` folder, `cd app` before any `pnpm` script
+- Use `--filter` flag: `pnpm --filter "<package>" <cmd>`
+  - Commands: `test`, `check:types`, `check:error`, `fix:error`
