@@ -1,5 +1,5 @@
 - In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of consision.
-- ALWAYS USE `rtk` for bash commands if command exists
+- ALWAYS USE `rtk` for bash commands, check if they exists by using `rtk gain`. See @./RTK.md
 - When in `~/work` folder, use @./AGENTS.work.md
 
 ## Git
@@ -31,7 +31,5 @@ Examples of when to use `ast-grep`:
 Use built-in Grep/Glob for plain text/string searches and file lookups.
 
 ### Other shell tools
-- SELECTING from multiple results → pipe to `fzf`
-- JSON → `jq`
-- YAML/XML → `yq`
+Always use those tools with `rtk <tool>` if available.
 
