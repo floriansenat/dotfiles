@@ -9,22 +9,20 @@
   {
     "context": "Workspace",
     "bindings": {
-      "shift shift": "file_finder::Toggle",
+      "space space": "tab_switcher::Toggle",
+      "space s f": "file_finder::Toggle",
+      "space z k": "zed::OpenKeymapFile",
+      "space z s": "zed::OpenSettingsFile",
+      "space z x": "zed::Extensions",
     },
   },
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "-": ["task::Spawn", { "task_name": "Oil", "reveal_target": "center" }],
-      "space space": "tab_switcher::Toggle",
       "space q a": "pane::CloseAllItems",
       "space b k": "workspace::CloseInactiveTabsAndPanes",
       "space b q": "pane::CloseActiveItem",
       "space g b": "git::Blame",
-      "space z k": "zed::OpenKeymapFile",
-      "space z s": "zed::OpenSettingsFile",
-      "space z x": "zed::Extensions",
-      "space s f": "file_finder::Toggle",
       "space a": "agent::ToggleFocus",
       "space o": "outline::Toggle",
       "space w": "workspace::Save",

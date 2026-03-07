@@ -25,9 +25,9 @@ vim.o.foldlevelstart = 999
 
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- Keep cursor centered when moving
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- Keep cursor centered when moving
-vim.keymap.set('n', 'n', 'nzzzv')       -- Keep cursor centered when moving
-vim.keymap.set('n', 'N', 'Nzzzv')       -- Keep cursor centered when moving
-vim.keymap.set('n', 'J', 'mzJ`z')       -- Keep cursor inplace while joining lines
+vim.keymap.set('n', 'n', 'nzzzv') -- Keep cursor centered when moving
+vim.keymap.set('n', 'N', 'Nzzzv') -- Keep cursor centered when moving
+vim.keymap.set('n', 'J', 'mzJ`z') -- Keep cursor inplace while joining lines
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Write' })
 vim.keymap.set('n', '<leader>x', ':wq<CR>', { desc = 'Write & Quit' })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
@@ -35,8 +35,8 @@ vim.keymap.set('n', '<leader>Q', ':qa<CR>', { desc = 'Quit All' })
 
 --:: Buffers ::--
 vim.api.nvim_create_user_command('BufferRevealInFinder', function()
-    local path = vim.api.nvim_buf_get_name(0)
-    os.execute('open -R ' .. path)
+  local path = vim.api.nvim_buf_get_name(0)
+  os.execute('open -R ' .. path)
 end, {})
 vim.keymap.set('n', '<leader>br', ':BufferRevealInFinder<CR>', { desc = 'Reveal in finder' })
 vim.keymap.set('n', '<leader>b/', ':let @*=expand("%")<CR>', { desc = 'Copy relative path' })
@@ -46,25 +46,25 @@ vim.keymap.set('n', '<leader>bk', ':%bd | e# | bd#<CR>', { silent = true, desc =
 
 --:: Text Manipulation ::--
 vim.api.nvim_create_user_command('ToggleFormat', function()
-    if vim.g.disable_autoformat then
-        vim.g.disable_autoformat = false
-    else
-        vim.g.disable_autoformat = true
-    end
+  if vim.g.disable_autoformat then
+    vim.g.disable_autoformat = false
+  else
+    vim.g.disable_autoformat = true
+  end
 end, {})
 vim.keymap.set('n', '<leader>f', ':ToggleFormat<CR>', { desc = 'Format toggle' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv") -- Use Shift + J/K to moves selected lines up/down in visual mode
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 --:: Diagnostic ::--
 vim.diagnostic.config {
-    jump = { float = true },
+  jump = { float = true },
 }
 vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Show inline error' })
 vim.keymap.set('n', 'ge', vim.diagnostic.setqflist, { desc = 'List of errors' })
@@ -75,35 +75,35 @@ vim.keymap.set('n', '<leader>lc', ':checkhealth vim.lsp<CR>', { desc = 'Check he
 vim.keymap.set('n', '<leader>li', ':LspInfo<CR>', { desc = 'Info' })
 vim.keymap.set('n', '<leader>ll', ':LspLog<CR>', { desc = 'Log' })
 vim.lsp.enable {
-    'astro',
-    'lua_ls',
-    'gopls',
-    'zls',
-    'phpactor',
-    'vtsls',
-    'jq-lsp',
-    'jsonls',
-    'html',
-    'emmet_ls',
-    'cssls',
-    'biome',
-    'eslint',
-    'yamlls',
-    'dockerls',
-    'docker_compose_language_service',
+  'astro',
+  'lua_ls',
+  'gopls',
+  'zls',
+  'phpactor',
+  'vtsls',
+  'jq-lsp',
+  'jsonls',
+  'html',
+  'emmet_ls',
+  'cssls',
+  'biome',
+  'eslint',
+  'yamlls',
+  'dockerls',
+  'docker_compose_language_service',
 }
 
 --:: Lazy Setup ::--
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.uv.fs_stat(lazypath) then
-    vim.fn.system {
-        'git',
-        'clone',
-        '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git',
-        '--branch=stable', -- latest stable release
-        lazypath,
-    }
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
