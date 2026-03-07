@@ -18,6 +18,7 @@
       "space g b": "git::Blame",
       "space t r": "editor::SpawnNearestTask",
       "space t o": "task::Spawn",
+      "space s f": "file_finder::Toggle",
       "space q": "pane::CloseActiveItem",
       "space a": "agent::ToggleFocus",
       "space o": "outline::Toggle",
