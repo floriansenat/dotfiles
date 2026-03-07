@@ -143,16 +143,13 @@ return {
     },
     {
         'f-person/auto-dark-mode.nvim',
-        dependencies = { { 'savq/melange-nvim' } },
         opts = {
             update_interval = 1000,
             set_dark_mode = function()
                 vim.api.nvim_set_option_value('background', 'dark', {})
-                vim.cmd.colorscheme 'melange'
             end,
             set_light_mode = function()
                 vim.api.nvim_set_option_value('background', 'light', {})
-                vim.cmd.colorscheme 'melange'
             end,
         },
     },
@@ -226,50 +223,6 @@ return {
             wk.add { { '<leader>l', group = 'Lsp' } }
             wk.add { { '<leader>h', group = 'Hunk' } }
             wk.add { { '<leader>s', group = 'Search' } }
-        end,
-    },
-    {
-        'b0o/incline.nvim',
-        dependencies = { { 'nvim-tree/nvim-web-devicons', opts = {} } },
-        event = 'VeryLazy',
-        config = function()
-            -- Create custom highlight groups for transparent background
-            vim.api.nvim_set_hl(0, 'InclineNormalTransparent', {
-                fg = vim.api.nvim_get_hl(0, { name = 'Comment' }).fg,
-                bg = 'NONE',
-            })
-
-            require('incline').setup {
-                hide = {
-                    cursorline = true,
-                },
-                highlight = {
-                    groups = {
-                        InclineNormal = 'InclineNormalTransparent',
-                        InclineNormalNC = 'InclineNormalTransparent',
-                    },
-                },
-                window = {
-                    padding = 1,
-                    margin = { vertical = 0, horizontal = 1 },
-                },
-                render = function(props)
-                    local devicons = require 'nvim-web-devicons'
-
-                    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-                    if filename == '' then
-                        filename = '[No Name]'
-                    end
-
-                    local ft_icon = devicons.get_icon_color(filename)
-                    return {
-                        ft_icon and { ' ', ft_icon, ' ' } or '',
-                        ' ',
-                        { filename },
-                        ' ',
-                    }
-                end,
-            }
         end,
     },
 }
