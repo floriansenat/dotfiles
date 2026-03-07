@@ -39,7 +39,11 @@ Comments that explain **why**, not **what**:
 - **Warnings**: non-obvious side effects, ordering dependencies
 - **Workarounds**: hacks with context on the underlying issue
 - **Magic values**: where constants/thresholds came from
-- **TODO with context**: `// TODO(JIRA-123): Remove after v3 migration` not `// TODO: fix`
+
+## Translation & Spelling
+
+- Translate any French comment to English (preserve meaning and tone)
+- Fix spelling and grammar errors in all comments (existing and newly added)
 
 ## Rules
 
@@ -47,11 +51,12 @@ Comments that explain **why**, not **what**:
 - Never suggest refactoring
 - When uncertain, do nothing — clean code > noisy comments
 - Keep comments to one line when possible
-- Match existing comment style and language in the codebase
+- All comments must be in English
 
 ## Output
 
 For each change made:
+
 - File path and line number
 - What was added/removed and why (with confidence score)
 
