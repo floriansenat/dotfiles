@@ -19,3 +19,7 @@ source $ZSH_CONFIG_PATH/$os.conf
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
+# jj autocompletion
+autoload -U compinit
+compinit
+source <(jj util completion zsh)
