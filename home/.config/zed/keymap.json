@@ -7,18 +7,12 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
+    "context": "Editor && vim_mode == normal",
     "bindings": {
       "space space": "tab_switcher::Toggle",
-      "space s f": "file_finder::Toggle",
       "space z k": "zed::OpenKeymapFile",
       "space z s": "zed::OpenSettingsFile",
       "space z x": "zed::Extensions",
-    },
-  },
-  {
-    "context": "Editor && vim_mode == normal",
-    "bindings": {
       "space q a": "pane::CloseAllItems",
       "space b k": "workspace::CloseInactiveTabsAndPanes",
       "space b q": "pane::CloseActiveItem",
@@ -34,6 +28,20 @@
         "action::Sequence",
         ["workspace::CloseAllDocks", "workspace::ToggleCenteredLayout"],
       ],
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-space h": "pane::SplitLeft",
+      "alt-space l": "pane::SplitRight",
+      "alt-space k": "pane::SplitUp",
+      "alt-space j": "pane::SplitDown",
+      "ctrl-shift-z": "workspace::ToggleZoom",
+      "ctrl-shift-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-shift-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-shift-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-shift-k": ["workspace::ActivatePaneInDirection", "Up"],
     },
   },
 ]
