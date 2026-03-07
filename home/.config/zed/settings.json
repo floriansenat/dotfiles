@@ -1,8 +1,8 @@
 {
   "theme": {
     "mode": "system",
-    "light": "Melange Light",
-    "dark": "Melange Dark",
+    "light": "Everforest Light Medium (material)",
+    "dark": "Everforest Dark Hard (material)",
   },
   "vim_mode": true,
   "ui_font_size": 14,
