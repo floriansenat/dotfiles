@@ -1,4 +1,7 @@
 {
+  "search": {
+    "center_on_match": true,
+  },
   "theme": {
     "mode": "system",
     "light": "Everforest Light Medium (material)",
@@ -11,7 +14,8 @@
   "autosave": "on_focus_change",
   "format_on_save": "on",
   "agent_servers": {
-    "claude": {
+    "claude-acp": {
+      "type": "registry",
       "default_mode": "plan",
     },
   },
