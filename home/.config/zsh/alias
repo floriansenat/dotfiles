@@ -7,8 +7,10 @@ alias python=python3
 alias pip=pip3
 alias pkmd=packmind-cli
 alias cc="claude"
-alias cist="~/.config/zsh/bin/ci-status.sh"
-alias mrst="~/.config/zsh/bin/mr-status.sh"
+alias cis="~/.config/zsh/bin/ci-status.sh"
+alias mrs="~/.config/zsh/bin/mr-status.sh"
+alias mrr="~/.config/zsh/bin/mr-reviews.sh"
+alias mrv="~/.config/zsh/bin/v3-dashboard.sh"
 
 mkcd () {
   \mkdir -p "$1"
