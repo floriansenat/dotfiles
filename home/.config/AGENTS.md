@@ -1,5 +1,4 @@
 - In all interactions, be extremely concise and sacrifice grammar for the sake of consision
-- When in `~/work` folder, use @./AGENTS.work.md
 - NEVER use `git`, use `jj` instead
 - At the end of each plan, give me a list of unresolved questions to answer, if any.
 - When searching for **code structure** (function/class/type definitions, import statements, call sites, patterns like "all React components that use useState"), you MUST use `ast-grep` via Bash instead of the built-in Grep tool. Grep is text-based; `ast-grep` understands syntax trees.
@@ -10,7 +9,7 @@
 - Before planning: explore colocated `.test.ts(x)` files and vitest config
 - Scope: unit + integration only. Focus on components, skip simple hooks/functions
 - Cover: happy path + edge cases
-- Workflow: write failing tests → implement → tests pass
+- Workflow: write failing tests → implement → tests pass ("red-green-refactor" pattern)
 
 ## Review
 

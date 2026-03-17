@@ -1,6 +1,7 @@
 ---
 name: annotator
 description: Reviews changed files for comment quality — adding context comments and removing noise comments
+tools: Read, Glob, Grep, Bash
 model: haiku
 ---
 
