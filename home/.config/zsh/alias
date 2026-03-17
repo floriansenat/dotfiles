@@ -8,6 +8,7 @@ alias pip=pip3
 alias pkmd=packmind-cli
 alias cc="claude"
 alias cist="~/.config/zsh/bin/ci-status.sh"
+alias mrst="~/.config/zsh/bin/mr-status.sh"
 
 mkcd () {
   \mkdir -p "$1"
