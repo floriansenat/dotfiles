@@ -141,7 +141,25 @@ return {
       { '<leader>bb', ':Gitsigns blame<CR>', desc = 'Blame' },
     },
   },
-  { 'f-person/auto-dark-mode.nvim' },
+  {
+    'f-person/auto-dark-mode.nvim',
+    dependencies = { { 'sainnhe/everforest', lazy = false } },
+    opts = {
+      set_dark_mode = function()
+        vim.api.nvim_set_option_value('background', 'dark', {})
+        vim.g.everforest_background = 'hard'
+        vim.g.everforest_colors_override = { bg0 = { '#1E2326', '234' } }
+        vim.cmd.colorscheme 'everforest'
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option_value('background', 'light', {})
+        vim.g.everforest_background = 'soft'
+        vim.g.everforest_colors_override = { bg0 = { '#EFEBD4', '234' } }
+        vim.cmd.colorscheme 'everforest'
+      end,
+      update_interval = 1000,
+    },
+  },
   {
     'stevearc/oil.nvim',
     dependencies = { { 'nvim-tree/nvim-web-devicons', opts = {} } },
