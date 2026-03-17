@@ -13,7 +13,8 @@
     ]
   },
   "enabledPlugins": {
-    "plannotator@plannotator": true
+    "plannotator@plannotator": true,
+    "superpowers@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true
 }
