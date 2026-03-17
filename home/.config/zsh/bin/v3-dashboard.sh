@@ -80,7 +80,7 @@ if [[ -f "$tmpdir/reviews.json" && -n "$user_id" ]]; then
 import json
 data = json.load(open('$tmpdir/reviews.json'))
 for mr in data:
-    if not mr.get('draft'):
+    if 'RFR' in mr.get('labels', []):
         print(mr['iid'])
 " 2>/dev/null || true)
 
@@ -166,7 +166,7 @@ if [[ -f "$tmpdir/reviews.json" ]]; then
 import json
 data = json.load(open('$tmpdir/reviews.json'))
 for mr in data:
-    if not mr.get('draft'):
+    if 'RFR' in mr.get('labels', []):
         print(mr['iid'])
 " 2>/dev/null || true)
 
@@ -189,7 +189,7 @@ user_id = $user_id
 tmpdir = '$tmpdir'
 data = json.load(open(os.path.join(tmpdir, 'reviews.json')))
 for mr in data:
-    if mr.get('draft'):
+    if 'RFR' not in mr.get('labels', []):
         continue
     iid = mr['iid']
     # Check if I already approved
@@ -240,3 +240,66 @@ fi
 if [[ "$has_output" == true ]]; then
   echo ""
 fi
+
+# === Write starship cache ===
+CACHE_DIR="$HOME/.cache/v3-dashboard"
+mkdir -p "$CACHE_DIR"
+
+ci_failed=0
+merge_ready=0
+has_conflicts=0
+reviews_pending=${#reviews[@]}
+
+if [[ -n "$bookmarks" ]]; then
+  for branch in $bookmarks; do
+    ci=$(python3 -c "
+import json
+data = json.load(open('$tmpdir/${branch}_ci.json'))
+print(data[0]['status'] if data else 'none')
+" 2>/dev/null || echo "none")
+    [[ "$ci" == "failed" ]] && ((ci_failed++)) || true
+
+    mr=$(python3 -c "
+import json
+data = json.load(open('$tmpdir/${branch}_mr.json'))
+if data:
+    mr = data[0]
+    print(f\"{mr.get('has_conflicts',False)}\")
+else:
+    print('none')
+" 2>/dev/null || echo "none")
+    [[ "$mr" == "True" ]] && ((has_conflicts++)) || true
+  done
+
+  # Count merge-ready (approved + green CI + no conflicts + not draft)
+  for branch in $bookmarks; do
+    python3 -c "
+import json, os
+ci = json.load(open('$tmpdir/${branch}_ci.json'))
+mr = json.load(open('$tmpdir/${branch}_mr.json'))
+if not mr or not ci:
+    exit(1)
+mr = mr[0]; ci = ci[0]
+if 'RFR' not in mr.get('labels', []):
+    exit(1)
+if ci['status'] != 'success':
+    exit(1)
+if mr.get('has_conflicts'):
+    exit(1)
+approvals_file = '$tmpdir/${branch}_approvals.json'
+if os.path.exists(approvals_file):
+    approvals = json.load(open(approvals_file))
+    if approvals.get('approved'):
+        exit(0)
+exit(1)
+" 2>/dev/null && ((merge_ready++)) || true
+  done
+fi
+
+cat > "$CACHE_DIR/status" <<EOF
+ci_failed=$ci_failed
+merge_ready=$merge_ready
+has_conflicts=$has_conflicts
+reviews_pending=$reviews_pending
+timestamp=$(date +%s)
+EOF

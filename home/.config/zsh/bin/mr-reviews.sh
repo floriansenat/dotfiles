@@ -28,7 +28,7 @@ iids=$(echo "$mrs" | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 for mr in data:
-    if not mr.get('draft'):
+    if 'RFR' in mr.get('labels', []):
         print(mr['iid'])
 " 2>/dev/null)
 
@@ -64,7 +64,7 @@ if not data:
 print(f'{BOLD}MRs awaiting your review{NC}')
 print()
 for mr in data:
-    if mr.get('draft'):
+    if 'RFR' not in mr.get('labels', []):
         continue
     iid = mr['iid']
     author = mr['author']['name']
