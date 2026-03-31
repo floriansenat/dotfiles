@@ -15,6 +15,7 @@ brew "starship"
 brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "zsh-vi-mode"
+brew "fnm"
 brew "opencode"
 brew "gum"
 
