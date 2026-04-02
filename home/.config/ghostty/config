@@ -1,10 +1,11 @@
 theme = dark:Everforest Dark Hard,light:Everforest Light Med
 
-# font-family = Departure Mono
-font-family = Zed Mono Extended
+# font-family = Zed Mono Extended
+font-family = Atkinson Hyperlegible Mono
 font-size = 15
-adjust-cell-height = 18
-unfocused-split-opacity = 1
+adjust-cell-width = -6%
+adjust-cell-height = 20
+unfocused-split-opacity = 0.5
 macos-titlebar-style = hidden
 window-padding-x = 12
 window-padding-y = 12
