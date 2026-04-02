@@ -236,13 +236,17 @@ jj edit <change-id>
 
 When the user asks you to push changes:
 
-```bash
-# Push a specific bookmark to the remote
-jj git push -b <bookmark-name>
+**IMPORTANT**: Always track the bookmark on origin before pushing if it has never been pushed before. If you skip this step, jj will refuse with `Refusing to create new remote bookmark`. The safe sequence is always:
 
-# Example: push the main bookmark
-jj git push -b main
+```bash
+# 1. Track the bookmark on origin (safe to run even if already tracked)
+jj bookmark track <bookmark-name> --remote=origin
+
+# 2. Then push
+jj git push -b <bookmark-name>
 ```
+
+If the bookmark is already tracked, `jj bookmark track` is a no-op and you can skip it — but when in doubt, run it first.
 
 **Before pushing, ensure:**
 
@@ -256,8 +260,9 @@ jj git push -b main
 # Move an existing bookmark to the current commit
 jj bookmark move <bookmark-name> --to @
 
-# Then push it
-jj gp <bookmark-name>
+# Track and push
+jj bookmark track <bookmark-name> --remote=origin
+jj git push -b <bookmark-name>
 ```
 
 If no bookmark exists for your changes, create one first:
@@ -266,11 +271,9 @@ If no bookmark exists for your changes, create one first:
 # Create a bookmark at the current commit
 jj bookmark create <bookmark-name>
 
-# Track it on origin
-jj bookmark track <bookmark-name>
-
-# Then push it
-jj gp <bookmark-name>
+# Track it on origin and push
+jj bookmark track <bookmark-name> --remote=origin
+jj git push -b <bookmark-name>
 ```
 
 ## Handling Conflicts

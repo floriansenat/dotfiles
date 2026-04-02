@@ -17,6 +17,5 @@
     "superpowers@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
-  "model": "opusplan"
+  "effortLevel": "medium"
 }

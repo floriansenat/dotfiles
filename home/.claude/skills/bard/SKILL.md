@@ -1,5 +1,5 @@
 ---
-name: pr-description
+name: bard
 description: Generate a PR description from the current jj bookmark changes. Use when the user asks to generate, write, or create a PR description, or when preparing a pull request. Triggered by requests like "describe this PR", "generate PR description", "write PR description", or "/pr-description".
 ---
 
