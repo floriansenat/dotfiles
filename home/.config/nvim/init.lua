@@ -87,7 +87,9 @@ vim.keymap.set('n', '<leader>ll', ':LspLog<CR>', { desc = 'Log' })
 vim.api.nvim_create_autocmd('LspProgress', {
   callback = function(ev)
     local params = ev.data.params
-    if not params or not params.value then return end
+    if not params or not params.value then
+      return
+    end
     local value = params.value
     vim.api.nvim_echo({ { value.message or '' } }, true, {
       id = 'lsp.' .. ev.data.client_id,
@@ -118,6 +120,9 @@ vim.lsp.enable {
   'dockerls',
   'docker_compose_language_service',
 }
+
+--:: Statusline ::--
+dofile(vim.fn.stdpath 'config' .. '/statusline.lua')
 
 --:: Plugins ::--
 dofile(vim.fn.stdpath 'config' .. '/plugins.lua')
