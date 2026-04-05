@@ -74,21 +74,25 @@ print(data[0]['iid'] if data else '')
 fi
 wait
 
-# Batch 3: fetch approvals for reviewer MRs (needs reviews.json from batch 2)
+# Batch 3: fetch approvals + pipelines for reviewer MRs (needs reviews.json from batch 2)
 if [[ -f "$tmpdir/reviews.json" && -n "$user_id" ]]; then
-  review_iids=$(python3 -c "
+  review_entries=$(python3 -c "
 import json
 data = json.load(open('$tmpdir/reviews.json'))
 for mr in data:
     if 'RFR' in mr.get('labels', []):
-        print(mr['iid'])
+        print(f\"{mr['iid']}|{mr.get('source_branch', '')}\")
 " 2>/dev/null || true)
 
-  for iid in $review_iids; do
+  while IFS='|' read -r iid branch; do
+    [[ -z "$iid" ]] && continue
     (
       glab api "projects/$PROJECT/merge_requests/$iid/approvals" 2>/dev/null > "$tmpdir/review_${iid}_approvals.json" || echo "{}" > "$tmpdir/review_${iid}_approvals.json"
     ) &
-  done
+    (
+      glab api "projects/$PROJECT/pipelines?ref=$branch&per_page=1" 2>/dev/null > "$tmpdir/review_${branch}_ci.json" || echo "[]" > "$tmpdir/review_${branch}_ci.json"
+    ) &
+  done <<< "$review_entries"
   wait
 fi
 
@@ -156,26 +160,8 @@ print('true' if data.get('approved') else 'false')
       flags+="${GREEN}→ ready to merge${NC} "
     fi
 
-    actions+=("$(echo -e "  ${BOLD}$branch${NC} ${flags}${GRAY}${url}${NC}")")
+    actions+=("$(echo -e "  ${BOLD}$branch${NC} ${flags}\n    ${title}\n    ${GRAY}${url}${NC}")")
   done
-fi
-
-# === Fetch approvals for reviewer MRs ===
-if [[ -f "$tmpdir/reviews.json" ]]; then
-  review_iids=$(python3 -c "
-import json
-data = json.load(open('$tmpdir/reviews.json'))
-for mr in data:
-    if 'RFR' in mr.get('labels', []):
-        print(mr['iid'])
-" 2>/dev/null || true)
-
-  for iid in $review_iids; do
-    (
-      glab api "projects/$PROJECT/merge_requests/$iid/approvals" 2>/dev/null > "$tmpdir/review_${iid}_approvals.json" || echo "{}" > "$tmpdir/review_${iid}_approvals.json"
-    ) &
-  done
-  wait
 fi
 
 # === Render: Awaiting my review (hide already approved by me) ===
@@ -201,19 +187,26 @@ for mr in data:
         i_approved = any(a['user']['id'] == user_id for a in approvals.get('approved_by', []))
     if i_approved:
         continue
-    print(f\"{iid}|{mr['author']['name']}|{mr.get('user_notes_count',0)}|{mr.get('has_conflicts',False)}|{mr['title']}|{mr['web_url']}\")
+    branch = mr.get('source_branch', '')
+    ci_file = os.path.join(tmpdir, f'review_{branch}_ci.json')
+    ci_status = 'none'
+    if os.path.exists(ci_file):
+        ci_data = json.load(open(ci_file))
+        if ci_data:
+            ci_status = ci_data[0].get('status', 'none')
+    print(f\"{branch}|{ci_status}|{mr['author']['name']}|{mr.get('user_notes_count',0)}|{mr.get('has_conflicts',False)}|{mr['title']}|{mr['web_url']}\")
 " 2>/dev/null || true)
 
-  while IFS='|' read -r iid author notes conflicts title url; do
-    [[ -z "$iid" ]] && continue
-    flags="${YELLOW}awaiting your review${NC} "
+  while IFS='|' read -r branch ci_status author notes conflicts title url; do
+    [[ -z "$branch" ]] && continue
+    flags="$(ci_icon "$ci_status") ${YELLOW}awaiting your review${NC} "
     if [[ "$notes" -gt 0 ]]; then
       flags+="${BLUE}💬 ${notes}${NC} "
     fi
     if [[ "$conflicts" == "True" ]]; then
       flags+="${RED}⚠ conflicts${NC} "
     fi
-    reviews+=("$(echo -e "  ${BOLD}!${iid}${NC} ${flags}${GRAY}${author} · ${title}${NC}")")
+    reviews+=("$(echo -e "  ${BOLD}${branch}${NC} ${flags}${GRAY}${author}${NC}\n    ${title}\n    ${GRAY}${url}${NC}")")
   done <<< "$reviews_data"
 fi
 
