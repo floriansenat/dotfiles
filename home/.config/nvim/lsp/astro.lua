@@ -1,14 +1,3 @@
----@brief
----
---- https://github.com/withastro/language-tools/tree/main/packages/language-server
----
---- `astro-ls` can be installed via `npm`:
---- ```sh
---- npm install -g @astrojs/language-server
---- ```
-
-local util = require 'lspconfig.util'
-
 ---@type vim.lsp.Config
 return {
   cmd = { 'astro-ls', '--stdio' },
@@ -19,7 +8,18 @@ return {
   },
   before_init = function(_, config)
     if config.init_options and config.init_options.typescript and not config.init_options.typescript.tsdk then
-      config.init_options.typescript.tsdk = util.get_typescript_server_path(config.root_dir)
+      -- Cherche typescript dans node_modules du projet
+      local root = config.root_dir or ''
+      local candidates = {
+        root .. '/node_modules/typescript/lib',
+        root .. '/node_modules/typescript/lib/typescript.js',
+      }
+      for _, path in ipairs(candidates) do
+        if vim.uv.fs_stat(path) then
+          config.init_options.typescript.tsdk = root .. '/node_modules/typescript/lib'
+          break
+        end
+      end
     end
   end,
 }
