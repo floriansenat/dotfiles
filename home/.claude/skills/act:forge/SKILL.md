@@ -1,5 +1,5 @@
 ---
-name: develop:forge
+name: act:forge
 description: Workflow for implementing a Linear ticket from scratch. Use when the user asks to work on a ticket, start implementing a feature, or pick up a Linear issue. Covers fetching the ticket from the current jj bookmark, validating the proposed approach against the codebase, planning tests, and proceeding to implementation.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: spec:design
+name: plan:design
 description: Work relentlessly with the user to turn a validated PRD or feature prompt into a concise ADR. Use when the goal is to explore the codebase, define technical direction, evaluate architecture and data model options, and clarify rollout or migration before implementation.
 ---
 
@@ -22,4 +22,4 @@ Do not jump into implementation details. This skill is for technical understandi
 
 Explore the codebase aggressively to understand existing patterns, boundaries, dependencies, and constraints. Research external technical context when useful. Parallelize research as much as possible with sub-agents.
 
-Write the final ADR to `<feature>/ADR.md` only after explicit user validation. End the document with a `Sources` section listing any code, web, or document sources used.
+Write the final ADR to `<feature>/dd.md` only after explicit user validation. End the document with a `Sources` section listing any code, web, or document sources used.

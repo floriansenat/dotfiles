@@ -1,5 +1,5 @@
 ---
-name: spec:analyse
+name: plan:analyse
 description: Work relentlessly with the user to turn a feature idea, product request, or rough prompt into a concise PRD. Use when the goal is to clarify business needs, users, scope, constraints, success criteria, and open questions before technical design.
 ---
 
@@ -19,4 +19,4 @@ Do not jump into implementation or architecture. This skill is for business unde
 
 Research external context when useful to understand the domain or sharpen the PRD. Parallelize research as much as possible with sub-agents.
 
-Write the final PRD to `<feature>/PRD.md` only after explicit user validation. End the document with a `Sources` section listing any web or document sources used.
+Write the final PRD to `<feature>/prd.md` only after explicit user validation. End the document with a `Sources` section listing any web or document sources used.

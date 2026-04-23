@@ -1,43 +1,5 @@
-# Code Review Skill Implementation Plan
-
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
-
-**Goal:** Create a Claude Code skill that reviews local `jj diff` changes via parallel subagents and produces a structured markdown report.
-
-**Architecture:** Orchestrator skill (SKILL.md) gathers context (diff, guidelines, Packmind), dispatches warden + test-coverage subagents in parallel, aggregates findings into a structured report saved to `/tmp/`. Single file — all logic is in the SKILL.md prompt.
-
-**Tech Stack:** Claude Code skill system (SKILL.md), `jj` CLI, `warden` subagent (`subagent_type: "warden"` — built-in Claude Code Agent tool parameter), `general-purpose` subagent
-
-**Spec:** `docs/superpowers/specs/2026-04-22-code-review-skill-design.md`
-
 ---
-
-## Placeholder Convention
-
-Throughout the SKILL.md content, placeholders use `UPPER_SNAKE_CASE` (e.g., `CHANGE_ID`, `CHANGE_DESC`, `DIFF`). These are symbolic names — Claude must substitute the actual values captured during Phase 1. They are NOT shell variables.
-
-## File Structure
-
-- **Create:** `home/.claude/skills/code-review/SKILL.md` — the entire skill (frontmatter + orchestration instructions)
-
-This is a single-file skill. All "logic" lives in the SKILL.md as structured instructions that Claude follows. No scripts, no templates, no supporting files.
-
----
-
-### Task 1: Create skill with frontmatter and Phase 1 (context gathering)
-
-**Files:**
-- Create: `home/.claude/skills/code-review/SKILL.md`
-
-- [ ] **Step 1: Create SKILL.md with frontmatter and Phase 1**
-
-Write the skill file with:
-- Frontmatter (name, description)
-- Phase 1: Context Gathering — all steps from spec
-
-```markdown
----
-name: code-review
+name: act:review
 description: >
   Review local working changes for security risks, logic errors, edge cases,
   internal guidelines compliance, and test coverage gaps. Dispatches parallel
@@ -90,34 +52,7 @@ Count total lines changed (additions + deletions). Save as TOTAL_LINES.
 Bundle the diff, file list, and guidelines into the prompts for each subagent (see Phase 2 templates).
 
 **Prompt size guard**: Estimate the total token count of diff + CLAUDE.md + Packmind content. If it exceeds ~80k tokens, force warden splitting (see Phase 2) regardless of TOTAL_LINES.
-```
 
-- [ ] **Step 2: Verify file created correctly**
-
-```bash
-ls -la home/.claude/skills/code-review/SKILL.md
-```
-
-Expected: file exists with correct path.
-
-- [ ] **Step 3: Commit**
-
-```bash
-jj commit -m "feat: create code-review skill with Phase 1 context gathering"
-```
-
----
-
-### Task 2: Add Phase 2 (subagent dispatch)
-
-**Files:**
-- Modify: `home/.claude/skills/code-review/SKILL.md`
-
-- [ ] **Step 1: Add Phase 2 to SKILL.md**
-
-Append Phase 2 content after Phase 1. This section tells the orchestrator how to dispatch warden and test-coverage agents.
-
-```markdown
 ## Phase 2: Subagent Dispatch
 
 Dispatch two agents in parallel: make both Agent tool calls in the same response, both with `run_in_background: true`.
@@ -174,7 +109,7 @@ Prompt for warden (substitute actual values for placeholders):
 >
 > If no issues found, write "No issues found." to the output file.
 
-If splitting into multiple wardens, each batch writes to `/tmp/code-review-CHANGE_ID/warden-findings-N.md` (where N is the batch number).
+If splitting into multiple wardens, each batch writes to /tmp/code-review-CHANGE_ID/warden-findings-N.md (where N is the batch number).
 
 ### Agent 2: Test Coverage
 
@@ -208,28 +143,7 @@ Prompt for test coverage agent (substitute actual values):
 ### Timeout handling
 
 Wait for both agents to complete. If an agent has not completed after 5 minutes, stop waiting for it. Mark its section as "timed out" in the report.
-```
 
-- [ ] **Step 2: Commit**
-
-```bash
-jj commit -m "feat: add Phase 2 subagent dispatch to code-review skill"
-```
-
----
-
-### Task 3: Add Phase 3 (report aggregation)
-
-**Files:**
-- Modify: `home/.claude/skills/code-review/SKILL.md`
-
-- [ ] **Step 1: Add Phase 3 to SKILL.md**
-
-Append Phase 3 after Phase 2. This tells the orchestrator how to aggregate findings into the structured report.
-
-Note: the report template below uses indented code blocks (4 spaces) to avoid nested triple-backtick escaping issues.
-
-```markdown
 ## Phase 3: Report Aggregation
 
 After all agents complete (or timeout):
@@ -332,26 +246,7 @@ Report structure:
 - **✅ PASS**: Zero High or Medium issues. Zero or more Low issues only.
 - **⚠️ PASS WITH NOTES**: Zero High issues, one or more Medium or Low issues.
 - **❌ NEEDS WORK**: One or more High severity issues.
-```
 
-- [ ] **Step 2: Commit**
-
-```bash
-jj commit -m "feat: add Phase 3 report aggregation to code-review skill"
-```
-
----
-
-### Task 4: Add Phase 4 (output) and finalize
-
-**Files:**
-- Modify: `home/.claude/skills/code-review/SKILL.md`
-
-- [ ] **Step 1: Add Phase 4 to SKILL.md**
-
-Append Phase 4 after Phase 3. Output phase: save report, cleanup, print summary.
-
-```markdown
 ## Phase 4: Output
 
 ### Step 1 — Save report
@@ -380,89 +275,3 @@ Print to terminal:
       Tests: N gaps
 
     Full report: /tmp/code-review-YYYY-MM-DD-CHANGE_ID.md
-```
-
-- [ ] **Step 2: Review complete SKILL.md**
-
-Read the full file end-to-end. Verify:
-- Frontmatter is correct (name, description fields)
-- All 4 phases present and flow logically
-- No placeholder text remains that shouldn't
-- Placeholder convention (UPPER_SNAKE_CASE) used consistently
-- No broken markdown (unescaped fences, etc.)
-
-- [ ] **Step 3: Commit**
-
-```bash
-jj commit -m "feat: add Phase 4 output and finalize code-review skill"
-```
-
----
-
-### Task 5: Test the skill
-
-- [ ] **Step 1: Verify skill is discoverable**
-
-```bash
-ls -la home/.claude/skills/code-review/SKILL.md
-```
-
-Expected: file exists.
-
-- [ ] **Step 2: Make a test change**
-
-Ensure there are uncommitted changes in a project (current dotfiles changes will work — there are modified files per `jj status`).
-
-- [ ] **Step 3: Invoke the skill**
-
-Run `/code-review` and observe:
-- Phase 1: diff captured, metadata extracted, guidelines loaded
-- Phase 2: both agents dispatched in parallel
-
-- [ ] **Step 4: Verify intermediate outputs**
-
-After agents complete, check:
-
-```bash
-ls /tmp/code-review-*/
-```
-
-Expected: warden-findings.md and test-findings.md exist.
-
-- [ ] **Step 5: Verify final report**
-
-```bash
-ls /tmp/code-review-*.md
-```
-
-Read the generated report. Check:
-- Report structure matches spec format
-- Findings are real (not fabricated)
-- Verdict logic is correct
-- Summary table matches individual section counts
-
-- [ ] **Step 6: Verify cleanup**
-
-```bash
-ls /tmp/code-review-*/
-```
-
-Expected: working directory removed after report generated.
-
-- [ ] **Step 7: Fix any issues found during testing**
-
-If skill behavior is off, adjust SKILL.md and re-test.
-
-- [ ] **Step 8: Final commit**
-
-```bash
-jj commit -m "fix: adjust code-review skill based on testing feedback"
-```
-
-Only commit if changes were made in Step 7.
-
----
-
-## Unresolved Questions
-
-1. **Packmind `.packmind/` structure**: Unknown until tested in a project that uses it. Skill loads all files generically — should work regardless of format. Validate when opportunity arises.
