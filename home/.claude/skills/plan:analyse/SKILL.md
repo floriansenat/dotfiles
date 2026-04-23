@@ -15,7 +15,7 @@ Drive toward a concise PRD covering:
 
 Resolve ambiguity one branch at a time. Push on vague statements, hidden assumptions, conflicting goals, and missing constraints.
 
-Do not jump into implementation or architecture. This skill is for business understanding; technical design and ADR work come later with `spec:design`.
+Do not jump into implementation or architecture. This skill is for business understanding.
 
 Research external context when useful to understand the domain or sharpen the PRD. Parallelize research as much as possible with sub-agents.
 
