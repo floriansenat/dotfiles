@@ -16,7 +16,7 @@ For each task produce:
 
 Task quality rules:
 - Atomic: if splittable into independent parts, split it
-- Self-contained: description + acceptance criteria enough to implement alone
+- Self-contained: description + acceptance criteria enough to implement alone, put any relevant information needed to undestand the task in isolation
 - Ordered: foundation before consumers (data model → logic → surface)
 - Full coverage: every requirement covered by at least one task (validate internally)
 - Testable: each criterion is verifiable (state change, API response, behavior)
