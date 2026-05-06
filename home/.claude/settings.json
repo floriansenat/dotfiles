@@ -20,6 +20,26 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/floriansenat/.claude/hooks/notify.sh 'Claude Code' 'Finished' 'Glass'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "msg=$(jq -r '.message // \"needs attention\"'); /Users/floriansenat/.claude/hooks/notify.sh 'Claude Code' \"$msg\" 'Funk'"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
