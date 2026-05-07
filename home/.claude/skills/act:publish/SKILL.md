@@ -13,7 +13,7 @@ description: Use when the user asks to publish, push and open a MR, or "créer u
 
 Read diff + commits. Draft each section — be terse. No filler, no restating what the diff shows. Reviewers scan, they don't read essays.
 
-- **Ch-ch-changes!** — 1-4 short bullets, max one line each. Focus on **why** the change exists (motivation, user/business outcome, constraint being addressed). Do NOT enumerate files, functions, or how the change is implemented — reviewers get that from the diff. If a bullet starts to describe a code path or rename mechanics, cut it. Keep it simple enough that a non-author can grasp the intent in under 30 seconds.
+- **Ch-ch-changes!** — 1 short paragraph focusing on the main change + 1-4 oneliner bullets for other secondary changes. Focus on **why** the change exists (motivation, user/business outcome, constraint being addressed). Do NOT enumerate files, functions, or how the change is implemented — reviewers get that from the diff. If sentence starts to describe a code path or rename mechanics, cut it. Keep it simple, non-author should grasp intent under 30 seconds.
 - **Review Focus** — bullet list, 1-3 items. Detect: sensitive files (auth, payments, migrations, config), new patterns, high-complexity areas.
 - **Heads Up** — bullet list. Detect: migrations, config changes, breaking changes, deploy requirements. Skip if nothing found.
 - **Proof** — leave empty. Author provides.
