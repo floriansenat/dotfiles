@@ -13,6 +13,7 @@ For each task produce:
 - Ordered implementation steps (abstract, no file paths)
 - Dependencies on other tasks (must form a DAG)
 - Inline acceptance criteria pulled from requirements (observable, verifiable)
+- Sources, internal or external, needed for enhancing the context in order to be able to take the task independently (file paths, documents links, external links)
 
 Task quality rules:
 - Atomic: if splittable into independent parts, split it
@@ -30,14 +31,18 @@ Write to `<feature>/tasks.md` using this format:
 
     <description>
 
-    **Steps:**
+    **Steps**
     - step 1
     - step 2
 
-    **Depends on:** none | Task N, Task M
+    **Depends on** none | Task N, Task M
 
-    **Acceptance criteria:**
+    **Acceptance criteria**
     - criterion 1
     - criterion 2
+
+    **Source**
+    - file/path/1
+    - link.to/prd
 
 Present full task list for review. Iterate on user feedback (reorder, merge, split, add, remove). Write only after explicit user validation.

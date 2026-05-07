@@ -22,4 +22,4 @@ Do not jump into implementation details. This skill is for technical understandi
 
 Explore the codebase aggressively to understand existing patterns, boundaries, dependencies, and constraints. Research external technical context when useful. Parallelize research as much as possible with sub-agents.
 
-Write the final ADR to `<feature>/design.md` only after explicit user validation. End the document with a `Sources` section listing any code, web, or document sources used.
+Write the final design document to `<feature>/design.md` only after explicit user validation. End the document with a `Sources` section listing any code, web, or document sources used.
