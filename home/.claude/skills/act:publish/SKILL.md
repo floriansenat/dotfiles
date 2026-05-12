@@ -7,7 +7,7 @@ description: Use when the user asks to publish, push and open a MR, or "créer u
 
 1. `python3 ~/.claude/skills/act:publish/scripts/gitlab.py info` → get user, bookmark, labels
 2. `jj diff --git` → full diff
-3. `jj log -r @.. --no-graph` → commits since divergence from target branch
+3. `jj log -r 'trunk()..@' --no-graph` → commits since divergence from trunk. If `trunk()` unset, fall back to `main@origin..@` (this repo has no local `main` bookmark — only remote-tracking `main@origin`). Never use bare `main` in revsets.
 
 # Phase 2 — Analyse & Draft
 
@@ -47,11 +47,12 @@ Present each section via `AskUserQuestion`. Author selects draft or picks "Other
 {validated content}
 ```
 
-2. `jj bookmark track <bookmark> --remote=origin && jj git push -b <bookmark>`
-3. `AskUserQuestion` multiSelect with labels (hide "ai-generated"; pre-select Front/Back/RFR/deploy::review-app as relevant)
-4. `glab mr create --source-branch <bookmark> --target-branch <target> --title "<title>" --description "<assembled>" --assignee <user> --label "ai-generated,<extras>" --no-editor`
+2. **Ensure commit has a description** — `jj log -r @ --no-graph -T description` must be non-empty. If empty, `jj desc -m "<validated title>" @` before push (reuses the title chosen in Phase 3). Skip if description already set (don't clobber).
+3. **Push first, track after** — `jj git push -b <bookmark>`. Then `jj bookmark track <bookmark> --remote=origin` only if not already tracked (ignore failure — tracking is best-effort). Never use deprecated `<bookmark>@<remote>` syntax — always `--remote=<remote>`.
+4. `AskUserQuestion` multiSelect with labels (hide "ai-generated"; pre-select Front/Back/RFR/deploy::review-app as relevant)
+5. `glab mr create --source-branch <bookmark> --target-branch <target> --title "<title>" --description "<assembled>" --assignee <user> --label "ai-generated,<extras>" --no-editor`
 
-**Target branch**: `main` by default. If stacked, detect parent bookmark via `jj log -r '<bookmark>-' --no-graph -T 'bookmarks'` and use it instead.
+**Target branch**: `main` by default. If stacked, detect parent bookmark via `jj log -r '<bookmark>-' --no-graph -T 'bookmarks'`. **Strip any `@origin` / `@<remote>` suffix** before passing to `glab --target-branch` — glab wants the plain branch name.
 
 **MR exists**: `glab mr update <id> --description "<assembled>" --label "..."`
 **Push conflict**: `jj git fetch` then force push if intentional
