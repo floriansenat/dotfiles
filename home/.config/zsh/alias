@@ -2,6 +2,7 @@ alias awslog="aws sso login"
 alias ll="eza -a -1"
 alias rm="rm -i"
 alias cat="bat -p"
+alias ..="cd .."
 alias n.="nvim ."
 alias python=python3
 alias pip=pip3
