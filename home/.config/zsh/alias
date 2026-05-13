@@ -5,10 +5,8 @@ alias cat="bat -p"
 alias n.="nvim ."
 alias python=python3
 alias pip=pip3
-alias pkmd=packmind-cli
 alias cc="node ~/.claude/local_tools/ccxray/server/index.js claude"
-alias oc="opencode"
-alias mrv="~/.config/zsh/bin/v3-dashboard.sh"
+alias opi="ollama launch pi --model gemma4:e2b"
 
 mkcd () {
   \mkdir -p "$1"
